@@ -1,7 +1,7 @@
 ---
-- name: "W.M. Keck Foundation"
-  detail: "Support for electro-nano-pulsing and grain-boundary engineering research."
-- name: "San Diego State University"
-  detail: "Research, teaching, and student training environment through Mechanical Engineering and the College of Engineering."
-- name: "Collaborative research partners"
-  detail: "Project-specific collaborations in materials processing, computation, and characterization."
+- name: "NSF — ECCENTRIC: A Mechanism of Flash Sintering of Ionic Ceramics"
+  detail: "PI: Wenwu Xu; Co-PI: Eugene Olevsky. Amount: $328,397. Period: 05/01/2019-04/30/2023. This project investigated the mechanisms of flash sintering in ionic ceramics through atomistic modeling and experimental studies of electric-field-assisted sintering processes."
+- name: "DOE — Tailoring Grain-Boundaries by Electro-Nano-Pulsing (ENP)"
+  detail: "PI: Eugene Olevsky; Co-PI: Wenwu Xu. Award No. DE-SC0022244. Amount: $467,000. Period: 2021-2024. This project developed electro-nano-pulsing approaches for localized grain-boundary engineering and rapid materials processing, supported by multiscale modeling and experiments."
+- name: "CSU / CSUPERB — Nano-SCALPEL"
+  detail: "PI: Wenwu Xu. Amount: $15,000. Period: 05/01/2019-12/30/2020. Title: Nano-SCALPEL: Nanoparticle Spinning Cutting, Ablation, Lysis in Plasma Environmental Liquid for Blood Clot Removal. This seed project explored magnetically actuated nanoparticle approaches for blood-clot removal."

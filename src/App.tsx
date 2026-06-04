@@ -13,7 +13,6 @@ import {
   Mail,
   MapPin,
   Search,
-  Users,
 } from 'lucide-react'
 import heroImage from './assets/materials-hero.png'
 import groupImage from './assets/lab-group.jpg'
@@ -27,7 +26,6 @@ import flashSinteringImage from './assets/research-flash-sintering.svg'
 import multiscaleImage from './assets/research-multiscale.svg'
 import imagingImage from './assets/research-imaging.svg'
 import aiMlImage from './assets/research-ai-ml.svg'
-import sdsuLogoImage from './assets/sdsu-engineering-logo.png'
 import skyImage from './assets/sky-soltero.jpg'
 import wenwuImage from './assets/team/wenwu-xu.jpg'
 import shahrierImage from './assets/team/shahrier-hasan.jpg'
@@ -44,7 +42,6 @@ import saraImage from './assets/team/sara-gomez.jpg'
 import xavierImage from './assets/team/xavier-lovato.png'
 import publicationsRaw from './data/publications.yaml?raw'
 import fundingRaw from './data/funding.yaml?raw'
-import collaboratorsRaw from './data/collaborators.yaml?raw'
 import './App.css'
 
 type MetadataValue = string | number | boolean | string[]
@@ -142,7 +139,6 @@ const imageRegistry: Record<string, string> = {
   'research-multiscale': multiscaleImage,
   'research-imaging': imagingImage,
   'research-ai-ml': aiMlImage,
-  'sdsu-engineering-logo': sdsuLogoImage,
   'sky-soltero': skyImage,
   'team/wenwu-xu': wenwuImage,
   'team/shahrier-hasan': shahrierImage,
@@ -192,13 +188,8 @@ const researchQuestions = [
 const joinTracks = [
   {
     title: 'Graduate Researchers',
-    body: 'Best fit for students interested in grain-boundary engineering, field-assisted processing, computational materials science, or microscopy-informed modeling. New openings are considered when funding and project fit align.',
-    skills: ['materials science or mechanical engineering background', 'programming or simulation experience', 'curiosity about mechanisms and careful validation'],
-  },
-  {
-    title: 'M.S. Researchers',
-    body: 'Project-based research in modeling, characterization, instrumentation, and data-driven materials workflows.',
-    skills: ['clear project ownership', 'comfort learning new tools', 'regular progress communication'],
+    body: 'Best fit for graduate students interested in grain-boundary engineering, field-assisted processing, computational materials science, microscopy-informed modeling, characterization, instrumentation, or data-driven materials workflows.',
+    skills: ['materials science or mechanical engineering background', 'programming, simulation, or experimental experience', 'clear project ownership and regular progress communication'],
   },
   {
     title: 'Undergraduate Researchers',
@@ -216,9 +207,9 @@ const teachingItems = [
   'ME240: Introduction to Engineering Materials',
   'ME241: Materials Lab',
   'ME304: Mechanics of Materials',
-  'MEE542: Materials Structure',
+  'ME542: Materials Structure',
   'ME640: Nanomaterials',
-  'MEE642: Materials Modeling',
+  'ME642: Materials Modeling',
 ]
 
 function slugFromPath(path: string) {
@@ -388,12 +379,6 @@ const publications = parseYamlList(publicationsRaw)
   .sort((a, b) => b.year - a.year) satisfies Publication[]
 
 const funding = parseYamlList(fundingRaw).map((item) => ({
-  name: asString(item.name),
-  detail: asString(item.detail),
-  link: asString(item.link),
-})) satisfies NamedItem[]
-
-const collaborators = parseYamlList(collaboratorsRaw).map((item) => ({
   name: asString(item.name),
   detail: asString(item.detail),
   link: asString(item.link),
@@ -766,12 +751,12 @@ function App() {
 
         <section className="section partner-section">
           <div className="section-heading">
-            <p className="eyebrow">Sponsors, collaborators, facilities</p>
-            <h2>Research support and institutional context.</h2>
+            <p className="eyebrow">Selected grants</p>
+            <h2>External research support for M3 Lab projects.</h2>
           </div>
           <div className="partner-layout">
             <div>
-              <h3><Handshake size={20} aria-hidden="true" /> Funding</h3>
+              <h3><Handshake size={20} aria-hidden="true" /> Grants and sponsored projects</h3>
               {funding.map((item) => (
                 <article key={item.name}>
                   <strong>{item.name}</strong>
@@ -779,17 +764,6 @@ function App() {
                 </article>
               ))}
             </div>
-            <div>
-              <h3><Users size={20} aria-hidden="true" /> Collaborators and profiles</h3>
-              {collaborators.map((item) => (
-                <article key={item.name}>
-                  <strong>{item.name}</strong>
-                  <p>{item.detail}</p>
-                  {item.link && <a href={item.link} target="_blank" rel="noreferrer">Open link <ExternalLink size={14} aria-hidden="true" /></a>}
-                </article>
-              ))}
-            </div>
-            <img src={sdsuLogoImage} alt="SDSU Engineering logo" />
           </div>
         </section>
 
