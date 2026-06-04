@@ -54,6 +54,7 @@ type Person = {
   role: string
   group: string
   dates: string
+  sortOrder: number
   image?: string
   project: string
   tags: string[]
@@ -319,6 +320,7 @@ const people: Person[] = Object.entries(peopleModules)
     role: asString(entry.meta.role),
     group: asString(entry.meta.group),
     dates: asString(entry.meta.dates),
+    sortOrder: Number(entry.meta.sortOrder) || 1000,
     image: getImage(asString(entry.meta.image)),
     project: asString(entry.meta.project),
     tags: asArray(entry.meta.tags),
@@ -326,7 +328,7 @@ const people: Person[] = Object.entries(peopleModules)
     featured: asBoolean(entry.meta.featured),
     body: entry.body,
   }))
-  .sort((a, b) => a.name.localeCompare(b.name))
+  .sort((a, b) => a.sortOrder - b.sortOrder || a.name.localeCompare(b.name))
 
 const projects: Project[] = Object.entries(projectModules)
   .map(([path, raw]) => parseMarkdown(raw, slugFromPath(path)))
