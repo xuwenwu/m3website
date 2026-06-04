@@ -1,12 +1,13 @@
 ---
 name: Rachell Lee
-role: M.S. Researcher
+role: M.S. Alumna
 group: Alumni
-dates: Graduated Fall 2019
+dates: Graduated 2019
+sortOrder: 300
 image: team/rachell-lee
-project: EAGLE finite element analysis
+project: Finite-element modeling of Joule heating in 2D bimodal microstructured metals
 tags: [FEA, grain boundaries, ENP]
 currentPosition: M.S. alumna
 featured: false
 ---
-Rachell modeled electrical-field assisted grain-boundary local engineering using finite element analysis.
+Rachell modeled Joule heating in two-dimensional bimodal microstructured metals using finite-element analysis. She co-authored two peer-reviewed journal papers.

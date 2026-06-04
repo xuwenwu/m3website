@@ -1,6 +1,6 @@
 ---
 name: Rebeca Contreras
-role: Graduate Research Student
+role: M.S. Student
 group: Current Graduate Students
 dates: 2026-present
 sortOrder: 50
@@ -10,4 +10,4 @@ tags: [flash sintering, microscopy, sample preparation, SEM]
 currentPosition:
 featured: false
 ---
-Rebeca studies flash-sintering mechanisms through sample preparation, heat treatment, binder burnout, measurements, and SEM-based experimental workflows.
+Rebeca studies flash-sintering mechanisms through sample preparation, heat treatment, measurements, and SEM-based experimental characterization.

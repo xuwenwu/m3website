@@ -1,12 +1,13 @@
 ---
 name: Gregory Berkeley
-role: M.S. Researcher
+role: M.S. Alumnus
 group: Alumni
-dates: 2021-2024
+dates: Graduated 2024
+sortOrder: 260
 image:
-project: Machine-learning-enabled multiscale modeling
+project: Machine-learning-based multiscale modeling for metal-matrix nanocomposites
 tags: [AI/ML, MD, modeling]
 currentPosition: M.S. alumnus
 featured: false
 ---
-Gregory worked on machine-learning-enabled multiscale modeling of metal matrix nanocomposites.
+Gregory worked on machine-learning-based multiscale modeling development for metal-matrix nanocomposites. He was awarded the SDSU RSCA student research fund in Spring 2021.

@@ -1,12 +1,13 @@
 ---
 name: Gabriel Portillo Pauna
-role: M.S. Researcher
+role: M.S. Alumnus
 group: Alumni
-dates: 2022-2023
+dates: Graduated 2022
+sortOrder: 275
 image:
-project: 3D polycrystalline microstructure modeling
+project: 3D polycrystalline microstructure development for FEA modeling
 tags: [FEA, microstructure, modeling]
 currentPosition: M.S. alumnus
 featured: false
 ---
-Gabriel developed three-dimensional polycrystalline microstructures for finite element analysis modeling.
+Gabriel further developed three-dimensional polycrystalline microstructures with specified grain-boundary components for finite-element analysis modeling.
