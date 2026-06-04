@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import heroImage from './assets/materials-hero.png'
 import groupImage from './assets/lab-group.jpg'
+import missionImage from './assets/lab-mission-visual.svg'
 import bioImage from './assets/bio-overview.png'
 import modelingImage from './assets/research-modeling.jpg'
 import characterizationImage from './assets/research-characterization.jpg'
@@ -125,6 +126,7 @@ const newsModules = import.meta.glob('./content/news/*.md', {
 const imageRegistry: Record<string, string> = {
   'materials-hero': heroImage,
   'lab-group': groupImage,
+  'lab-mission': missionImage,
   'bio-overview': bioImage,
   'research-modeling': modelingImage,
   'research-characterization': characterizationImage,
@@ -498,7 +500,7 @@ function App() {
             <h2>Materials questions, modeled and tested across scales.</h2>
           </div>
           <article className="intro-story">
-            <img src={groupImage} alt="M3 Lab group photo" />
+            <img src={missionImage} alt="Materials modeling workflow from atoms to microstructure and properties" />
             <div>
               <h3>Computational materials science with experimental anchors.</h3>
               <p>

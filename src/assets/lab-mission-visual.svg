@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Multiscale materials modeling and characterization</title>
+  <desc id="desc">A materials-science visual connecting atoms, microstructure, imaging, simulation, and engineered performance.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#171c1f"/>
+      <stop offset="0.48" stop-color="#263338"/>
+      <stop offset="1" stop-color="#f7f8f4"/>
+    </linearGradient>
+    <linearGradient id="redPulse" x1="163" y1="774" x2="1352" y2="173" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5fd2cd"/>
+      <stop offset="0.5" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d64235"/>
+    </linearGradient>
+    <pattern id="micro" width="150" height="150" patternUnits="userSpaceOnUse">
+      <path d="M0 58 48 0h102v150H0Z" fill="#ffffff" opacity=".56"/>
+      <path d="M18 128 91 36l59 23v91H18Z" fill="#cdd6d2" opacity=".76"/>
+      <path d="M0 0h48L0 58Z" fill="#879493" opacity=".4"/>
+      <path d="M48 0 91 36 18 128 0 58Z" fill="none" stroke="#171c1f" stroke-opacity=".14" stroke-width="4"/>
+    </pattern>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <g opacity=".18" fill="none" stroke="#ffffff" stroke-width="2">
+    <path d="M0 130h1600M0 260h1600M0 390h1600M0 520h1600M0 650h1600M0 780h1600"/>
+    <path d="M150 0v1000M300 0v1000M450 0v1000M600 0v1000M750 0v1000M900 0v1000M1050 0v1000M1200 0v1000M1350 0v1000M1500 0v1000"/>
+  </g>
+  <g transform="translate(120 135)">
+    <rect x="0" y="0" width="395" height="360" rx="28" fill="#ffffff" opacity=".95"/>
+    <g stroke="#a3312b" stroke-width="7" stroke-linecap="round" opacity=".72">
+      <path d="M92 102 198 65l105 64"/>
+      <path d="M92 102v118l106 64 105-64V129"/>
+      <path d="M198 65v219"/>
+      <path d="M92 220 303 129"/>
+      <path d="M92 102 303 220"/>
+    </g>
+    <g fill="#171c1f">
+      <circle cx="92" cy="102" r="20"/>
+      <circle cx="198" cy="65" r="20"/>
+      <circle cx="303" cy="129" r="20"/>
+      <circle cx="92" cy="220" r="20"/>
+      <circle cx="198" cy="284" r="20"/>
+      <circle cx="303" cy="220" r="20"/>
+    </g>
+    <g fill="#1b7c7a">
+      <circle cx="146" cy="163" r="14"/>
+      <circle cx="250" cy="174" r="14"/>
+    </g>
+  </g>
+  <g transform="translate(560 95)">
+    <path d="M0 104 308 0l358 111v314L312 548 0 424Z" fill="url(#micro)" stroke="#ffffff" stroke-width="12"/>
+    <path d="M312 548V235L0 104" fill="none" stroke="#ffffff" stroke-opacity=".58" stroke-width="10"/>
+    <path d="M312 235 666 111" fill="none" stroke="#ffffff" stroke-opacity=".58" stroke-width="10"/>
+    <g fill="#d64235" opacity=".9">
+      <circle cx="142" cy="196" r="18"/>
+      <circle cx="345" cy="281" r="18"/>
+      <circle cx="520" cy="192" r="18"/>
+      <circle cx="247" cy="412" r="18"/>
+    </g>
+  </g>
+  <g transform="translate(1070 570)">
+    <rect x="0" y="0" width="390" height="250" rx="30" fill="#ffffff" opacity=".94"/>
+    <path d="M58 194c35-118 73-174 116-168 49 7 63 95 105 113 29 12 54-10 87-70" fill="none" stroke="#1b7c7a" stroke-width="14" stroke-linecap="round"/>
+    <g stroke="#171c1f" stroke-opacity=".24" stroke-width="4">
+      <path d="M42 55h306M42 112h306M42 169h306"/>
+    </g>
+    <g fill="#a3312b">
+      <circle cx="58" cy="194" r="12"/>
+      <circle cx="174" cy="26" r="12"/>
+      <circle cx="279" cy="139" r="12"/>
+      <circle cx="366" cy="69" r="12"/>
+    </g>
+  </g>
+  <path d="M250 760c170-92 287-160 352-204 84-58 127-112 218-111 118 0 170 92 275 103 83 9 161-36 278-126" fill="none" stroke="url(#redPulse)" stroke-width="34" stroke-linecap="round" filter="url(#softGlow)"/>
+  <path d="M250 760c170-92 287-160 352-204 84-58 127-112 218-111 118 0 170 92 275 103 83 9 161-36 278-126" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity=".88"/>
+  <g fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-weight="900" opacity=".95">
+    <text x="120" y="590" font-size="42">atoms</text>
+    <text x="640" y="750" font-size="42">microstructure</text>
+    <text x="1130" y="905" font-size="42">properties</text>
+  </g>
+</svg>
