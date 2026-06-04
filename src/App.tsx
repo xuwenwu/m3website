@@ -649,7 +649,7 @@ function App() {
                     {section.members.map((person) => (
                       <article className="person-card" key={person.slug}>
                         {person.image ? (
-                          <img src={person.image} alt={person.name} />
+                          <img src={person.image} alt={`${person.name}, ${person.role}`} />
                         ) : (
                           <div className="avatar" aria-hidden="true">{initials(person.name)}</div>
                         )}
