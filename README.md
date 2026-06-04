@@ -16,6 +16,18 @@ npm run build
 npm run preview
 ```
 
+Build for SDSU/RohanCP test deployment at `https://mmm.sdsu.edu/new/`:
+
+```powershell
+npm run build:new
+```
+
+Build for final root deployment at `https://mmm.sdsu.edu/`:
+
+```powershell
+npm run build:root
+```
+
 ## Content Editing
 
 Most frequently updated content is file-backed:
@@ -37,3 +49,4 @@ npm run build
 ```
 
 The site deploys as a static website from the generated `dist/` folder.
+See `DEPLOYMENT.md` for the upload workflow.
