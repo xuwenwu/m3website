@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">M3 Lab mark</title>
+  <desc id="desc">Hexagonal materials lattice mark with M3 lettering.</desc>
+  <defs>
+    <linearGradient id="bg" x1="36" y1="34" x2="286" y2="292" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c63a32"/>
+      <stop offset="0.58" stop-color="#8c2524"/>
+      <stop offset="1" stop-color="#171c1f"/>
+    </linearGradient>
+    <linearGradient id="pulse" x1="80" y1="226" x2="242" y2="68" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#5fd2cd"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="320" rx="42" fill="#171c1f"/>
+  <path d="M160 24 278 92v136l-118 68-118-68V92Z" fill="url(#bg)"/>
+  <path d="M160 51 254 105v110l-94 54-94-54V105Z" fill="none" stroke="#ffffff" stroke-opacity=".72" stroke-width="8"/>
+  <g fill="#ffffff" stroke="#171c1f" stroke-width="5">
+    <circle cx="96" cy="122" r="17"/>
+    <circle cx="160" cy="86" r="17"/>
+    <circle cx="224" cy="122" r="17"/>
+    <circle cx="96" cy="198" r="17"/>
+    <circle cx="160" cy="234" r="17"/>
+    <circle cx="224" cy="198" r="17"/>
+  </g>
+  <g stroke="#ffffff" stroke-opacity=".64" stroke-width="8" stroke-linecap="round">
+    <path d="M111 130 145 94"/>
+    <path d="M175 94 209 130"/>
+    <path d="M96 140v40"/>
+    <path d="M224 140v40"/>
+    <path d="M111 190 145 226"/>
+    <path d="M175 226 209 190"/>
+    <path d="M113 122h94"/>
+    <path d="M113 198h94"/>
+  </g>
+  <path d="M82 238c44-18 67-43 79-75 11-29 27-52 75-74" fill="none" stroke="url(#pulse)" stroke-width="13" stroke-linecap="round"/>
+  <text x="160" y="174" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="900">M3</text>
+</svg>

@@ -12,7 +12,6 @@ import {
   Handshake,
   Mail,
   MapPin,
-  Microscope,
   Search,
   Users,
 } from 'lucide-react'
@@ -21,6 +20,12 @@ import groupImage from './assets/lab-group.jpg'
 import bioImage from './assets/bio-overview.png'
 import modelingImage from './assets/research-modeling.jpg'
 import characterizationImage from './assets/research-characterization.jpg'
+import m3LogoImage from './assets/logo-m3-lab.svg'
+import enpImage from './assets/research-enp.svg'
+import flashSinteringImage from './assets/research-flash-sintering.svg'
+import multiscaleImage from './assets/research-multiscale.svg'
+import imagingImage from './assets/research-imaging.svg'
+import aiMlImage from './assets/research-ai-ml.svg'
 import sdsuLogoImage from './assets/sdsu-engineering-logo.png'
 import skyImage from './assets/sky-soltero.jpg'
 import wenwuImage from './assets/team/wenwu-xu.jpg'
@@ -122,6 +127,12 @@ const imageRegistry: Record<string, string> = {
   'bio-overview': bioImage,
   'research-modeling': modelingImage,
   'research-characterization': characterizationImage,
+  'm3-logo': m3LogoImage,
+  'research-enp': enpImage,
+  'research-flash-sintering': flashSinteringImage,
+  'research-multiscale': multiscaleImage,
+  'research-imaging': imagingImage,
+  'research-ai-ml': aiMlImage,
   'sdsu-engineering-logo': sdsuLogoImage,
   'sky-soltero': skyImage,
   'team/wenwu-xu': wenwuImage,
@@ -142,8 +153,7 @@ const site = {
   email: 'wenwu.xu@sdsu.edu',
   address:
     'Department of Mechanical Engineering, San Diego State University, 5500 Campanile Drive, San Diego, CA 92182 USA',
-  scholar: 'https://scholar.google.com/citations?user=V4jS2hAAAAAJ',
-  github: 'https://github.com/',
+  scholar: 'https://scholar.google.com/citations?user=AdbfEI4AAAAJ&hl=en',
 }
 
 const navItems = [
@@ -166,8 +176,8 @@ const researchQuestions = [
 
 const joinTracks = [
   {
-    title: 'Ph.D. Researchers',
-    body: 'Best fit for students interested in grain-boundary engineering, field-assisted processing, computational materials science, or microscopy-informed modeling.',
+    title: 'Graduate Researchers',
+    body: 'Best fit for students interested in grain-boundary engineering, field-assisted processing, computational materials science, or microscopy-informed modeling. New openings are considered when funding and project fit align.',
     skills: ['materials science or mechanical engineering background', 'programming or simulation experience', 'curiosity about mechanisms and careful validation'],
   },
   {
@@ -403,7 +413,7 @@ function App() {
     <div className="site-shell" id="home">
       <header className="topbar">
         <a className="brand" href="#home" aria-label={`${site.shortName} home`}>
-          <span className="brand-mark">M3</span>
+          <img className="brand-logo" src={m3LogoImage} alt="" />
           <span>
             <strong>{site.name}</strong>
             <small>{site.university}</small>
@@ -705,7 +715,7 @@ function App() {
             <p className="eyebrow">Join Us</p>
             <h2>Recruiting-ready pathways into the lab.</h2>
             <p>
-              The lab welcomes prospective Ph.D., M.S., undergraduate, visiting, and collaborator inquiries that connect clearly to M3 Lab research.
+              The lab welcomes prospective graduate, undergraduate, visiting, and collaborator inquiries that connect clearly to M3 Lab research.
             </p>
           </div>
           <div className="join-grid">
@@ -797,10 +807,6 @@ function App() {
             <a href={site.scholar} target="_blank" rel="noreferrer">
               <Atom size={22} aria-hidden="true" />
               <span><strong>Google Scholar</strong>Publication profile</span>
-            </a>
-            <a href={site.github} target="_blank" rel="noreferrer">
-              <Microscope size={22} aria-hidden="true" />
-              <span><strong>GitHub</strong>Code and project resources</span>
             </a>
           </div>
         </section>

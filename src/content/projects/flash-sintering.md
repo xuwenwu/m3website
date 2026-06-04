@@ -2,7 +2,7 @@
 title: Flash Sintering and Current-Driven Ceramic Processes
 summary: Field-assisted ceramic processing can accelerate densification and reveal new coupling among current, heat, defects, and microstructure.
 theme: Flash Sintering
-image: research-characterization
+image: research-flash-sintering
 methods: [molecular dynamics, in-situ SEM, sample preparation, 8YSZ processing]
 funding: [SDSU College of Engineering]
 people: [Sky Soltero, Kyrel Polifrone, Colin Delaney, Kevin Carty]

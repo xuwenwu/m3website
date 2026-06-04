@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Multiscale modeling workflow</title>
+  <desc id="desc">Workflow connecting DFT, molecular dynamics, finite elements, and continuum scales.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#171c1f"/>
+      <stop offset=".48" stop-color="#26373a"/>
+      <stop offset="1" stop-color="#f5f7f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <g transform="translate(140 148)">
+    <g stroke="#ffffff" stroke-width="6" opacity=".7" fill="none">
+      <path d="M156 344h236"/>
+      <path d="M465 344h236"/>
+      <path d="M775 344h236"/>
+      <path d="M1088 344h128"/>
+    </g>
+    <g fill="#ffffff">
+      <circle cx="82" cy="344" r="72"/>
+      <circle cx="394" cy="344" r="72"/>
+      <circle cx="706" cy="344" r="72"/>
+      <circle cx="1018" cy="344" r="72"/>
+      <circle cx="1270" cy="344" r="72"/>
+    </g>
+    <g fill="#a3312b">
+      <circle cx="58" cy="316" r="13"/>
+      <circle cx="96" cy="316" r="13"/>
+      <circle cx="82" cy="358" r="13"/>
+      <circle cx="370" cy="316" r="13"/>
+      <circle cx="418" cy="318" r="13"/>
+      <circle cx="348" cy="360" r="13"/>
+      <circle cx="440" cy="360" r="13"/>
+    </g>
+    <g fill="#1b7c7a" opacity=".92">
+      <path d="M666 302h80v80h-80z"/>
+      <path d="M978 304h80v80h-80z"/>
+      <path d="M1230 304h80v80h-80z"/>
+    </g>
+    <g fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="54">
+      <text x="38" y="508">DFT</text>
+      <text x="348" y="508">MD</text>
+      <text x="654" y="508">FEA</text>
+      <text x="918" y="508">Continuum</text>
+    </g>
+    <g stroke="#5fd2cd" stroke-width="5" opacity=".54" fill="none">
+      <path d="M80 598c208 76 412 85 612 27 165-48 330-49 495 12"/>
+      <path d="M80 650c238 62 457 58 657-10 155-52 297-50 425 10"/>
+    </g>
+  </g>
+</svg>

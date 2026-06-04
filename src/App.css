@@ -35,17 +35,13 @@
   min-width: 0;
 }
 
-.brand-mark {
-  display: grid;
+.brand-logo {
+  display: block;
   width: 52px;
   height: 52px;
   flex: 0 0 52px;
-  place-items: center;
   border-radius: 8px;
-  background: var(--red);
-  color: #ffffff;
-  font-family: var(--mono);
-  font-weight: 900;
+  box-shadow: 0 8px 20px rgba(23, 28, 31, 0.16);
 }
 
 .brand strong,
@@ -477,8 +473,12 @@
 }
 
 .project-card img {
-  height: 100%;
-  min-height: 300px;
+  align-self: start;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  min-height: 0;
+  background: var(--surface-alt);
+  object-fit: contain;
 }
 
 .project-copy h3,
@@ -1000,7 +1000,7 @@ code {
   }
 
   .project-card img {
-    min-height: 240px;
+    min-height: 0;
   }
 
   .person-card {
@@ -1023,7 +1023,7 @@ code {
     padding-right: 20px;
   }
 
-  .brand-mark {
+  .brand-logo {
     width: 44px;
     height: 44px;
     flex-basis: 44px;

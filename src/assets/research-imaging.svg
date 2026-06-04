@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Microstructure characterization and 3D imaging</title>
+  <desc id="desc">Layered microstructure slices forming a 3D reconstruction with microscopy-style contrast.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f7f8f4"/>
+      <stop offset=".52" stop-color="#e7eeee"/>
+      <stop offset="1" stop-color="#1e2528"/>
+    </linearGradient>
+    <pattern id="grain" width="120" height="120" patternUnits="userSpaceOnUse">
+      <path d="M0 58 44 0h76v120H0z" fill="#ffffff" opacity=".48"/>
+      <path d="M18 100 84 38l36 16v66H18z" fill="#cfd7d3" opacity=".75"/>
+      <path d="M0 0h44L0 58z" fill="#8e9a9a" opacity=".35"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <g transform="translate(355 165)">
+    <g opacity=".92">
+      <path d="M180 500 680 650 970 476 462 324Z" fill="#8fa09e"/>
+      <path d="M180 420 680 570 970 396 462 244Z" fill="url(#grain)" stroke="#ffffff" stroke-width="7"/>
+      <path d="M180 340 680 490 970 316 462 164Z" fill="url(#grain)" stroke="#ffffff" stroke-width="7"/>
+      <path d="M180 260 680 410 970 236 462 84Z" fill="url(#grain)" stroke="#ffffff" stroke-width="7"/>
+    </g>
+    <g fill="none" stroke="#a3312b" stroke-width="9" stroke-linecap="round" opacity=".75">
+      <path d="M386 230c80-21 150-10 210 33 52 37 120 47 204 29"/>
+      <path d="M344 402c76-22 154-6 233 48 54 36 118 44 193 24"/>
+    </g>
+    <g fill="#1b7c7a">
+      <circle cx="725" cy="208" r="16"/>
+      <circle cx="560" cy="350" r="15"/>
+      <circle cx="798" cy="468" r="18"/>
+    </g>
+  </g>
+  <g transform="translate(116 138)" stroke="#171c1f" stroke-width="9" fill="none" opacity=".65">
+    <circle cx="120" cy="120" r="82"/>
+    <path d="m181 181 94 94"/>
+    <path d="M76 120h88M120 76v88"/>
+  </g>
+</svg>

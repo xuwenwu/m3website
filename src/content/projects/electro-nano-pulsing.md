@@ -2,7 +2,7 @@
 title: Electro-Nano-Pulsing and Grain Boundary Engineering
 summary: Nanosecond electrical pulses may offer a route to manipulate grain boundaries and design stronger materials.
 theme: ENP
-image: materials-hero
+image: research-enp
 methods: [finite element analysis, atomistic modeling, microscopy, electrical pulsing]
 funding: [W.M. Keck Foundation]
 people: [Wenwu Xu]

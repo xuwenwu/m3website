@@ -2,7 +2,7 @@
 title: Multiscale Modeling: DFT, MD, FEA, Continuum
 summary: Computation connects electronic, atomic, microstructural, and component scales for materials design.
 theme: Modeling
-image: research-modeling
+image: research-multiscale
 methods: [DFT, molecular dynamics, finite element analysis, continuum modeling]
 funding: [SDSU, collaborative grants]
 people: [Wenwu Xu, Gregory Berkeley, Gabriel Portillo Pauna]

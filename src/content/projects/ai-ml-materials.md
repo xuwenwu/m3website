@@ -2,7 +2,7 @@
 title: AI/ML for Materials Microstructure and Processing
 summary: Data-driven models can help connect processing conditions, microstructure descriptors, and material response.
 theme: AI/ML
-image: lab-group
+image: research-ai-ml
 methods: [machine learning, feature engineering, multiscale data, model validation]
 funding: [SDSU, collaborative grants]
 people: [Gregory Berkeley, Wenwu Xu]
