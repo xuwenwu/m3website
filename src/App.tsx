@@ -204,9 +204,9 @@ const teachingItems = [
   'ME240: Introduction to Engineering Materials',
   'ME241: Materials Lab',
   'ME304: Mechanics of Materials',
-  'ME596: Atomistic Structures of Engineering Materials',
+  'MEE542: Materials Structure',
   'ME640: Nanomaterials',
-  'ME696: Atomistic Simulations of Engineering Materials',
+  'MEE642: Materials Modeling',
 ]
 
 function slugFromPath(path: string) {
@@ -729,7 +729,7 @@ function App() {
               <li><CheckCircle2 size={18} aria-hidden="true" />CV or resume, transcript if available, and expected start term</li>
               <li><CheckCircle2 size={18} aria-hidden="true" />One or two M3 Lab projects that genuinely interest you</li>
             </ul>
-            <a className="button primary" href={`mailto:${site.email}`}>Email Dr. Xu</a>
+            <a className="button primary" href={`mailto:${site.email}`}>Email {site.email}</a>
           </aside>
         </section>
 
