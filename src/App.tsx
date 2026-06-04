@@ -409,7 +409,6 @@ function App() {
     .map((group) => ({ group, members: people.filter((person) => person.group === group) }))
     .filter((section) => section.members.length > 0)
 
-  const featuredPeople = people.filter((person) => person.featured)
   const featuredPublications = publications.filter((publication) => publication.selected).slice(0, 3)
   const latestNews = newsPosts.slice(0, 4)
 
@@ -639,21 +638,9 @@ function App() {
               <p className="eyebrow">People</p>
               <h2>PI, students, undergraduate researchers, and alumni.</h2>
               <p>
-                People cards come from <code>src/content/people/*.md</code>. Empty groups are hidden automatically.
+                The M3 Lab brings together graduate students, undergraduate researchers, alumni, and collaborators working across modeling, processing, and characterization.
               </p>
             </div>
-            {featuredPeople.length > 0 && (
-              <div className="people-preview">
-                {featuredPeople.map((person) => (
-                  <article key={person.slug}>
-                    {person.image ? <img src={person.image} alt={person.name} /> : <div>{initials(person.name)}</div>}
-                    <span>{person.role}</span>
-                    <h3>{person.name}</h3>
-                    <p>{person.project}</p>
-                  </article>
-                ))}
-              </div>
-            )}
             <div className="people-groups">
               {groupedPeople.map((section) => (
                 <section key={section.group} className="people-group" aria-labelledby={`${section.group}-title`}>
