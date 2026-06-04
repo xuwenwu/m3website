@@ -1,0 +1,10 @@
+---
+- name: "SDSU Mechanical Engineering"
+  detail: "Home department for the M3 Lab."
+  link: "https://mechanical.sdsu.edu/"
+- name: "SDSU College of Engineering"
+  detail: "College context for research facilities, recruiting, and student training."
+  link: "https://engineering.sdsu.edu/"
+- name: "Google Scholar profile"
+  detail: "Complete and frequently updated publication record."
+  link: "https://scholar.google.com/citations?user=V4jS2hAAAAAJ"

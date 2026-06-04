@@ -1,0 +1,33 @@
+---
+- title: "Effect of external electric field on diffusivity and flash sintering of 8YSZ: A molecular dynamics study"
+  authors: "Wenwu Xu and collaborators"
+  year: 2024
+  venue: "Journal article"
+  themes: [Flash Sintering, MD, Ceramics]
+  selected: true
+  doi:
+  pdf:
+- title: "A bimodal microstructure for fatigue resistant metals by molecular dynamics simulations"
+  authors: "Wenwu Xu and collaborators"
+  year: 2023
+  venue: "Journal article"
+  themes: [MD, Microstructure, Metals]
+  selected: true
+  doi:
+  pdf:
+- title: "Deformation nanomechanics and dislocation quantification at the atomic scale in nanocrystalline magnesium"
+  authors: "Wenwu Xu and collaborators"
+  year: 2022
+  venue: "Journal article"
+  themes: [Nanomechanics, Microscopy, MD]
+  selected: true
+  doi:
+  pdf:
+- title: "Distinguishing contributions of ceramic matrix and binder metal to the plasticity of nanocrystalline cermets"
+  authors: "Wenwu Xu and collaborators"
+  year: 2021
+  venue: "Journal article"
+  themes: [Cermets, Nanocrystalline Materials, Plasticity]
+  selected: false
+  doi:
+  pdf:
