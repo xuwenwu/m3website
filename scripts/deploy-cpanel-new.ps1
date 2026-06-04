@@ -32,7 +32,7 @@ try {
   scp -i $KeyPath -o BatchMode=yes -o StrictHostKeyChecking=accept-new $zip $target
 
   $remoteCommand = "cd $RemoteRoot && unzip -o m3-new-deploy.zip && rm -f m3-new-deploy.zip"
-  ssh -i $KeyPath -o BatchMode=yes -o StrictHostKeyChecking=accept-new "${User}@${HostName}" $remoteCommand
+  ssh -i $KeyPath -o BatchMode=yes -o StrictHostKeyChecking=accept-new "${User}@${HostName}" "bash" "-lc" $remoteCommand
 }
 finally {
   Pop-Location
