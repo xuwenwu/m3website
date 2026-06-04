@@ -12,6 +12,7 @@ import {
   Handshake,
   Mail,
   MapPin,
+  Play,
   Search,
 } from 'lucide-react'
 import heroImage from './assets/materials-hero.png'
@@ -165,6 +166,8 @@ const site = {
   address:
     'Department of Mechanical Engineering, San Diego State University, 5500 Campanile Drive, San Diego, CA 92182 USA',
   scholar: 'https://scholar.google.com/citations?user=AdbfEI4AAAAJ&hl=en',
+  linkedin: 'https://www.linkedin.com/in/wenwuxu',
+  youtube: 'https://www.youtube.com/@2dadsfamily',
 }
 
 const navItems = [
@@ -419,10 +422,24 @@ function App() {
             <small>{site.university}</small>
           </span>
         </a>
-        <a className="email-pill" href={`mailto:${site.email}`}>
-          <Mail size={16} aria-hidden="true" />
-          {site.email}
-        </a>
+        <div className="topbar-links" aria-label="Profile and contact links">
+          <a className="topbar-link" href={site.scholar} target="_blank" rel="noreferrer">
+            <Atom size={16} aria-hidden="true" />
+            Scholar
+          </a>
+          <a className="topbar-link" href={site.linkedin} target="_blank" rel="noreferrer">
+            <ExternalLink size={16} aria-hidden="true" />
+            LinkedIn
+          </a>
+          <a className="topbar-link" href={site.youtube} target="_blank" rel="noreferrer">
+            <Play size={16} aria-hidden="true" />
+            YouTube
+          </a>
+          <a className="topbar-link email-pill" href={`mailto:${site.email}`}>
+            <Mail size={16} aria-hidden="true" />
+            {site.email}
+          </a>
+        </div>
       </header>
 
       <nav className="site-nav" aria-label="Main navigation">

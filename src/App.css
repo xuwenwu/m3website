@@ -15,6 +15,7 @@
 
 .brand,
 .email-pill,
+.topbar-link,
 .site-nav a,
 .button,
 .story-links a,
@@ -57,6 +58,34 @@
   font-size: 18px;
 }
 
+.topbar-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.topbar-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--body);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.topbar-link:hover,
+.topbar-link:focus-visible {
+  border-color: var(--red);
+  color: var(--red);
+}
+
 .brand small,
 .section-heading p,
 .intro-story p,
@@ -72,17 +101,7 @@
 }
 
 .email-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 40px;
-  padding: 0 14px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
   color: var(--red);
-  font-weight: 900;
-  white-space: nowrap;
 }
 
 .site-nav {
@@ -939,6 +958,10 @@ code {
 
   .email-pill {
     justify-self: start;
+  }
+
+  .topbar-links {
+    justify-content: flex-start;
   }
 
   .hero-section {
