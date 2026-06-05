@@ -4,7 +4,7 @@ role: Undergraduate Alumna
 group: Alumni
 dates: 2020
 sortOrder: 610
-image:
+image: team/roselynn-conrady
 project: Virtual-reality development of automatic switching functions
 tags: [VR, visualization, software]
 currentPosition: Undergraduate alumna
