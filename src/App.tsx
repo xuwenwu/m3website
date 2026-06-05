@@ -758,7 +758,7 @@ function App() {
           <section className="section people-section" id="people">
             <div className="section-heading wide">
               <p className="eyebrow">People</p>
-              <h2>PI, students, undergraduate researchers, and alumni.</h2>
+              <h2>PI, graduate students, undergraduate researchers, and alumni.</h2>
               <p>
                 The M3 Lab brings together graduate students, undergraduate researchers, alumni, and collaborators working across modeling, processing, and characterization.
               </p>
