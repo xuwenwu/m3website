@@ -491,7 +491,6 @@ function App() {
     .map((group) => ({ group, members: people.filter((person) => person.group === group) }))
     .filter((section) => section.members.length > 0)
 
-  const featuredPublications = publications.filter((publication) => publication.selected).slice(0, 3)
   const latestNews = newsPosts.slice(0, 4)
 
   return (
@@ -673,7 +672,7 @@ function App() {
           </div>
         </section>
 
-        {featuredPublications.length > 0 && (
+        {publications.length > 0 && (
           <section className="section publication-section" id="publications">
             <div className="section-heading wide">
               <p className="eyebrow">Publications</p>
@@ -714,15 +713,6 @@ function App() {
                   </article>
                 ))}
               </div>
-              <aside className="featured-papers">
-                <p className="panel-label">Featured on homepage</p>
-                {featuredPublications.map((publication) => (
-                  <article key={publication.title}>
-                    <strong>{publication.title}</strong>
-                    <span>{publication.year} / {publication.themes.slice(0, 2).join(', ')}</span>
-                  </article>
-                ))}
-              </aside>
             </div>
           </section>
         )}

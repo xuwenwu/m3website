@@ -575,9 +575,7 @@
 }
 
 .publication-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 330px;
-  gap: 22px;
+  display: block;
 }
 
 .publication-list {
@@ -609,33 +607,6 @@
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 12px;
-}
-
-.featured-papers {
-  align-self: start;
-  display: grid;
-  gap: 12px;
-  padding: 22px;
-  border-radius: 8px;
-  background: var(--ink);
-  color: #ffffff;
-}
-
-.featured-papers .panel-label {
-  color: #ffd8d4;
-}
-
-.featured-papers article {
-  display: grid;
-  gap: 6px;
-  padding: 14px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.featured-papers span {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 13px;
 }
 
 .grant-grid {
