@@ -251,12 +251,18 @@ const researchQuestions = [
 const joinTracks = [
   {
     title: 'Graduate Researchers',
-    body: 'Best fit for graduate students interested in grain-boundary engineering, field-assisted processing, computational materials science, microscopy-informed modeling, characterization, instrumentation, or data-driven materials workflows. Prospective Ph.D. students may apply through the SDSU-UCSD Joint Doctoral Program in Engineering.',
+    body: 'Best fit for graduate students interested in grain-boundary engineering, field-assisted processing, computational materials science, microscopy-informed modeling, characterization, instrumentation, or data-driven materials workflows. Prospective Ph.D. students may apply through SDSU joint doctoral programs.',
     skills: ['materials science or mechanical engineering background', 'programming, simulation, or experimental experience', 'clear project ownership and regular progress communication'],
-    link: {
-      label: 'SDSU-UCSD Joint Doctoral Program',
-      href: 'https://www.engineering.sdsu.edu/admissions/joint-doctoral',
-    },
+    links: [
+      {
+        label: 'SDSU-UCSD Joint Doctoral Program',
+        href: 'https://www.engineering.sdsu.edu/admissions/joint-doctoral',
+      },
+      {
+        label: 'SDSU-UCI Joint Doctoral Program',
+        href: 'https://www.csrc.sdsu.edu/ph-d-program/',
+      },
+    ],
   },
   {
     title: 'Undergraduate Researchers',
@@ -855,11 +861,15 @@ function App() {
                 <ul>
                   {track.skills.map((skill) => <li key={skill}>{skill}</li>)}
                 </ul>
-                {track.link && (
-                  <a className="join-link" href={track.link.href} target="_blank" rel="noreferrer">
-                    {track.link.label}
-                    <ExternalLink size={15} aria-hidden="true" />
-                  </a>
+                {'links' in track && track.links && (
+                  <div className="join-links">
+                    {track.links.map((link) => (
+                      <a className="join-link" href={link.href} target="_blank" rel="noreferrer" key={link.href}>
+                        {link.label}
+                        <ExternalLink size={15} aria-hidden="true" />
+                      </a>
+                    ))}
+                  </div>
                 )}
               </article>
             ))}
