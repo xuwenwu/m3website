@@ -37,7 +37,7 @@
   venue: "Materials and Design, Volume 257"
   themes: [ENP, Microstructure, Metals]
   selected: true
-  doi:
+  doi: "https://doi.org/10.1016/j.matdes.2025.114488"
   pdf:
 - title: "High dislocation density formation in metallic materials by ultra-intense nanopulsing electric current"
   authors: "W. Xu, R. Jiang, M. Xu, C. Delaney, Y. Yang, E. Torresani, M. Shaikh, Y. Yan, and E. A. Olevsky"
@@ -45,7 +45,7 @@
   venue: "Journal of Alloys and Compounds, Volume 1025"
   themes: [ENP, Defect Engineering, Metals]
   selected: true
-  doi:
+  doi: "https://doi.org/10.1016/j.jallcom.2025.180267"
   pdf:
 - title: "Quasi-instantaneous materials processing technology via high-intensity electrical nano pulsing"
   authors: "E. A. Olevsky, W. Xu, E. Torresani, and collaborators"
@@ -53,7 +53,7 @@
   venue: "Scientific Reports"
   themes: [ENP, Materials Processing]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1038/s41598-023-50698-w"
   pdf:
 - title: "An atomistic study on the HELP mechanism of hydrogen embrittlement in pure metal Fe"
   authors: "M. S. Hasan, W. Xu, and collaborators"
@@ -61,7 +61,7 @@
   venue: "International Journal of Hydrogen Energy, Volume 57"
   themes: [MD, Metals, Defects]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.ijhydene.2023.12.274"
   pdf:
 - title: "Editorial: Modeling and experimentation of imperfections in materials"
   authors: "W. Xu and J. M. Goff"
@@ -69,7 +69,7 @@
   venue: "Frontiers in Materials"
   themes: [Modeling, Characterization]
   selected: false
-  doi:
+  doi: "https://doi.org/10.3389/fmats.2024.1473420"
   pdf:
 - title: "Localized engineering of grain boundary morphology by electro-nano-pulsing processing"
   authors: "W. Xu, R. Jiang, M. Xu, and E. A. Olevsky"
@@ -77,7 +77,7 @@
   venue: "Materials Today Advances, Volume 20"
   themes: [ENP, Grain Boundaries, Microstructure]
   selected: true
-  doi:
+  doi: "https://doi.org/10.1016/j.mtadv.2023.100442"
   pdf:
 - title: "Growing recyclable and healable piezoelectric composites in 3D printed bioinspired structure for protective wearable sensor"
   authors: "Q. He, Y. Zeng, L. Jiang, W. Xu, E. Olevsky, Y. Yang, and collaborators"
@@ -85,7 +85,7 @@
   venue: "Nature Communications"
   themes: [Characterization, Composites, FEA]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1038/s41467-023-41740-6"
   pdf:
 - title: "An atomistic study of deformation mechanisms in metal matrix nanocomposite materials"
   authors: "M. S. Hasan, W. Xu, and collaborators"
@@ -93,7 +93,7 @@
   venue: "Materials Today Communications, Volume 33"
   themes: [MD, Nanocomposites, Metals]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.mtcomm.2022.104658"
   pdf:
 - title: "Effect of external electric field on diffusivity and flash sintering of 8YSZ: A molecular dynamics study"
   authors: "W. Xu, E. A. Olevsky, and collaborators"
@@ -101,7 +101,7 @@
   venue: "Acta Materialia, Volume 206"
   themes: [Flash Sintering, MD, Ceramics]
   selected: true
-  doi:
+  doi: "https://doi.org/10.1016/j.actamat.2020.116596"
   pdf:
 - title: "Deformation nanomechanics and dislocation quantification at the atomic scale in nanocrystalline magnesium"
   authors: "M. S. Hasan, R. Lee, and W. Xu"
@@ -109,7 +109,7 @@
   venue: "Journal of Magnesium and Alloys, Volume 8, Issue 4"
   themes: [Nanomechanics, MD, Metals]
   selected: true
-  doi:
+  doi: "https://doi.org/10.1016/j.jma.2020.08.014"
   pdf:
 - title: "Distinguishing contributions of ceramic matrix and binder metal to the plasticity of nanocrystalline cermets"
   authors: "X. Ge, W. Xu, X. Song, and collaborators"
@@ -117,7 +117,7 @@
   venue: "IUCrJ, Volume 7, Part 1"
   themes: [Cermets, Nanocrystalline Materials, Plasticity]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1107/S2052252519015471"
   pdf:
 - title: "A bimodal microstructure for fatigue resistant metals by molecular dynamics simulations"
   authors: "W. Xu, M. S. Hasan, and collaborators"
@@ -125,7 +125,7 @@
   venue: "Computational Materials Science, Volume 160"
   themes: [MD, Microstructure, Metals]
   selected: true
-  doi:
+  doi: "https://doi.org/10.1016/j.commatsci.2019.01.026"
   pdf:
 - title: "Classical and quantum calculations of the temperature dependence of the free energy of argon"
   authors: "W. Xu, P. D. Lee, and collaborators"
@@ -133,7 +133,7 @@
   venue: "Computational Materials Science, Volume 144"
   themes: [DFT, MD, Thermodynamics]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.commatsci.2017.12.001"
   pdf:
 - title: "Tensile nanomechanics and the Hall-Petch effect in nanocrystalline aluminium"
   authors: "W. Xu and L. P. Davila"
@@ -141,7 +141,7 @@
   venue: "Materials Science and Engineering A, Volume 710"
   themes: [Nanomechanics, MD, Metals]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.msea.2017.10.021"
   pdf:
 - title: "Size dependence of elastic mechanical properties of nanocrystalline aluminum"
   authors: "W. Xu and L. P. Davila"
@@ -149,7 +149,7 @@
   venue: "Materials Science and Engineering A, Volume 692"
   themes: [Nanomechanics, MD, Metals]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.msea.2017.03.065"
   pdf:
 - title: "Synchrotron quantification of ultrasound cavitation and bubble dynamics in Al-10Cu melts"
   authors: "W. Xu, P. D. Lee, and collaborators"
@@ -157,7 +157,7 @@
   venue: "Ultrasonics Sonochemistry, Volume 31"
   themes: [Characterization, Synchrotron, Metals]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.ultsonch.2016.01.017"
   pdf:
 - title: "Which wets TiB2 inoculant particles: Al or Al3Ti?"
   authors: "D. Wearing, W. Xu, P. D. Lee, and collaborators"
@@ -165,7 +165,7 @@
   venue: "Journal of Alloys and Compounds, Volume 664"
   themes: [DFT, Interfaces, Metals]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.jallcom.2015.12.203"
   pdf:
 - title: "Diversification of MgO//Mg interfacial crystal orientations during oxidation: A density functional theory study"
   authors: "W. Xu, P. D. Lee, and collaborators"
@@ -173,7 +173,7 @@
   venue: "Journal of Alloys and Compounds, Volume 688"
   themes: [DFT, Interfaces, Magnesium]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.jallcom.2016.07.092"
   pdf:
 - title: "First-principles calculation of Mg/MgO interfacial free energies"
   authors: "W. Xu, P. D. Lee, and collaborators"
@@ -181,7 +181,7 @@
   venue: "Journal of Alloys and Compounds, Volume 650"
   themes: [DFT, Interfaces, Thermodynamics]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.jallcom.2015.07.289"
   pdf:
 - title: "In situ observation and analysis of ultrasonic capillary effect in molten aluminium"
   authors: "I. Tzanakis, W. Xu, N. E. Kotsovinos, and collaborators"
@@ -189,7 +189,7 @@
   venue: "Ultrasonics Sonochemistry, Volume 27"
   themes: [Characterization, Synchrotron, Metals]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.ultsonch.2015.04.029"
   pdf:
 - title: "Effect of interfacial characteristics on toughness of nanocrystalline cemented carbides"
   authors: "X. Song, W. Xu, and collaborators"
@@ -197,7 +197,7 @@
   venue: "Acta Materialia, Volume 61, Issue 6"
   themes: [Cermets, Interfaces, Nanocrystalline Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.actamat.2012.12.036"
   pdf:
 - title: "Experimental and modeling studies on phase stability of nanocrystalline magnetic Sm2Co7"
   authors: "W. Xu, H. Liang, and collaborators"
@@ -205,7 +205,7 @@
   venue: "Materials Science and Engineering B, Volume 178, Issue 15"
   themes: [Nanocrystalline Materials, Thermodynamics, Magnetic Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.mseb.2013.05.009"
   pdf:
 - title: "Phase constitution, evolution and correlation with magnetic performance in nominal SmCo9.8 alloy"
   authors: "Z. Zhang, W. Xu, N. Lu, and collaborators"
@@ -213,7 +213,7 @@
   venue: "Journal of Alloys and Compounds, Volume 539"
   themes: [Nanocrystalline Materials, Thermodynamics, Magnetic Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.jallcom.2012.06.013"
   pdf:
 - title: "Phase evolution and its effects on the magnetic performance of nanocrystalline SmCo7 alloy"
   authors: "Z. Zhang, X. Song, and W. Xu"
@@ -221,7 +221,7 @@
   venue: "Acta Materialia, Volume 59, Issue 4"
   themes: [Nanocrystalline Materials, Thermodynamics, Magnetic Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.actamat.2010.11.047"
   pdf:
 - title: "Crystal structure and magnetic performance of single-phase nanocrystalline SmCo7 alloy"
   authors: "Z. Zhang, X. Song, W. Xu, and collaborators"
@@ -229,7 +229,7 @@
   venue: "Scripta Materialia, Volume 62, Issue 8"
   themes: [Nanocrystalline Materials, Magnetic Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.scriptamat.2010.01.001"
   pdf:
 - title: "Thermodynamic and experimental study on phase stability in nanocrystalline alloys"
   authors: "W. Xu, X. Song, N. Lu, and C. Huang"
@@ -237,7 +237,7 @@
   venue: "Acta Materialia, Volume 58, Issue 2"
   themes: [Thermodynamics, Nanocrystalline Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.actamat.2009.09.016"
   pdf:
 - title: "Nanoscale thermodynamic study on phase transformation in the nanocrystalline Sm2Co17 alloy"
   authors: "W. Xu, X. Song, N. Lu, M. Seyring, and M. Rettenmayr"
@@ -253,7 +253,7 @@
   venue: "Materials and Design"
   themes: [AI/ML, MD, Nanocomposites]
   selected: true
-  doi:
+  doi: "https://doi.org/10.1016/j.matdes.2025.115063"
   pdf:
 - title: "Advanced metal matrix nanocomposites"
   authors: "M. Malaki, W. Xu, A. K. Kasar, P. L. Menezes, H. Dieringa, R. S. Varma, and M. Gupta"
@@ -261,7 +261,7 @@
   venue: "Metals, Volume 9, Issue 3"
   themes: [Nanocomposites, Metals]
   selected: false
-  doi:
+  doi: "https://doi.org/10.3390/met9030330"
   pdf:
 - title: "3D printing of nacre-inspired structures with exceptional mechanical and flame-retardant properties"
   authors: "Y. Yang, Z. Wang, Q. He, X. Li, G. Lu, L. Jiang, Y. Zeng, B. Bethers, J. Jin, S. Lin, W. Xu, and collaborators"
@@ -269,7 +269,7 @@
   venue: "Research"
   themes: [Composites, FEA, Characterization]
   selected: false
-  doi:
+  doi: "https://doi.org/10.34133/2022/9840574"
   pdf:
 - title: "Synchrotron radiographic studies of ultrasonic melt processing of metal matrix nano composites"
   authors: "W. U. Mirihanage, W. Xu, J. Tamayo-Ariztondo, D. G. Eskin, M. Garcia-Fernandez, P. D. Lee, and collaborators"
@@ -277,7 +277,7 @@
   venue: "Materials Letters, Volume 164"
   themes: [Characterization, Synchrotron, Nanocomposites]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.matlet.2015.11.022"
   pdf:
 - title: "In situ synchrotron radiography and spectrum analysis of transient cavitation bubbles in molten aluminium alloy"
   authors: "I. Tzanakis, W. Xu, G. S. B. Lebon, D. G. Eskin, K. Pericleous, and P. D. Lee"
@@ -285,7 +285,7 @@
   venue: "Physics Procedia, Volume 70"
   themes: [Characterization, Synchrotron, Metals]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.phpro.2015.08.172"
   pdf:
 - title: "Abnormal crystal structure stability of nanocrystalline Sm2Co17 permanent magnet"
   authors: "X. Song, N. Lu, M. Seyring, M. Rettenmayr, W. Xu, Z. Zhang, and J. Zhang"
@@ -293,7 +293,7 @@
   venue: "Applied Physics Letters, Volume 94, Issue 2"
   themes: [Nanocrystalline Materials, Magnetic Materials, Thermodynamics]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1063/1.3040316"
   pdf:
 - title: "A nanocrystalline Sm-Co compound for high-temperature permanent magnets"
   authors: "Z. Zhang, X. Song, Y. Qiao, W. Xu, J. Zhang, M. Seyring, and M. Rettenmayr"
@@ -301,7 +301,7 @@
   venue: "Nanoscale, Volume 5, Issue 6"
   themes: [Nanocrystalline Materials, Magnetic Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1039/C3NR34134H"
   pdf:
 - title: "Thermodynamic study on metastable phase: from polycrystalline to nanocrystalline system"
   authors: "W. Xu, X. Song, and Z. Zhang"
@@ -309,7 +309,7 @@
   venue: "Applied Physics Letters, Volume 97, Issue 18"
   themes: [Thermodynamics, Nanocrystalline Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1063/1.3509407"
   pdf:
 - title: "Thermodynamic study on phase stability in nanocrystalline Sm-Co alloy system"
   authors: "W. Xu, X. Song, E. Li, J. Wei, and J. Zhang"
@@ -317,7 +317,7 @@
   venue: "Journal of Applied Physics, Volume 105, Issue 10"
   themes: [Thermodynamics, Nanocrystalline Materials, Magnetic Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1063/1.3129502"
   pdf:
 - title: "In Situ Synchrotron Radiography of Ultrasound Cavitation in a Molten Al-10Cu Alloy"
   authors: "W. Xu, I. Tzanakis, P. Srirangam, S. Terzi, W. U. Mirihanage, D. G. Eskin, P. D. Lee, and collaborators"
@@ -325,7 +325,7 @@
   venue: "TMS Annual Meeting and Exhibition: Supplemental Proceedings"
   themes: [Characterization, Synchrotron, Metals]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1002/9781119093466.ch9"
   pdf:
 - title: "Crystal structure and magnetic performance of nanocrystalline SmCo9.8 alloy"
   authors: "Z. Zhang, X. Song, W. Xu, D. Li, and X. Liu"
@@ -333,7 +333,7 @@
   venue: "Journal of Applied Physics, Volume 110, Issue 12"
   themes: [Nanocrystalline Materials, Magnetic Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1063/1.3671612"
   pdf:
 - title: "Preparation and phase stability of nanocrystalline Li2C2 alloy"
   authors: "J. He, X. Song, W. Xu, Y. Zhou, M. Seyring, and M. Rettenmayr"
@@ -341,7 +341,7 @@
   venue: "Materials Letters, Volume 94"
   themes: [Nanocrystalline Materials, Thermodynamics]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1016/j.matlet.2012.12.045"
   pdf:
 - title: "Phase transformation in nanocrystalline Sm2Co17 permanent magnet material"
   authors: "X. Song, N. Lu, W. Xu, Z. Zhang, and J. Zhang"
@@ -349,7 +349,7 @@
   venue: "Applied Crystallography, Volume 42, Issue 4"
   themes: [Nanocrystalline Materials, Magnetic Materials, Thermodynamics]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1107/S0021889809020081"
   pdf:
 - title: "Effects of crystal orientation and diameter on the mechanical properties of single-crystal MgAl2O4 spinel nanowires"
   authors: "W. Xu and L. P. Davila"
@@ -357,7 +357,7 @@
   venue: "Nanotechnology, Volume 30, Issue 5"
   themes: [Nanomechanics, MD, Ceramics]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1088/1361-6528/aaef11"
   pdf:
 - title: "Multiphase equilibrium, phase stability and phase transformation in nanocrystalline alloy systems"
   authors: "W. Xu, X. Song, and Z. Zhang"
@@ -365,7 +365,7 @@
   venue: "Nano, Volume 7, Issue 2"
   themes: [Thermodynamics, Nanocrystalline Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1142/S1793292012500129"
   pdf:
 - title: "Nanoscale stabilization of metastable phase: Thermodynamic model and experimental studies"
   authors: "X. Song, W. Xu, and Z. Zhang"
@@ -373,7 +373,7 @@
   venue: "Acta Physica Sinica, Volume 61, Issue 20"
   themes: [Thermodynamics, Nanocrystalline Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.7498/aps.61.200510"
   pdf:
 - title: "Effects of Mo (Ni) on valence electron structures of TiC/Fe cermets"
   authors: "Z. Zou, Y. Wu, F. Long, W. Xu, and D. Yao"
@@ -381,7 +381,7 @@
   venue: "Key Engineering Materials, Volume 368"
   themes: [Cermets, Interfaces, Electronic Structure]
   selected: false
-  doi:
+  doi: "https://doi.org/10.4028/www.scientific.net/KEM.368-372.1119"
   pdf:
 - title: "Excess volume in nanocrystalline lithium-carbon system"
   authors: "W. Xu, X. Song, M. Seyring, J. He, M. Drue, and M. Rettenmayr"
@@ -389,7 +389,7 @@
   venue: "Micro and Nano Letters, Volume 8, Issue 3"
   themes: [Nanocrystalline Materials, Thermodynamics]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1049/mnl.2012.0961"
   pdf:
 - title: "An Atomistic Modeling Study of Electric Field Effect on Sintering Mechanisms of Zirconia"
   authors: "K. Polifrone, C. Delaney, M. S. Hasan, H. Bayat, C. Foronda, E. Olevsky, and W. Xu"
@@ -397,7 +397,7 @@
   venue: "TMS Annual Meeting and Exhibition"
   themes: [Flash Sintering, MD, Ceramics]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1007/978-3-031-50349-8_157"
   pdf:
 - title: "Nanoscale phase stability in Li ion battery anode materials"
   authors: "X. Song, Y. Zhou, J. He, W. Xu, H. Wang, and X. Liu"
@@ -405,7 +405,7 @@
   venue: "RSC Advances, Volume 4, Issue 103"
   themes: [Thermodynamics, Nanocrystalline Materials, Energy Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1039/C4RA09958C"
   pdf:
 - title: "Thermodynamic Stability and Grain Growth Behavior of Nanocrystalline Metal"
   authors: "J. Wei, X. Song, Q. Han, W. Xu, and L. Li"
@@ -421,7 +421,7 @@
   venue: "Acta Physica Sinica, Volume 58, Issue 5"
   themes: [Thermodynamics, Nanocrystalline Materials, Magnetic Materials]
   selected: false
-  doi:
+  doi: "https://doi.org/10.7498/aps.58.3280"
   pdf:
 - title: "Hydrogen-Induced Transformation of Dislocation Core in Fe and Its Effect on Dislocation Mobility"
   authors: "M. S. Hasan, H. Bayat, C. Delaney, C. Foronda, and W. Xu"
@@ -429,7 +429,7 @@
   venue: "TMS Annual Meeting and Exhibition"
   themes: [MD, Defects, Metals]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1007/978-3-031-50349-8_86"
   pdf:
 - title: "Machine Learned Interatomic Potentials for Grain Boundary Segregation in Alloys"
   authors: "K. Polifrone, H. Bayat, J. M. Goff, and W. Xu"
@@ -445,7 +445,7 @@
   venue: "Journal of Computational and Theoretical Nanoscience, Volume 7, Issue 1"
   themes: [Thermodynamics, Nanocrystalline Materials, Metals]
   selected: false
-  doi:
+  doi: "https://doi.org/10.1166/jctn.2010.1349"
   pdf:
 - title: "(Ti,Me)C-Fe cermet interface electronic structure and properties"
   authors: "Y. Wu, F. Long, Y. Sheng, W. Xu, and Z. Zou"
