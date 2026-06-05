@@ -1,4 +1,6 @@
 ---
+- name: "W. M. Keck Foundation - New Materials Processing via Electro-Nano-Pulsing (ENP)"
+  detail: "PI: Elisa Torresani; Co-PIs: Wenwu Xu and Eugene Olevsky. Amount: $1,200,000. Period: 2026-2028. This project develops electro-nano-pulsing as a new materials-processing approach for rapid, localized microstructural transformation and grain-boundary engineering in advanced materials."
 - name: "NSF - ECCENTRIC: A Mechanism of Flash Sintering of Ionic Ceramics"
   detail: "PI: Wenwu Xu; Co-PI: Eugene Olevsky. Amount: $328,397. Period: 05/01/2019-04/30/2023. This project investigated the mechanisms of flash sintering in ionic ceramics through atomistic modeling and experimental studies of electric-field-assisted sintering processes."
 - name: "DOE - Tailoring Grain-Boundaries by Electro-Nano-Pulsing (ENP)"
