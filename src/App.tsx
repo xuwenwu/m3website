@@ -58,6 +58,12 @@ import ethanAndersonImage from './assets/team/ethan-anderson.jpg'
 import edgarDiazImage from './assets/team/edgar-diaz.png'
 import oliviaTowersImage from './assets/team/olivia-towers.jpg'
 import roselynnConradyImage from './assets/team/roselynn-conrady.jpg'
+import gabrielPortilloPaunaImage from './assets/team/gabriel-portillo-pauna.jpg'
+import kyrelPolifroneImage from './assets/team/kyrel-polifrone.jpg'
+import micheleBorbaPavaoImage from './assets/team/michele-borba-pavao.jpg'
+import wadeAndersonImage from './assets/team/wade-anderson.jpg'
+import williamFischerImage from './assets/team/william-fischer.jpg'
+import juliaGurfinkelImage from './assets/team/julia-gurfinkel.jpg'
 import crystalCraftAtomImage from './assets/crystalcraft/atom.png'
 import crystalCraftCarterImage from './assets/crystalcraft/carter.jpg'
 import crystalCraftDemoImage from './assets/crystalcraft/demo.jpg'
@@ -201,6 +207,12 @@ const imageRegistry: Record<string, string> = {
   'team/edgar-diaz': edgarDiazImage,
   'team/olivia-towers': oliviaTowersImage,
   'team/roselynn-conrady': roselynnConradyImage,
+  'team/gabriel-portillo-pauna': gabrielPortilloPaunaImage,
+  'team/kyrel-polifrone': kyrelPolifroneImage,
+  'team/michele-borba-pavao': micheleBorbaPavaoImage,
+  'team/wade-anderson': wadeAndersonImage,
+  'team/william-fischer': williamFischerImage,
+  'team/julia-gurfinkel': juliaGurfinkelImage,
 }
 
 const site = {

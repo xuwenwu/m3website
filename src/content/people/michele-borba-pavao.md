@@ -4,7 +4,7 @@ role: M.S. Alumna
 group: Alumni
 dates: Graduated 2022
 sortOrder: 276
-image:
+image: team/michele-borba-pavao
 project: Local grain-boundary engineering by thermal elastic processing
 tags: [TEP, grain boundaries, processing]
 currentPosition: M.S. alumna

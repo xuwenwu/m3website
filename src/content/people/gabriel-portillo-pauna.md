@@ -4,7 +4,7 @@ role: M.S. Alumnus
 group: Alumni
 dates: Graduated 2022
 sortOrder: 275
-image:
+image: team/gabriel-portillo-pauna
 project: 3D polycrystalline microstructure development for FEA modeling
 tags: [FEA, microstructure, modeling]
 currentPosition: M.S. alumnus

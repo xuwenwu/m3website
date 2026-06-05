@@ -4,7 +4,7 @@ role: Undergraduate Alumnus
 group: Alumni
 dates: 2024-2025
 sortOrder: 505
-image:
+image: team/william-fischer
 project: In-situ tensile tester development and SEM imaging of metal deformation
 tags: [in-situ SEM, tensile testing, instrumentation]
 currentPosition: Undergraduate alumnus

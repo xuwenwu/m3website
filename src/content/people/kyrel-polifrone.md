@@ -4,7 +4,7 @@ role: M.S. Alumnus
 group: Alumni
 dates: Graduated 2023
 sortOrder: 270
-image:
+image: team/kyrel-polifrone
 project: Flash-sintering mechanisms of ionic ceramics
 tags: [flash sintering, MD, microscopy]
 currentPosition: M.S. alumnus
