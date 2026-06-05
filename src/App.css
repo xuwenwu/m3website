@@ -350,6 +350,7 @@
 .intro-section,
 .publication-section,
 .news-section,
+.grant-section,
 .partner-section {
   background: var(--surface);
 }
@@ -434,6 +435,7 @@
 
 .question-grid svg,
 .project-card svg,
+.grant-card svg,
 .join-grid svg,
 .teaching-panel svg,
 .partner-layout svg,
@@ -627,6 +629,36 @@
 .featured-papers span {
   color: rgba(255, 255, 255, 0.7);
   font-size: 13px;
+}
+
+.grant-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.grant-card {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 14px;
+  align-content: start;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.grant-card h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 21px;
+  line-height: 1.24;
+}
+
+.grant-card p {
+  margin: 12px 0 0;
+  color: var(--body);
+  line-height: 1.62;
 }
 
 .avatar {
@@ -932,6 +964,7 @@ code {
   }
 
   .question-grid,
+  .grant-grid,
   .join-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -951,6 +984,7 @@ code {
   .section-heading,
   .intro-story,
   .project-card,
+  .grant-grid,
   .teaching-section,
   .site-footer {
     grid-template-columns: 1fr;
@@ -1046,6 +1080,7 @@ code {
 
   .metric-strip,
   .question-grid,
+  .grant-card,
   .join-grid,
   .publication-list article,
   .contact-grid a,

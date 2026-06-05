@@ -174,6 +174,7 @@ const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'Research', href: '#research' },
   { label: 'Publications', href: '#publications' },
+  { label: 'Grants', href: '#grants' },
   { label: 'People', href: '#people' },
   { label: 'News', href: '#news' },
   { label: 'Join Us', href: '#join' },
@@ -451,7 +452,7 @@ function App() {
       </nav>
 
       <main>
-        <section className="hero-section">
+        <section className="hero-section" id="home">
           <img src={heroImage} alt="" className="hero-bg" />
           <div className="hero-copy">
             <p className="eyebrow">San Diego State University / Mechanical Engineering</p>
@@ -502,8 +503,8 @@ function App() {
             <span>selected publications in data file</span>
           </div>
           <div>
-            <strong>Static</strong>
-            <span>content-driven site ready for deployment</span>
+            <strong>{funding.length}</strong>
+            <span>grants and sponsored projects listed</span>
           </div>
         </section>
 
@@ -646,6 +647,29 @@ function App() {
           </section>
         )}
 
+        {funding.length > 0 && (
+          <section className="section grant-section" id="grants">
+            <div className="section-heading wide">
+              <p className="eyebrow">Grants</p>
+              <h2>Sponsored projects supporting M3 Lab research.</h2>
+              <p>
+                Grant records are stored in <code>src/data/funding.yaml</code>, so awards can be updated without editing the page layout.
+              </p>
+            </div>
+            <div className="grant-grid">
+              {funding.map((item) => (
+                <article className="grant-card" key={item.name}>
+                  <Handshake size={24} aria-hidden="true" />
+                  <div>
+                    <h3>{item.name}</h3>
+                    <p>{item.detail}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
         {groupedPeople.length > 0 && (
           <section className="section people-section" id="people">
             <div className="section-heading wide">
@@ -763,24 +787,6 @@ function App() {
             <p>
               Teaching and outreach content can grow into demos, VR/AR resources, crystal-structure explainers, and student project showcases.
             </p>
-          </div>
-        </section>
-
-        <section className="section partner-section">
-          <div className="section-heading">
-            <p className="eyebrow">Selected grants</p>
-            <h2>External research support for M3 Lab projects.</h2>
-          </div>
-          <div className="partner-layout">
-            <div>
-              <h3><Handshake size={20} aria-hidden="true" /> Grants and sponsored projects</h3>
-              {funding.map((item) => (
-                <article key={item.name}>
-                  <strong>{item.name}</strong>
-                  <p>{item.detail}</p>
-                </article>
-              ))}
-            </div>
           </div>
         </section>
 
