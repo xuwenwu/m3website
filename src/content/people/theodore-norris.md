@@ -4,7 +4,7 @@ role: Undergraduate Researcher
 group: Undergraduate Researchers
 dates: 2025-present
 sortOrder: 130
-image:
+image: team/theodore-norris
 project: Flash-sintering mechanisms and experiments
 tags: [flash sintering, microscopy, characterization]
 currentPosition:

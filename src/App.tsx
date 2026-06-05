@@ -52,6 +52,7 @@ import seanImage from './assets/team/sean-ogrady.png'
 import zacharyImage from './assets/team/zachary-mclaughlin.png'
 import colinImage from './assets/team/colin-delaney.png'
 import rebecaImage from './assets/team/rebeca-contreras.jpg'
+import theodoreImage from './assets/team/theodore-norris.jpg'
 import publicationsRaw from './data/publications.yaml?raw'
 import fundingRaw from './data/funding.yaml?raw'
 import './App.css'
@@ -176,6 +177,7 @@ const imageRegistry: Record<string, string> = {
   'team/zachary-mclaughlin': zacharyImage,
   'team/colin-delaney': colinImage,
   'team/rebeca-contreras': rebecaImage,
+  'team/theodore-norris': theodoreImage,
 }
 
 const site = {
