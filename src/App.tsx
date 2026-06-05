@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
   Atom,
+  BarChart3,
   BookOpen,
   BriefcaseBusiness,
   CalendarDays,
@@ -8,6 +9,7 @@ import {
   ChevronRight,
   ExternalLink,
   FileText,
+  Globe2,
   GraduationCap,
   Handshake,
   Mail,
@@ -145,6 +147,34 @@ type NamedItem = {
   link?: string
 }
 
+type VisitorStats = {
+  generated_at: string
+  days: number
+  first_date: string
+  last_date: string
+  pageviews: number
+  unique_visitors: number
+  countries: number
+  bot_requests_excluded: number
+  country_source_attribution: string
+  privacy_note: string
+  daily: {
+    date: string
+    pageviews: number
+    unique_visitors: number
+  }[]
+  country_totals: {
+    country_code: string
+    pageviews: number
+    unique_visitors: number
+  }[]
+  top_pages: {
+    path: string
+    pageviews: number
+    unique_visitors: number
+  }[]
+}
+
 const peopleModules = import.meta.glob('./content/people/*.md', {
   eager: true,
   query: '?raw',
@@ -238,6 +268,7 @@ const navItems = [
   { label: 'News', href: '#news' },
   { label: 'Join Us', href: '#join' },
   { label: 'Teaching & Outreach', href: '#teaching' },
+  { label: 'Visitor Stats', href: '#visitor-stats' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -412,6 +443,25 @@ function formatDate(value: string) {
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 }
 
+function formatDateTime(value: string) {
+  if (!value) return ''
+  return new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+}
+
+function formatNumber(value: number) {
+  return new Intl.NumberFormat('en-US').format(value)
+}
+
+function countryName(code: string) {
+  if (!code || code === 'ZZ') return 'Unknown'
+  try {
+    const displayNames = new Intl.DisplayNames(['en'], { type: 'region' })
+    return displayNames.of(code) ?? code
+  } catch {
+    return code
+  }
+}
+
 function initials(name: string) {
   return name
     .split(/\s+/)
@@ -496,6 +546,7 @@ const funding = parseYamlList(fundingRaw).map((item) => ({
 function App() {
   const [researchFilter, setResearchFilter] = useState('All')
   const [publicationFilter, setPublicationFilter] = useState('All')
+  const [visitorStats, setVisitorStats] = useState<VisitorStats | null>(null)
 
   useEffect(() => {
     if (!window.location.hash) return
@@ -503,6 +554,25 @@ function App() {
     window.setTimeout(() => {
       document.getElementById(id)?.scrollIntoView()
     }, 0)
+  }, [])
+
+  useEffect(() => {
+    let active = true
+
+    fetch(`/analytics/visitor-stats.php?ts=${Date.now()}`, { cache: 'no-store' })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data: VisitorStats | null) => {
+        if (active && data?.daily?.length) {
+          setVisitorStats(data)
+        }
+      })
+      .catch(() => {
+        if (active) setVisitorStats(null)
+      })
+
+    return () => {
+      active = false
+    }
   }, [])
 
   const researchThemes = useMemo(() => ['All', ...new Set(projects.map((project) => project.theme))], [])
@@ -524,6 +594,8 @@ function App() {
     .filter((section) => section.members.length > 0)
 
   const latestNews = newsPosts.slice(0, 4)
+  const recentVisitorDays = visitorStats?.daily.slice(-14) ?? []
+  const maxDailyPageviews = Math.max(1, ...recentVisitorDays.map((day) => day.pageviews))
 
   return (
     <div className="site-shell">
@@ -953,6 +1025,92 @@ function App() {
             </div>
           </article>
         </section>
+
+        {visitorStats && (
+          <section className="section visitor-stats-section" id="visitor-stats">
+            <div className="section-heading wide">
+              <p className="eyebrow">Visitor Stats</p>
+              <h2>Public website activity.</h2>
+              <p>
+                Aggregated traffic for the last {visitorStats.days} days. Raw IP addresses and individual visitor identifiers are not published.
+              </p>
+            </div>
+            <div className="stats-summary-grid">
+              <article>
+                <BarChart3 size={24} aria-hidden="true" />
+                <span>Pageviews</span>
+                <strong>{formatNumber(visitorStats.pageviews)}</strong>
+              </article>
+              <article>
+                <Search size={24} aria-hidden="true" />
+                <span>Unique visitors</span>
+                <strong>{formatNumber(visitorStats.unique_visitors)}</strong>
+              </article>
+              <article>
+                <Globe2 size={24} aria-hidden="true" />
+                <span>Countries</span>
+                <strong>{formatNumber(visitorStats.countries)}</strong>
+              </article>
+              <article>
+                <CheckCircle2 size={24} aria-hidden="true" />
+                <span>Bots excluded</span>
+                <strong>{formatNumber(visitorStats.bot_requests_excluded)}</strong>
+              </article>
+            </div>
+            <div className="stats-layout">
+              <article className="stats-panel">
+                <div className="stats-panel-heading">
+                  <h3>Recent daily activity</h3>
+                  <span>{formatDate(visitorStats.first_date)} - {formatDate(visitorStats.last_date)}</span>
+                </div>
+                <div className="daily-bars" aria-label="Daily pageviews for the most recent 14 days">
+                  {recentVisitorDays.map((day) => (
+                    <div className="daily-bar" key={day.date}>
+                      <span>{new Date(`${day.date}T12:00:00`).toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' })}</span>
+                      <div>
+                        <i style={{ width: `${Math.max(4, (day.pageviews / maxDailyPageviews) * 100)}%` }} />
+                      </div>
+                      <strong>{formatNumber(day.pageviews)}</strong>
+                    </div>
+                  ))}
+                </div>
+              </article>
+              <article className="stats-panel">
+                <div className="stats-panel-heading">
+                  <h3>Top countries</h3>
+                  <span>By pageviews</span>
+                </div>
+                <div className="stats-list">
+                  {visitorStats.country_totals.slice(0, 8).map((country) => (
+                    <div key={country.country_code}>
+                      <span>{countryName(country.country_code)}</span>
+                      <strong>{formatNumber(country.pageviews)}</strong>
+                    </div>
+                  ))}
+                </div>
+              </article>
+              <article className="stats-panel wide">
+                <div className="stats-panel-heading">
+                  <h3>Top pages</h3>
+                  <span>Updated {formatDateTime(visitorStats.generated_at)}</span>
+                </div>
+                <div className="stats-list page-list">
+                  {visitorStats.top_pages.slice(0, 8).map((page) => (
+                    <div key={page.path}>
+                      <span>{page.path}</span>
+                      <strong>{formatNumber(page.pageviews)}</strong>
+                    </div>
+                  ))}
+                </div>
+                <p className="stats-note">
+                  Unique visitors are estimated from IP addresses in server logs. Country lookup uses DB-IP Lite data.
+                  {' '}
+                  <a href="https://db-ip.com" target="_blank" rel="noreferrer">IP Geolocation by DB-IP</a>.
+                </p>
+              </article>
+            </div>
+          </section>
+        )}
 
         <section className="contact-section" id="contact">
           <div>

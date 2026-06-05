@@ -412,7 +412,8 @@
 .question-section,
 .people-section,
 .join-section,
-.teaching-section {
+.teaching-section,
+.visitor-stats-section {
   background: #ffffff;
 }
 
@@ -833,6 +834,138 @@
   margin-top: 22px;
 }
 
+.stats-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.stats-summary-grid article {
+  display: grid;
+  gap: 8px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.stats-summary-grid svg {
+  color: var(--red);
+}
+
+.stats-summary-grid span,
+.stats-panel-heading span,
+.daily-bar span,
+.stats-note {
+  color: var(--body);
+}
+
+.stats-summary-grid strong {
+  color: var(--ink);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.stats-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.7fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.stats-panel {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.stats-panel.wide {
+  grid-column: 1 / -1;
+}
+
+.stats-panel-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 18px;
+}
+
+.stats-panel-heading h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 22px;
+}
+
+.daily-bars {
+  display: grid;
+  gap: 10px;
+}
+
+.daily-bar {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) 56px;
+  gap: 12px;
+  align-items: center;
+}
+
+.daily-bar div {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #ece7e3;
+}
+
+.daily-bar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--red);
+}
+
+.daily-bar strong,
+.stats-list strong {
+  color: var(--ink);
+}
+
+.stats-list {
+  display: grid;
+  gap: 12px;
+}
+
+.stats-list div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.stats-list div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.page-list span {
+  overflow-wrap: anywhere;
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+.stats-note {
+  margin: 18px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.stats-note a {
+  color: var(--red);
+  font-weight: 900;
+}
+
 .teaching-section {
   display: grid;
   grid-template-columns: minmax(260px, 0.35fr) minmax(0, 1fr);
@@ -1144,6 +1277,7 @@ code {
 
   .question-grid,
   .grant-grid,
+  .stats-summary-grid,
   .join-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1157,7 +1291,8 @@ code {
   }
 
   .project-grid,
-  .news-grid {
+  .news-grid,
+  .stats-layout {
     grid-template-columns: 1fr;
   }
 
@@ -1172,6 +1307,7 @@ code {
   .intro-story,
   .project-card,
   .grant-grid,
+  .stats-summary-grid,
   .teaching-section,
   .site-footer {
     grid-template-columns: 1fr;
