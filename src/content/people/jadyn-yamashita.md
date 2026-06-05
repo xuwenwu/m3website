@@ -4,7 +4,7 @@ role: Undergraduate Alumnus
 group: Alumni
 dates: 2025
 sortOrder: 410
-image:
+image: team/jadyn-yamashita
 project: Electro-nano-pulsing technology
 tags: [ENP, processing, experiments]
 currentPosition: Undergraduate alumnus

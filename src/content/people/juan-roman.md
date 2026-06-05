@@ -4,7 +4,7 @@ role: Undergraduate Alumnus
 group: Alumni
 dates: 2023
 sortOrder: 605
-image:
+image: team/juan-roman
 project: Finite-element exploration of a metal 3D-printing technology
 tags: [FEA, 3D printing, metals]
 currentPosition: Undergraduate alumnus

@@ -4,7 +4,7 @@ role: Undergraduate Alumna
 group: Alumni
 dates: 2022-2023
 sortOrder: 562
-image:
+image: team/lana-ayyash
 project: Experimental measurement of grain-boundary electrical resistance
 tags: [grain boundaries, electrical resistance, aluminum, ME499]
 currentPosition: Undergraduate alumna

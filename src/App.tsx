@@ -66,6 +66,17 @@ import micheleBorbaPavaoImage from './assets/team/michele-borba-pavao.jpg'
 import wadeAndersonImage from './assets/team/wade-anderson.jpg'
 import williamFischerImage from './assets/team/william-fischer.jpg'
 import juliaGurfinkelImage from './assets/team/julia-gurfinkel.jpg'
+import simhalMaharajImage from './assets/team/simhal-maharaj.jpg'
+import brandonDimmickImage from './assets/team/brandon-dimmick.jpg'
+import matthewSimonImage from './assets/team/matthew-simon.jpg'
+import juanRomanImage from './assets/team/juan-roman.jpg'
+import allenOrtizImage from './assets/team/allen-ortiz.jpg'
+import pabloHinojosaAmayaImage from './assets/team/pablo-hinojosa-amaya.jpg'
+import madisonRogersImage from './assets/team/madison-rogers.jpg'
+import katieHardwickeImage from './assets/team/katie-hardwicke.jpg'
+import sabrinaAbdelhamedImage from './assets/team/sabrina-abdelhamed.jpg'
+import jadynYamashitaImage from './assets/team/jadyn-yamashita.jpg'
+import lanaAyyashImage from './assets/team/lana-ayyash.jpg'
 import crystalCraftAtomImage from './assets/crystalcraft/atom.png'
 import crystalCraftCarterImage from './assets/crystalcraft/carter.jpg'
 import crystalCraftDemoImage from './assets/crystalcraft/demo.jpg'
@@ -243,6 +254,17 @@ const imageRegistry: Record<string, string> = {
   'team/wade-anderson': wadeAndersonImage,
   'team/william-fischer': williamFischerImage,
   'team/julia-gurfinkel': juliaGurfinkelImage,
+  'team/simhal-maharaj': simhalMaharajImage,
+  'team/brandon-dimmick': brandonDimmickImage,
+  'team/matthew-simon': matthewSimonImage,
+  'team/juan-roman': juanRomanImage,
+  'team/allen-ortiz': allenOrtizImage,
+  'team/pablo-hinojosa-amaya': pabloHinojosaAmayaImage,
+  'team/madison-rogers': madisonRogersImage,
+  'team/katie-hardwicke': katieHardwickeImage,
+  'team/sabrina-abdelhamed': sabrinaAbdelhamedImage,
+  'team/jadyn-yamashita': jadynYamashitaImage,
+  'team/lana-ayyash': lanaAyyashImage,
 }
 
 const site = {
@@ -441,11 +463,6 @@ function asBoolean(value: MetadataValue | undefined) {
 function formatDate(value: string) {
   const date = new Date(`${value}T12:00:00`)
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-}
-
-function formatDateTime(value: string) {
-  if (!value) return ''
-  return new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 }
 
 function formatNumber(value: number) {
@@ -1088,25 +1105,6 @@ function App() {
                     </div>
                   ))}
                 </div>
-              </article>
-              <article className="stats-panel wide">
-                <div className="stats-panel-heading">
-                  <h3>Top pages</h3>
-                  <span>Updated {formatDateTime(visitorStats.generated_at)}</span>
-                </div>
-                <div className="stats-list page-list">
-                  {visitorStats.top_pages.slice(0, 8).map((page) => (
-                    <div key={page.path}>
-                      <span>{page.path}</span>
-                      <strong>{formatNumber(page.pageviews)}</strong>
-                    </div>
-                  ))}
-                </div>
-                <p className="stats-note">
-                  Unique visitors are estimated from IP addresses in server logs. Country lookup uses DB-IP Lite data.
-                  {' '}
-                  <a href="https://db-ip.com" target="_blank" rel="noreferrer">IP Geolocation by DB-IP</a>.
-                </p>
               </article>
             </div>
           </section>

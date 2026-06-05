@@ -855,8 +855,7 @@
 
 .stats-summary-grid span,
 .stats-panel-heading span,
-.daily-bar span,
-.stats-note {
+.daily-bar span {
   color: var(--body);
 }
 
@@ -878,10 +877,6 @@
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #ffffff;
-}
-
-.stats-panel.wide {
-  grid-column: 1 / -1;
 }
 
 .stats-panel-heading {
@@ -947,23 +942,6 @@
 .stats-list div:last-child {
   padding-bottom: 0;
   border-bottom: 0;
-}
-
-.page-list span {
-  overflow-wrap: anywhere;
-  font-family: var(--mono);
-  font-size: 14px;
-}
-
-.stats-note {
-  margin: 18px 0 0;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.stats-note a {
-  color: var(--red);
-  font-weight: 900;
 }
 
 .teaching-section {

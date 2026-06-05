@@ -4,7 +4,7 @@ role: Undergraduate Alumna
 group: Alumni
 dates: 2023
 sortOrder: 603
-image:
+image: team/sabrina-abdelhamed
 project: In-situ SEM of flash sintering of 8YSZ
 tags: [flash sintering, in-situ SEM, ceramics]
 currentPosition: Undergraduate alumna

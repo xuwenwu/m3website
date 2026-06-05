@@ -4,7 +4,7 @@ role: Undergraduate Alumna
 group: Alumni
 dates: 2023
 sortOrder: 607
-image:
+image: team/madison-rogers
 project: Measuring grain-boundary electrical resistivity of aluminum metal
 tags: [grain boundaries, electrical resistivity, aluminum]
 currentPosition: Undergraduate alumna

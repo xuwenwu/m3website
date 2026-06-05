@@ -4,7 +4,7 @@ role: Undergraduate Alumnus
 group: Alumni
 dates: 2023
 sortOrder: 622
-image:
+image: team/pablo-hinojosa-amaya
 project: Finite-element modeling for a bimodal grain-boundary serration model
 tags: [FEA, grain boundaries, microstructure]
 currentPosition: Undergraduate alumnus
