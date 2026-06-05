@@ -27,6 +27,7 @@ import flashSinteringImage from './assets/research-flash-sintering.svg'
 import multiscaleImage from './assets/research-multiscale.svg'
 import imagingImage from './assets/research-imaging.svg'
 import aiMlImage from './assets/research-ai-ml.svg'
+import gfmatTalkImage from './assets/news/gfmat-htcmc-invited-talk.jpg'
 import skyImage from './assets/sky-soltero.jpg'
 import wenwuImage from './assets/team/wenwu-xu.jpg'
 import shahrierImage from './assets/team/shahrier-hasan.jpg'
@@ -169,6 +170,7 @@ const imageRegistry: Record<string, string> = {
   'research-multiscale': multiscaleImage,
   'research-imaging': imagingImage,
   'research-ai-ml': aiMlImage,
+  'news/gfmat-htcmc-invited-talk': gfmatTalkImage,
   'sky-soltero': skyImage,
   'team/wenwu-xu': wenwuImage,
   'team/shahrier-hasan': shahrierImage,
