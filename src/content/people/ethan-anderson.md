@@ -4,7 +4,7 @@ role: Undergraduate Alumnus
 group: Alumni
 dates: 2022-2023
 sortOrder: 563
-image:
+image: team/ethan-anderson
 project: Experimental measurement of grain-boundary electrical resistance
 tags: [grain boundaries, electrical resistance, metals]
 currentPosition: Undergraduate alumnus

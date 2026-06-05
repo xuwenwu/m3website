@@ -53,6 +53,7 @@ import zacharyImage from './assets/team/zachary-mclaughlin.png'
 import colinImage from './assets/team/colin-delaney.png'
 import rebecaImage from './assets/team/rebeca-contreras.jpg'
 import theodoreImage from './assets/team/theodore-norris.jpg'
+import ethanAndersonImage from './assets/team/ethan-anderson.jpg'
 import crystalCraftAtomImage from './assets/crystalcraft/atom.png'
 import crystalCraftCarterImage from './assets/crystalcraft/carter.jpg'
 import crystalCraftDemoImage from './assets/crystalcraft/demo.jpg'
@@ -191,6 +192,7 @@ const imageRegistry: Record<string, string> = {
   'team/colin-delaney': colinImage,
   'team/rebeca-contreras': rebecaImage,
   'team/theodore-norris': theodoreImage,
+  'team/ethan-anderson': ethanAndersonImage,
 }
 
 const site = {
