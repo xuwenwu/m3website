@@ -4,7 +4,7 @@ role: M.S. Student
 group: Current Graduate Students
 dates: 2025-present
 sortOrder: 40
-image:
+image: team/james-burns
 project: Grain-boundary modeling for FEA/CPFEM and TEP-related modeling
 tags: [FEA, CPFEM, MD, grain boundaries, Neper, Abaqus]
 currentPosition:

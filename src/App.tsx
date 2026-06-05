@@ -35,6 +35,8 @@ import sherwinImage from './assets/team/sherwin-navindaran.jpg'
 import cameronImage from './assets/team/cameron-aires.png'
 import rachellImage from './assets/team/rachell-lee.jpg'
 import jamesImage from './assets/team/james-murray.jpg'
+import jamesBurnsImage from './assets/team/james-burns.jpg'
+import nicolasMosquedaImage from './assets/team/nicolas-mosqueda.jpg'
 import amauryImage from './assets/team/amaury-reed.jpg'
 import coleImage from './assets/team/cole-waterhouse.png'
 import kenImage from './assets/team/ken-ramirez.png'
@@ -148,6 +150,8 @@ const imageRegistry: Record<string, string> = {
   'team/cameron-aires': cameronImage,
   'team/rachell-lee': rachellImage,
   'team/james-murray': jamesImage,
+  'team/james-burns': jamesBurnsImage,
+  'team/nicolas-mosqueda': nicolasMosquedaImage,
   'team/amaury-reed': amauryImage,
   'team/cole-waterhouse': coleImage,
   'team/ken-ramirez': kenImage,
