@@ -4,7 +4,7 @@ role: M.S. Alumnus
 group: Alumni
 dates: Graduated 2025
 sortOrder: 240
-image:
+image: team/colin-delaney
 project: In-situ SEM study of flash-sintering mechanisms of ionic ceramics
 tags: [flash sintering, microscopy, ceramics]
 currentPosition: M.S. alumnus

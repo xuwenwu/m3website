@@ -50,6 +50,7 @@ import joseImage from './assets/team/jose-morales.png'
 import carsonImage from './assets/team/carson-sutton.png'
 import seanImage from './assets/team/sean-ogrady.png'
 import zacharyImage from './assets/team/zachary-mclaughlin.png'
+import colinImage from './assets/team/colin-delaney.png'
 import publicationsRaw from './data/publications.yaml?raw'
 import fundingRaw from './data/funding.yaml?raw'
 import './App.css'
@@ -172,6 +173,7 @@ const imageRegistry: Record<string, string> = {
   'team/carson-sutton': carsonImage,
   'team/sean-ogrady': seanImage,
   'team/zachary-mclaughlin': zacharyImage,
+  'team/colin-delaney': colinImage,
 }
 
 const site = {
