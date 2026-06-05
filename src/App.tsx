@@ -664,7 +664,6 @@ function App() {
                     <div>{project.methods.map((method) => <span key={method}>{method}</span>)}</div>
                   </div>
                   <div className="project-meta">
-                    <p><strong>People:</strong> {project.people.join(', ')}</p>
                     <p><strong>Funding:</strong> {project.funding.join(', ')}</p>
                     <p><strong>Related papers:</strong> {project.papers.join('; ')}</p>
                   </div>
