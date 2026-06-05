@@ -340,6 +340,7 @@
 .section-heading h2,
 .intro-story h3,
 .teaching-panel h2,
+.innovation-copy h2,
 .contact-section h2 {
   margin: 0;
   color: var(--ink);
@@ -795,6 +796,7 @@
 
 .join-grid ul,
 .teaching-panel ul,
+.innovation-copy ul,
 .email-checklist ul {
   display: grid;
   gap: 9px;
@@ -804,14 +806,16 @@
 }
 
 .join-grid li,
-.teaching-panel li {
+.teaching-panel li,
+.innovation-copy li {
   position: relative;
   padding-left: 18px;
   color: var(--body);
 }
 
 .join-grid li::before,
-.teaching-panel li::before {
+.teaching-panel li::before,
+.innovation-copy li::before {
   position: absolute;
   left: 0;
   color: var(--red);
@@ -844,8 +848,9 @@
 
 .teaching-section {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  grid-template-columns: minmax(260px, 0.35fr) minmax(0, 1fr);
   gap: 18px;
+  align-items: start;
 }
 
 .teaching-panel {
@@ -866,6 +871,172 @@
 
 .teaching-panel.dark p:not(.eyebrow) {
   color: rgba(255, 255, 255, 0.78);
+}
+
+.teaching-innovation {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.innovation-copy {
+  display: grid;
+  gap: 12px;
+}
+
+.innovation-copy svg {
+  color: var(--teal);
+}
+
+.innovation-copy p:not(.eyebrow) {
+  max-width: 900px;
+  color: var(--body);
+  font-size: 17px;
+  line-height: 1.64;
+}
+
+.crystalcraft-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.crystalcraft-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--red);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.crystalcraft-links a:hover,
+.crystalcraft-links a:focus-visible {
+  border-color: var(--red);
+}
+
+.crystalcraft-links img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.crystalcraft-video {
+  display: grid;
+  gap: 10px;
+}
+
+.crystalcraft-video video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  background: #000000;
+  object-fit: cover;
+}
+
+.crystalcraft-video p,
+.crystalcraft-team p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.crystalcraft-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.crystalcraft-gallery figure {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.crystalcraft-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.crystalcraft-gallery figcaption {
+  padding: 10px;
+  color: var(--body);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.crystalcraft-team {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.42fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.crystalcraft-team > img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.crystalcraft-team h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 24px;
+}
+
+.crystalcraft-team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.crystalcraft-team-grid article {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.crystalcraft-team-grid img {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.crystalcraft-team-grid strong,
+.crystalcraft-team-grid span {
+  display: block;
+}
+
+.crystalcraft-team-grid strong {
+  color: var(--ink);
+}
+
+.crystalcraft-team-grid span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 .partner-layout {
@@ -988,6 +1159,14 @@ code {
   .grant-grid,
   .join-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .crystalcraft-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .crystalcraft-team {
+    grid-template-columns: 1fr;
   }
 
   .project-grid,
@@ -1122,8 +1301,19 @@ code {
   .section-heading h2,
   .intro-story h3,
   .teaching-panel h2,
+  .innovation-copy h2,
   .contact-section h2 {
     font-size: 29px;
+  }
+
+  .crystalcraft-gallery,
+  .crystalcraft-team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .crystalcraft-links,
+  .crystalcraft-links a {
+    width: 100%;
   }
 
   .person-grid {

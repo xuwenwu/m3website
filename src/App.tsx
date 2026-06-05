@@ -53,6 +53,19 @@ import zacharyImage from './assets/team/zachary-mclaughlin.png'
 import colinImage from './assets/team/colin-delaney.png'
 import rebecaImage from './assets/team/rebeca-contreras.jpg'
 import theodoreImage from './assets/team/theodore-norris.jpg'
+import crystalCraftAtomImage from './assets/crystalcraft/atom.png'
+import crystalCraftCarterImage from './assets/crystalcraft/carter.jpg'
+import crystalCraftDemoImage from './assets/crystalcraft/demo.jpg'
+import crystalCraftDownloadImage from './assets/crystalcraft/download.png'
+import crystalCraftFccImage from './assets/crystalcraft/fcc.png'
+import crystalCraftGitImage from './assets/crystalcraft/git.png'
+import crystalCraftHcpImage from './assets/crystalcraft/hcp.png'
+import crystalCraftKainImage from './assets/crystalcraft/kain.jpg'
+import crystalCraftPatrickImage from './assets/crystalcraft/patrick.jpg'
+import crystalCraftRosImage from './assets/crystalcraft/ros.jpg'
+import crystalCraftTeamImage from './assets/crystalcraft/team.jpg'
+import crystalCraftTvImage from './assets/crystalcraft/TV.png'
+import crystalCraftWenImage from './assets/crystalcraft/wen.jpg'
 import publicationsRaw from './data/publications.yaml?raw'
 import fundingRaw from './data/funding.yaml?raw'
 import './App.css'
@@ -238,6 +251,42 @@ const teachingItems = [
   'ME542: Materials Structure',
   'ME640: Nanomaterials',
   'ME642: Materials Modeling',
+]
+
+const crystalCraftLinks = [
+  {
+    label: 'Project site',
+    href: 'https://carterandrews.github.io/CrystalCraftWebsite/#',
+    image: crystalCraftDownloadImage,
+  },
+  {
+    label: 'GitHub repository',
+    href: 'https://github.com/CarterAndrews/CrystalCraft',
+    image: crystalCraftGitImage,
+  },
+]
+
+const crystalCraftFeatures = [
+  'Build atomic models in virtual reality',
+  'Explore crystal structures at the molecular level',
+  'Use FCC and HCP examples to support materials instruction',
+  'Blend materials science, game design, and open-source development',
+]
+
+const crystalCraftGallery = [
+  { title: '2x2 FCC array', image: crystalCraftFccImage },
+  { title: 'HCP structure', image: crystalCraftHcpImage },
+  { title: 'Atom texture', image: crystalCraftAtomImage },
+  { title: 'Early demo environment', image: crystalCraftDemoImage },
+  { title: 'CrystalCraft in the VITAL Lab', image: crystalCraftTvImage },
+]
+
+const crystalCraftTeam = [
+  { name: 'Carter Andrews', role: 'Software engineer, web developer, and game designer', image: crystalCraftCarterImage },
+  { name: 'Roselynn Conrady', role: 'Mechanical engineer, content designer, and materials scientist', image: crystalCraftRosImage },
+  { name: 'Patrick Perrine', role: 'Software engineer, game designer, and film maker', image: crystalCraftPatrickImage },
+  { name: 'Kain Kun', role: 'Programmer, graphic artist, and 3D modeler', image: crystalCraftKainImage },
+  { name: 'Wenwu Xu', role: 'SDSU faculty advisor and materials simulation specialist', image: crystalCraftWenImage },
 ]
 
 function slugFromPath(path: string) {
@@ -818,14 +867,63 @@ function App() {
               {teachingItems.map((item) => <li key={item}>{item}</li>)}
             </ul>
           </div>
-          <div className="teaching-panel dark">
-            <BookOpen size={28} aria-hidden="true" />
-            <p className="eyebrow">Outreach</p>
-            <h2>CrystalCraft and visual materials learning.</h2>
-            <p>
-              Teaching and outreach content can grow into demos, VR/AR resources, crystal-structure explainers, and student project showcases.
-            </p>
-          </div>
+          <article className="teaching-innovation">
+            <div className="innovation-copy">
+              <BookOpen size={28} aria-hidden="true" />
+              <p className="eyebrow">Teaching Innovation</p>
+              <h2>CrystalCraft: VR/AR materials learning.</h2>
+              <p>
+                CrystalCraft is an open-source virtual reality application for building atomic models and learning crystal structures at the molecular level. The project turns materials visualization into a calm, creative learning environment developed through an interdisciplinary SDSU student-faculty collaboration.
+              </p>
+              <ul>
+                {crystalCraftFeatures.map((feature) => <li key={feature}>{feature}</li>)}
+              </ul>
+              <div className="crystalcraft-links">
+                {crystalCraftLinks.map((link) => (
+                  <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                    <img src={link.image} alt="" />
+                    {link.label}
+                    <ExternalLink size={15} aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div className="crystalcraft-video">
+              <video controls preload="metadata" poster={crystalCraftDemoImage}>
+                <source src={`${import.meta.env.BASE_URL}crystalcraft/vrvid.mp4`} type="video/mp4" />
+                Your browser does not support HTML5 video.
+              </video>
+              <p>Early footage from the user perspective in the CrystalCraft VR environment.</p>
+            </div>
+            <div className="crystalcraft-gallery" aria-label="CrystalCraft image gallery">
+              {crystalCraftGallery.map((item) => (
+                <figure key={item.title}>
+                  <img src={item.image} alt={item.title} />
+                  <figcaption>{item.title}</figcaption>
+                </figure>
+              ))}
+            </div>
+            <div className="crystalcraft-team">
+              <img src={crystalCraftTeamImage} alt="CrystalCraft student and faculty project team" />
+              <div>
+                <h3>Interdisciplinary SDSU project team</h3>
+                <p>
+                  CrystalCraft was created through collaboration across software engineering, game design, mechanical engineering, materials science, 3D modeling, and faculty advising.
+                </p>
+                <div className="crystalcraft-team-grid">
+                  {crystalCraftTeam.map((member) => (
+                    <article key={member.name}>
+                      <img src={member.image} alt={member.name} />
+                      <div>
+                        <strong>{member.name}</strong>
+                        <span>{member.role}</span>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
         </section>
 
         <section className="contact-section" id="contact">
