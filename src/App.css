@@ -667,6 +667,21 @@
   line-height: 1.62;
 }
 
+.grant-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
+  color: var(--red);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.grant-card a:hover,
+.grant-card a:focus-visible {
+  text-decoration: underline;
+}
+
 .avatar {
   display: grid;
   place-items: center;

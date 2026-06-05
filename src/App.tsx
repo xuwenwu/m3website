@@ -675,6 +675,12 @@ function App() {
                   <div>
                     <h3>{item.name}</h3>
                     <p>{item.detail}</p>
+                    {item.link && (
+                      <a href={item.link} target="_blank" rel="noreferrer">
+                        Program page
+                        <ExternalLink size={15} aria-hidden="true" />
+                      </a>
+                    )}
                   </div>
                 </article>
               ))}

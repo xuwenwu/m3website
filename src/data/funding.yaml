@@ -1,4 +1,7 @@
 ---
+- name: "ASCEND Research and Leadership Program - Alliance of Hispanic Serving Research Universities (HSRU)"
+  detail: "PI: Wenwu Xu. Amount: $199,772. Period: 08/16/2026-08/15/2027. Title: Thermal-Elastic Processing (TEP) for Defense-Relevant Localized Interface Engineering via Coupled Atomistic Modeling and in Situ Electron Microscopy. This project develops TEP as a localized interface-engineering strategy for defense-relevant structural metals, coupling atomistic modeling with in situ electron microscopy. The project is part of the inaugural ASCEND Research and Leadership Program cohort."
+  link: "https://www.hsru.org/in-the-news/inaugural-ascendr-research-program"
 - name: "W. M. Keck Foundation - New Materials Processing via Electro-Nano-Pulsing (ENP)"
   detail: "PI: Elisa Torresani; Co-PIs: Wenwu Xu and Eugene Olevsky. Amount: $1,200,000. Period: 2026-2028. This project develops electro-nano-pulsing as a new materials-processing approach for rapid, localized microstructural transformation and grain-boundary engineering in advanced materials."
 - name: "NSF - ECCENTRIC: A Mechanism of Flash Sintering of Ionic Ceramics"
