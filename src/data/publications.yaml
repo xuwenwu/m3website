@@ -1,4 +1,36 @@
 ---
+- title: "Interfacial relay trapping of hydrogen in metastable austenitic steel: A molecular dynamics study"
+  authors: "W. Xu and M. Koyama"
+  year: 2026
+  venue: "Materials Today Communications, Volume 53, Article 115329"
+  themes: [MD, Hydrogen Embrittlement, Defects]
+  selected: true
+  doi: "https://doi.org/10.1016/j.mtcomm.2026.115329"
+  pdf:
+- title: "Localized Grain Boundary Engineering via Thermal-Elastic Processing (TEP)"
+  authors: "W. Xu, M. Alfaro, R. Jiang, S. Sotero, J. Burns, A. Contreras, C. Delaney, C. Foronda, and M. Pavao"
+  year: 2026
+  venue: "TMS 2026 155th Annual Meeting and Exhibition Supplemental Proceedings, 763-774"
+  themes: [TEP, Grain Boundaries, FEA]
+  selected: true
+  doi: "https://doi.org/10.1007/978-3-032-13828-6_64"
+  pdf:
+- title: "Localized plasticity, transformation, and martensite cracking in hydrogen-charged metastable austenitic stainless steel studied by in situ electron channeling contrast imaging"
+  authors: "M. Koyama, Z. Yang, W. Xu, and E. Akiyama"
+  year: 2026
+  venue: "Materials Characterization, Volume 233, Article 116127"
+  themes: [Hydrogen Embrittlement, Microscopy, Metals]
+  selected: true
+  doi: "https://doi.org/10.1016/j.matchar.2026.116127"
+  pdf:
+- title: "Electric Nanosecond Pulsing Assisted Sintering as a Transformative Paradigm for Non-Equilibrium Processing of Powder Materials"
+  authors: "R. Jiang, E. Torresani, W. Xu, A. Maximenko, and E. A. Olevsky"
+  year: 2026
+  venue: "ENGINEERING Transformative Materials"
+  themes: [ENP, Flash Sintering, Materials Processing]
+  selected: true
+  doi: "https://doi.org/10.2738/ENGTM.2026.0005"
+  pdf:
 - title: "Electric current-induced quasi-instantaneous precipitation behavior in nanoseconds"
   authors: "R. Jiang, W. Xu, E. Torresani, and E. A. Olevsky"
   year: 2025
