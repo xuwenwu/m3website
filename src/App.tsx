@@ -77,6 +77,8 @@ import katieHardwickeImage from './assets/team/katie-hardwicke.jpg'
 import sabrinaAbdelhamedImage from './assets/team/sabrina-abdelhamed.jpg'
 import jadynYamashitaImage from './assets/team/jadyn-yamashita.jpg'
 import lanaAyyashImage from './assets/team/lana-ayyash.jpg'
+import christopherForondaImage from './assets/team/christopher-foronda.jpg'
+import junailPauleImage from './assets/team/junail-paule.jpg'
 import crystalCraftAtomImage from './assets/crystalcraft/atom.png'
 import crystalCraftCarterImage from './assets/crystalcraft/carter.jpg'
 import crystalCraftDemoImage from './assets/crystalcraft/demo.jpg'
@@ -265,6 +267,8 @@ const imageRegistry: Record<string, string> = {
   'team/sabrina-abdelhamed': sabrinaAbdelhamedImage,
   'team/jadyn-yamashita': jadynYamashitaImage,
   'team/lana-ayyash': lanaAyyashImage,
+  'team/christopher-foronda': christopherForondaImage,
+  'team/junail-paule': junailPauleImage,
 }
 
 const site = {

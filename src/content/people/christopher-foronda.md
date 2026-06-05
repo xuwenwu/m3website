@@ -4,7 +4,7 @@ role: M.S. Alumnus
 group: Alumni
 dates: Graduated 2024
 sortOrder: 250
-image:
+image: team/christopher-foronda
 project: Thermal-elastic-processing for tailoring metal grain-boundary morphologies
 tags: [TEP, grain boundaries, processing]
 currentPosition: M.S. alumnus

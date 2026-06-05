@@ -4,7 +4,7 @@ role: M.S. Alumnus
 group: Alumni
 dates: Graduated 2024
 sortOrder: 255
-image:
+image: team/junail-paule
 project: Machine-learning-based potential development for Ni and Cr metals
 tags: [AI/ML, interatomic potentials, metals]
 currentPosition: M.S. alumnus
