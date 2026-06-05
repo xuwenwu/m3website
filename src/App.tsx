@@ -43,6 +43,13 @@ import kenImage from './assets/team/ken-ramirez.png'
 import sanamImage from './assets/team/sanam-nagvekar.jpeg'
 import saraImage from './assets/team/sara-gomez.jpg'
 import xavierImage from './assets/team/xavier-lovato.png'
+import zeshanImage from './assets/team/zeshan-ahmed.png'
+import marivelImage from './assets/team/marivel-alfaro.png'
+import adrianImage from './assets/team/adrian-contreras.png'
+import joseImage from './assets/team/jose-morales.png'
+import carsonImage from './assets/team/carson-sutton.png'
+import seanImage from './assets/team/sean-ogrady.png'
+import zacharyImage from './assets/team/zachary-mclaughlin.png'
 import publicationsRaw from './data/publications.yaml?raw'
 import fundingRaw from './data/funding.yaml?raw'
 import './App.css'
@@ -158,6 +165,13 @@ const imageRegistry: Record<string, string> = {
   'team/sanam-nagvekar': sanamImage,
   'team/sarah-gomez': saraImage,
   'team/xavier-lovato': xavierImage,
+  'team/zeshan-ahmed': zeshanImage,
+  'team/marivel-alfaro': marivelImage,
+  'team/adrian-contreras': adrianImage,
+  'team/jose-morales': joseImage,
+  'team/carson-sutton': carsonImage,
+  'team/sean-ogrady': seanImage,
+  'team/zachary-mclaughlin': zacharyImage,
 }
 
 const site = {

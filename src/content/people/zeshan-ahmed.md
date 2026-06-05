@@ -4,7 +4,7 @@ role: Ph.D. Student
 group: Current Graduate Students
 dates: 2026-present
 sortOrder: 10
-image:
+image: team/zeshan-ahmed
 project: Tailoring grain boundaries by electro-nano-pulsing
 tags: [MD, ENP, grain boundaries, LAMMPS, OVITO, Python]
 currentPosition:

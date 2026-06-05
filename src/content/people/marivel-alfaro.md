@@ -4,7 +4,7 @@ role: Undergraduate Researcher
 group: Undergraduate Researchers
 dates: 2024-present
 sortOrder: 120
-image:
+image: team/marivel-alfaro
 project: TEP experiments and in-situ SEM tensile testing
 tags: [TEP, in-situ SEM, tensile testing, characterization]
 currentPosition:

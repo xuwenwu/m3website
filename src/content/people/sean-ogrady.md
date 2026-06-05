@@ -4,7 +4,7 @@ role: Undergraduate Researcher / ME499 Student
 group: Undergraduate Researchers
 dates: 2026-present
 sortOrder: 160
-image:
+image: team/sean-ogrady
 project: Electro-nano-pulsing technology
 tags: [ENP, processing, experiments]
 currentPosition:
