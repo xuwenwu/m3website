@@ -794,6 +794,15 @@
   font-weight: 900;
 }
 
+.join-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 18px;
+  color: var(--red);
+  font-weight: 900;
+}
+
 .email-checklist {
   margin-top: 18px;
   padding: 24px;

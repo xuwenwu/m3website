@@ -251,8 +251,12 @@ const researchQuestions = [
 const joinTracks = [
   {
     title: 'Graduate Researchers',
-    body: 'Best fit for graduate students interested in grain-boundary engineering, field-assisted processing, computational materials science, microscopy-informed modeling, characterization, instrumentation, or data-driven materials workflows.',
+    body: 'Best fit for graduate students interested in grain-boundary engineering, field-assisted processing, computational materials science, microscopy-informed modeling, characterization, instrumentation, or data-driven materials workflows. Prospective Ph.D. students may apply through the SDSU-UCSD Joint Doctoral Program in Engineering.',
     skills: ['materials science or mechanical engineering background', 'programming, simulation, or experimental experience', 'clear project ownership and regular progress communication'],
+    link: {
+      label: 'SDSU-UCSD Joint Doctoral Program',
+      href: 'https://www.engineering.sdsu.edu/admissions/joint-doctoral',
+    },
   },
   {
     title: 'Undergraduate Researchers',
@@ -854,6 +858,12 @@ function App() {
                 <ul>
                   {track.skills.map((skill) => <li key={skill}>{skill}</li>)}
                 </ul>
+                {track.link && (
+                  <a className="join-link" href={track.link.href} target="_blank" rel="noreferrer">
+                    {track.link.label}
+                    <ExternalLink size={15} aria-hidden="true" />
+                  </a>
+                )}
               </article>
             ))}
           </div>
