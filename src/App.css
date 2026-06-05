@@ -148,6 +148,7 @@
   padding: 86px max(24px, calc((100vw - 1240px) / 2)) 48px;
   overflow: hidden;
   color: #ffffff;
+  scroll-margin-top: 58px;
 }
 
 .hero-section::after {
@@ -316,6 +317,11 @@
 .contact-section,
 .site-footer {
   padding: 74px max(24px, calc((100vw - 1240px) / 2));
+}
+
+.section,
+.contact-section {
+  scroll-margin-top: 58px;
 }
 
 .section-heading {

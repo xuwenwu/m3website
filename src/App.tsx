@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import {
   Atom,
   BookOpen,
@@ -392,6 +392,14 @@ function App() {
   const [researchFilter, setResearchFilter] = useState('All')
   const [publicationFilter, setPublicationFilter] = useState('All')
 
+  useEffect(() => {
+    if (!window.location.hash) return
+    const id = window.location.hash.slice(1)
+    window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView()
+    }, 0)
+  }, [])
+
   const researchThemes = useMemo(() => ['All', ...new Set(projects.map((project) => project.theme))], [])
   const publicationThemes = useMemo(
     () => ['All', ...new Set(publications.flatMap((publication) => publication.themes))],
@@ -414,7 +422,7 @@ function App() {
   const latestNews = newsPosts.slice(0, 4)
 
   return (
-    <div className="site-shell" id="home">
+    <div className="site-shell">
       <header className="topbar">
         <a className="brand" href="#home" aria-label={`${site.shortName} home`}>
           <img className="brand-logo" src={m3LogoImage} alt="" />
