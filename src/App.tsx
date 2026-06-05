@@ -493,6 +493,32 @@ function getImage(key?: string) {
   return key ? imageRegistry[key] : undefined
 }
 
+function alumniDegreeRank(role: string) {
+  const normalized = role.toLowerCase().replace(/[^a-z]/g, '')
+  if (normalized.includes('phd')) return 0
+  if (normalized.includes('ms') || normalized.includes('master')) return 1
+  if (normalized.includes('undergraduate')) return 2
+  return 3
+}
+
+function departureYear(dates: string) {
+  const years = dates.match(/\b(19|20)\d{2}\b/g)
+  return years?.length ? Number(years[years.length - 1]) : 0
+}
+
+function comparePeople(a: Person, b: Person) {
+  if (a.group === 'Alumni' && b.group === 'Alumni') {
+    return (
+      alumniDegreeRank(a.role) - alumniDegreeRank(b.role)
+      || departureYear(b.dates) - departureYear(a.dates)
+      || a.sortOrder - b.sortOrder
+      || a.name.localeCompare(b.name)
+    )
+  }
+
+  return a.sortOrder - b.sortOrder || a.name.localeCompare(b.name)
+}
+
 const people: Person[] = Object.entries(peopleModules)
   .map(([path, raw]) => parseMarkdown(raw, slugFromPath(path)))
   .map((entry) => ({
@@ -509,7 +535,7 @@ const people: Person[] = Object.entries(peopleModules)
     featured: asBoolean(entry.meta.featured),
     body: entry.body,
   }))
-  .sort((a, b) => a.sortOrder - b.sortOrder || a.name.localeCompare(b.name))
+  .sort(comparePeople)
 
 const projects: Project[] = Object.entries(projectModules)
   .map(([path, raw]) => parseMarkdown(raw, slugFromPath(path)))
