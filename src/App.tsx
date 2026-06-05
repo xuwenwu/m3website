@@ -643,7 +643,7 @@ function App() {
         <section className="section question-section">
           <div className="section-heading">
             <p className="eyebrow">Big questions</p>
-            <h2>Framing projects as scientific questions.</h2>
+            <h2>Our scientific questions.</h2>
           </div>
           <div className="question-grid">
             {researchQuestions.map((question) => (
@@ -658,9 +658,9 @@ function App() {
         <section className="section research-section" id="research">
           <div className="section-heading wide">
             <p className="eyebrow">Research</p>
-            <h2>Project cards generated from Markdown files.</h2>
+            <h2>Research projects.</h2>
             <p>
-              Each project includes a short summary, motivation, methods, related people, funding, papers, and collaboration signals.
+              Current projects connect atomistic simulation, microstructure characterization, field-assisted processing, and data-driven materials design.
             </p>
           </div>
           <div className="filter-row" aria-label="Research theme filters">
@@ -689,7 +689,6 @@ function App() {
                     <div>{project.methods.map((method) => <span key={method}>{method}</span>)}</div>
                   </div>
                   <div className="project-meta">
-                    <p><strong>Funding:</strong> {project.funding.join(', ')}</p>
                     <p><strong>Related papers:</strong> {project.papers.join('; ')}</p>
                   </div>
                 </div>
@@ -704,7 +703,7 @@ function App() {
               <p className="eyebrow">Publications</p>
               <h2>Selected papers, sortable by theme.</h2>
               <p>
-                Publications are stored in <code>src/data/publications.yaml</code> and sorted by year automatically.
+                Recent and selected publications from the M3 Lab and collaborators.
               </p>
             </div>
             <div className="filter-row" aria-label="Publication theme filters">
@@ -748,9 +747,7 @@ function App() {
             <div className="section-heading wide">
               <p className="eyebrow">Grants</p>
               <h2>Sponsored projects supporting M3 Lab research.</h2>
-              <p>
-                Grant records are stored in <code>src/data/funding.yaml</code>, so awards can be updated without editing the page layout.
-              </p>
+              <p>Current and recent awards supporting materials modeling, processing, characterization, and education innovation.</p>
             </div>
             <div className="grant-grid">
               {funding.map((item) => (
@@ -817,7 +814,7 @@ function App() {
           <section className="section news-section" id="news">
             <div className="section-heading">
               <p className="eyebrow">News</p>
-              <h2>Latest updates from Markdown posts.</h2>
+              <h2>Lab news.</h2>
             </div>
             <div className="news-grid">
               {latestNews.map((post) => (
@@ -844,7 +841,7 @@ function App() {
         <section className="section join-section" id="join">
           <div className="section-heading wide">
             <p className="eyebrow">Join Us</p>
-            <h2>Recruiting-ready pathways into the lab.</h2>
+            <h2>Join the M3 Lab.</h2>
             <p>
               The lab welcomes prospective graduate, undergraduate, visiting, and collaborator inquiries that connect clearly to M3 Lab research.
             </p>
