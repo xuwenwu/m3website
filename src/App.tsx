@@ -779,7 +779,7 @@ function App() {
                           <span className="tag">{person.role}</span>
                           <h4>{person.name}</h4>
                           <p className="dates">{person.dates}</p>
-                          <p><strong>Project:</strong> {person.project}</p>
+                          {person.project && <p><strong>Project:</strong> {person.project}</p>}
                           {person.currentPosition && <p><strong>Current position:</strong> {person.currentPosition}</p>}
                           <p>{person.body}</p>
                           <div className="inline-tags">
