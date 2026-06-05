@@ -2,7 +2,7 @@
 name: Jadyn Yamashita
 role: Undergraduate Alumnus
 group: Alumni
-dates: Former undergraduate researcher
+dates: 2025
 sortOrder: 410
 image:
 project: Electro-nano-pulsing technology
