@@ -1,0 +1,72 @@
+name: Deploy preview website
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: m3-preview-deployment
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-preview:
+    name: Build and deploy /new
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint checks
+        run: npm run lint
+
+      - name: Build preview website
+        run: npm run build:new
+
+      - name: Package preview website
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p deploy/new
+          cp -a dist/. deploy/new/
+          (
+            cd deploy
+            zip -qr ../m3-new-deploy.zip new
+          )
+
+      - name: Configure deployment key
+        shell: bash
+        env:
+          CPANEL_SSH_PRIVATE_KEY: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${CPANEL_SSH_PRIVATE_KEY}" ]; then
+            echo "Missing repository secret: CPANEL_SSH_PRIVATE_KEY" >&2
+            exit 1
+          fi
+          install -m 700 -d "$HOME/.ssh"
+          printf '%s\n' "${CPANEL_SSH_PRIVATE_KEY}" > "$HOME/.ssh/id_ed25519"
+          chmod 600 "$HOME/.ssh/id_ed25519"
+
+      - name: Upload and publish preview website
+        shell: bash
+        run: |
+          set -euo pipefail
+          SSH_OPTIONS="-i $HOME/.ssh/id_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=accept-new"
+          scp ${SSH_OPTIONS} m3-new-deploy.zip mmm@mmm.sdsu.edu:/home/mmm/public_html/m3-new-deploy.zip
+          ssh ${SSH_OPTIONS} mmm@mmm.sdsu.edu \
+            'cd /home/mmm/public_html && unzip -oq m3-new-deploy.zip && rm -f m3-new-deploy.zip'
