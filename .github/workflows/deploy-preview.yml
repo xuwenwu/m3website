@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - .github/preview-deployment-status.json
   workflow_dispatch:
 
 concurrency:
@@ -11,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   deploy-preview:
@@ -70,3 +72,28 @@ jobs:
           scp ${SSH_OPTIONS} m3-new-deploy.zip mmm@mmm.sdsu.edu:/home/mmm/public_html/m3-new-deploy.zip
           ssh ${SSH_OPTIONS} mmm@mmm.sdsu.edu \
             'cd /home/mmm/public_html && unzip -oq m3-new-deploy.zip && rm -f m3-new-deploy.zip'
+
+      - name: Record deployment result
+        if: always()
+        shell: bash
+        env:
+          DEPLOYMENT_STATUS: ${{ job.status }}
+        run: |
+          set -euo pipefail
+          mkdir -p .github
+          cat > .github/preview-deployment-status.json <<EOF
+          {
+            "source_commit": "${GITHUB_SHA}",
+            "workflow_run_id": "${GITHUB_RUN_ID}",
+            "status": "${DEPLOYMENT_STATUS}",
+            "updated_at": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')",
+            "preview_url": "https://mmm.sdsu.edu/new/"
+          }
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/preview-deployment-status.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record preview deployment result [skip ci]"
+            git push origin HEAD:main
+          fi
