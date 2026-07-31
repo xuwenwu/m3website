@@ -68,9 +68,22 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          SSH_OPTIONS="-i $HOME/.ssh/id_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=accept-new"
-          scp ${SSH_OPTIONS} m3-new-deploy.zip mmm@mmm.sdsu.edu:/home/mmm/public_html/m3-new-deploy.zip
-          ssh ${SSH_OPTIONS} mmm@mmm.sdsu.edu \
+          SSH_OPTIONS="-i $HOME/.ssh/id_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=12 -o ConnectionAttempts=1"
+          DEPLOY_HOST=""
+          for HOST in mmm.sdsu.edu rohan.sdsu.edu; do
+            echo "Testing SSH deployment host: ${HOST}"
+            if ssh ${SSH_OPTIONS} "mmm@${HOST}" 'true'; then
+              DEPLOY_HOST="${HOST}"
+              break
+            fi
+          done
+          if [ -z "${DEPLOY_HOST}" ]; then
+            echo "Neither mmm.sdsu.edu nor rohan.sdsu.edu accepted the SSH connection." >&2
+            exit 1
+          fi
+          echo "Using deployment host: ${DEPLOY_HOST}"
+          scp ${SSH_OPTIONS} m3-new-deploy.zip "mmm@${DEPLOY_HOST}:/home/mmm/public_html/m3-new-deploy.zip"
+          ssh ${SSH_OPTIONS} "mmm@${DEPLOY_HOST}" \
             'cd /home/mmm/public_html && unzip -oq m3-new-deploy.zip && rm -f m3-new-deploy.zip'
 
       - name: Record deployment result
@@ -95,5 +108,6 @@ jobs:
           git add .github/preview-deployment-status.json
           if ! git diff --cached --quiet; then
             git commit -m "Record preview deployment result [skip ci]"
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
