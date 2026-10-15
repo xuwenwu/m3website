@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is Light? | ME542 | M3 Lab</title>
+<meta name="description" content="A three minute cartoon history of light, from ancient Greece to X-ray diffraction, introducing the diffraction chapters of ME 542 Materials Structures.">
+<meta name="author" content="Wenwu Xu">
+<link rel="canonical" href="https://mmm.sdsu.edu/teaching/me542/what-is-light/">
+<meta property="og:title" content="What Is Light? A 2,500 year speed run | ME542">
+<meta property="og:description" content="A three minute cartoon history of light that sets up the diffraction chapters of ME 542 at San Diego State University.">
+<meta property="og:type" content="video.other">
+<meta property="og:url" content="https://mmm.sdsu.edu/teaching/me542/what-is-light/">
+<meta property="og:image" content="https://mmm.sdsu.edu/teaching/me542/what-is-light/poster.jpg">
+<meta property="og:video" content="https://mmm.sdsu.edu/teaching/me542/what-is-light/what-is-light.mp4">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#a6192e">
+<style>
+  :root {
+    --ground: #F2F4F7; --panel: #FFFFFF; --panel-2: #E9EDF2; --line: #CDD4DD;
+    --ink: #1B2430; --ink-2: #4A5866; --ink-3: #7B8794;
+    --accent: #C8102E; --accent-soft: #F6D5DA; --lattice: #1F4E79; --lattice-soft: #D4E1EE;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0E1319; --panel: #161C24; --panel-2: #1E2630; --line: #2C3641;
+      --ink: #E9EDF2; --ink-2: #B4BEC9; --ink-3: #7F8B98;
+      --accent: #FF6B6B; --accent-soft: #4A1F26; --lattice: #7FB3E6; --lattice-soft: #1E3247; color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink);
+    font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; font-size: 16px; line-height: 1.55; padding-inline: 16px; }
+  main { max-width: 1000px; margin: 0 auto; padding-block: 22px 56px; }
+  .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+  .eyebrow a { color: inherit; }
+  h1 { font-family: "Newsreader", Georgia, "Times New Roman", serif; font-weight: 500; font-size: clamp(28px, 3.4vw, 38px);
+    margin: 6px 0 8px; letter-spacing: -0.01em; text-wrap: balance; }
+  .lede { color: var(--ink-2); margin: 0 0 20px; max-width: 760px; }
+  .player { background: #000; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+  video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 26px; }
+  .chip { background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px; font-size: 13.5px; color: var(--ink-2); text-decoration: none; }
+  a.chip:hover { border-color: var(--lattice); color: var(--lattice); }
+  h2 { font-family: "Newsreader", Georgia, "Times New Roman", serif; font-weight: 500; font-size: 24px; margin: 30px 0 10px; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; }
+  ol.timeline { padding-left: 1.3em; margin: 0; }
+  ol.timeline li { margin: 5px 0; }
+  ol.timeline b { color: var(--lattice); font-variant-numeric: tabular-nums; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; }
+  .card h3 { margin: 0 0 6px; font-size: 16px; }
+  .card p { margin: 0; color: var(--ink-2); font-size: 15px; }
+  details { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 20px; margin-top: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin: 10px 0 4px; color: var(--ink-2); }
+  a { color: var(--lattice); }
+  .actions { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; padding: 9px 16px; border-radius: 8px; font-weight: 600; }
+  .btn.ghost { background: transparent; color: var(--lattice); border: 1px solid var(--lattice); }
+  footer { margin-top: 40px; font-size: 13.5px; color: var(--ink-3); }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">ME 542 · Materials Structures · Diffraction primer</div>
+  <h1>What Is Light? A 2,500 year speed run</h1>
+  <p class="lede">A three minute cartoon history of how people figured out what light is, from Empedocles' "laser eyes" to the Braggs reading atomic spacings with X-rays. It sets up our discussion of diffraction: how can a wave reveal the spacing of atoms you cannot see?</p>
+
+  <div class="player">
+    <video controls playsinline preload="metadata" poster="poster.jpg">
+      <source src="what-is-light.mp4" type="video/mp4">
+      <track kind="captions" src="captions.vtt" srclang="en" label="English">
+      Your browser cannot play this video. <a href="what-is-light.mp4">Download the MP4</a>.
+    </video>
+  </div>
+  <div class="meta">
+    <span class="chip">3 min 9 s</span>
+    <span class="chip">Captions shown on screen</span>
+    <span class="chip">Fall 2026</span>
+    <a class="chip" href="what-is-light.mp4" download>Download MP4</a>
+  </div>
+
+  <h2>The story in one line per stop</h2>
+  <div class="panel"><ol class="timeline">
+    <li><b>~450 BC</b> Empedocles: the eyes send out fire. Euclid: light travels in straight lines and reflects at equal angles.</li>
+    <li><b>~1021</b> Ibn al-Haytham (Alhazen): light travels from objects into the eye; the camera obscura.</li>
+    <li><b>1665</b> Grimaldi notices fringed shadow edges and names the effect <i>diffraction</i>.</li>
+    <li><b>1666 to 1704</b> Newton splits white light with a prism and argues for particles.</li>
+    <li><b>1678</b> Huygens: every point on a wavefront launches new wavelets.</li>
+    <li><b>1801</b> Young's double slit: bright and dark fringes, so light interferes like a wave.</li>
+    <li><b>1818</b> Fresnel's diffraction theory, Poisson's objection, and Arago's bright spot.</li>
+    <li><b>1865</b> Maxwell: light is an electromagnetic wave, c = 1/√(μ₀ε₀).</li>
+    <li><b>1905</b> Einstein: light also comes in packets, called photons.</li>
+    <li><b>1912 and 1913</b> von Laue diffracts X-rays with a crystal; the Braggs write nλ = 2d sin θ.</li>
+    <li><b>1924 to 1927</b> de Broglie: matter is wavy too; electrons diffract.</li>
+  </ol></div>
+
+  <h2>Questions to bring to class</h2>
+  <div class="grid">
+    <div class="card"><h3>Why does a crystal act like a grating?</h3><p>What sets the spacing of the "slits," and why do X-rays (not visible light) work for atoms?</p></div>
+    <div class="card"><h3>Why does Bragg's law have a 2?</h3><p>Trace the two rays reflected from neighboring planes and find the extra path length.</p></div>
+    <div class="card"><h3>Why was the Poisson spot so convincing?</h3><p>Which prediction can a wave theory make that a particle theory cannot?</p></div>
+  </div>
+
+  <details>
+    <summary>Read the narration (transcript)</summary>
+    <div id="transcript"></div>
+  </details>
+
+  <div class="actions">
+    <a class="btn" href="https://mmm.sdsu.edu/teaching/me542/bcc-xrd/">Next: BCC rotation and X-ray diffraction demo</a>
+    <a class="btn ghost" href="https://mmm.sdsu.edu/teaching/">Back to M3 Lab Teaching</a>
+  </div>
+
+  <footer>Wenwu Xu · M3 Lab · San Diego State University</footer>
+</main>
+<script>
+  // Fill the transcript from the caption file so the two never drift apart.
+  fetch("captions.vtt").then(function (r) { return r.ok ? r.text() : ""; }).then(function (t) {
+    var out = document.getElementById("transcript");
+    var cues = t.split(/\n\s*\n/).map(function (b) {
+      var lines = b.trim().split("\n");
+      var i = lines.findIndex(function (l) { return l.indexOf("-->") > -1; });
+      return i > -1 ? lines.slice(i + 1).join(" ") : "";
+    }).filter(Boolean);
+    var p = document.createElement("p");
+    p.textContent = cues.join(" ");
+    out.appendChild(p);
+  }).catch(function () {});
+</script>
+</body>
+</html>
