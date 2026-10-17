@@ -7,7 +7,7 @@ sortOrder: 250
 image: team/christopher-foronda
 project: Thermal-elastic-processing for tailoring metal grain-boundary morphologies
 tags: [TEP, grain boundaries, processing]
-currentPosition: M.S. alumnus
+currentPosition: Quality Assurance Test Engineer II, NRS (as of 2026)
 featured: false
 ---
 Christopher studied thermal-elastic-processing for tailoring metal grain-boundary morphologies and co-authored a refereed TMS 2024 conference proceeding.

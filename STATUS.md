@@ -1,29 +1,9 @@
-# Status
+# Website status
 
-## Current State
+The shared source contains the 2026 roster, publications, funding, news, opportunities, teaching demonstrations and captioned diffraction video, resources, collaborators, and statistics, in English and Traditional Chinese.
 
-- Modern academic lab redesign is implemented.
-- Navigation includes Home, Research, Publications, People, News, Join Us, Teaching & Outreach, and Contact.
-- People, projects, news, publications, funding, and collaborators are driven by Markdown/YAML files.
-- Research and publication theme filters are working.
-- Latest news and featured publications populate automatically from content files.
-- Local preview runs at `http://127.0.0.1:4173/`.
-- Lint and production build pass.
+The October 16, 2026 revision fixes mobile navigation on individual pages, the disappearing homepage teaching-video card, grant links, outdated collaborator links, contrast, heading outlines, and keyboard access. Thirteen portraits have smaller WebP variants; originals are preserved.
 
-## Important Paths
+Validation includes lint, both builds and SEO/navigation checks, 136 layout checks, 96 navigation scenarios, sampled accessibility scans, and desktop/mobile search/filter checks. Browser emulation does not replace physical-phone or screen-reader checks.
 
-- App shell and renderer: `src/App.tsx`
-- Main styles: `src/App.css`
-- Global theme: `src/index.css`
-- People content: `src/content/people/`
-- Project content: `src/content/projects/`
-- News content: `src/content/news/`
-- Publications and partner data: `src/data/`
-- Images: `src/assets/`
-- Build output: `dist/`
-
-## Latest Verification
-
-- `npm run lint`
-- `npm run build`
-- In-app browser preview at `http://127.0.0.1:4173/`
+The hosted deployment identity is recorded in each version's `site-release.json`. See DEPLOYMENT.md for publication and synchronization. Build output, review fixtures, transport copies, and credentials are excluded from Git.

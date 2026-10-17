@@ -7,7 +7,7 @@ sortOrder: 275
 image: team/gabriel-portillo-pauna
 project: 3D polycrystalline microstructure development for FEA modeling
 tags: [FEA, microstructure, modeling]
-currentPosition: M.S. alumnus
+currentPosition: Mechanical Design Engineer, General Atomics (as of 2026)
 featured: false
 ---
 Gabriel further developed three-dimensional polycrystalline microstructures with specified grain-boundary components for finite-element analysis modeling.

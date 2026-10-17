@@ -7,7 +7,7 @@ sortOrder: 575
 image:
 project: Molecular dynamics of flash sintering of YSZ
 tags: [MD, flash sintering, ceramics]
-currentPosition: Undergraduate alumnus
+currentPosition: Mathematics Teacher, Health Sciences High School and Middle School (as of 2026)
 featured: false
 ---
 Austin worked on molecular dynamics of flash sintering of yttria-stabilized zirconia.

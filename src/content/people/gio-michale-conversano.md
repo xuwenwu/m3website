@@ -7,7 +7,7 @@ sortOrder: 602
 image:
 project: ENP processing and sintering
 tags: [ENP, sintering, processing]
-currentPosition: Undergraduate alumnus
+currentPosition: M.S. Aerospace Engineering student, Cal Poly Pomona (as of 2026)
 featured: false
 ---
 Gio worked on electro-nano-pulsing processing and sintering.

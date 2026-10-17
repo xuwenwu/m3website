@@ -7,7 +7,7 @@ sortOrder: 604
 image:
 project: ReaxFF modeling of flash sintering of a 3-particle ZrO2 model
 tags: [ReaxFF, flash sintering, zirconia]
-currentPosition: Undergraduate alumna
+currentPosition: Aerospace Engineer, NAVAIR (as of 2026)
 featured: false
 ---
 Madison worked on ReaxFF modeling of flash sintering in a three-particle zirconia model.

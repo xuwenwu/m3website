@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   Atom,
   BarChart3,
@@ -13,11 +13,14 @@ import {
   GraduationCap,
   Handshake,
   Mail,
+  Menu,
   MapPin,
   Play,
   Search,
+  Send,
+  X,
 } from 'lucide-react'
-import heroImage from './assets/materials-hero.png'
+import heroImage from './assets/materials-hero.webp'
 import groupImage from './assets/lab-group.jpg'
 import missionImage from './assets/lab-mission-visual.svg'
 import bioImage from './assets/bio-overview.png'
@@ -30,33 +33,45 @@ import multiscaleImage from './assets/research-multiscale.svg'
 import imagingImage from './assets/research-imaging.svg'
 import aiMlImage from './assets/research-ai-ml.svg'
 import gfmatTalkImage from './assets/news/gfmat-htcmc-invited-talk.jpg'
+import mesaSuraTepInstronImage from './assets/news/mesa-sura-tep-instron.jpg'
+import mesaSuraTepPresentationImage from './assets/news/mesa-sura-tep-presentation.jpg'
+import mesaSuraTepSamplePrepImage from './assets/news/mesa-sura-tep-sample-prep.jpg'
+import molssiActCmsWorkshopImage from './assets/news/molssi-act-cms-workshop.jpg'
 import skyImage from './assets/sky-soltero.jpg'
+import maraonBaniImage from './assets/team/maraon-bani.jpg'
+import adamMonroeImage from './assets/team/adam-monroe.jpg'
+import henryBahiniImage from './assets/team/henry-bahini.jpg'
+import ethanPudasainiImage from './assets/team/ethan-pudasaini.jpg'
+import isaiahClemonsImage from './assets/team/isaiah-clemons.webp'
+import diegoCeaImage from './assets/team/diego-cea.webp'
+import andersTorgersonImage from './assets/team/anders-torgerson.webp'
 import wenwuImage from './assets/team/wenwu-xu.jpg'
 import shahrierImage from './assets/team/shahrier-hasan.jpg'
 import katherineImage from './assets/team/katherine-whitmore.jpeg'
-import sherwinImage from './assets/team/sherwin-navindaran.jpg'
-import cameronImage from './assets/team/cameron-aires.png'
+import sherwinImage from './assets/team/sherwin-navindaran.webp'
+import cameronImage from './assets/team/cameron-aires.webp'
 import rachellImage from './assets/team/rachell-lee.jpg'
 import jamesImage from './assets/team/james-murray.jpg'
 import jamesBurnsImage from './assets/team/james-burns.jpg'
 import nicolasMosquedaImage from './assets/team/nicolas-mosqueda.jpg'
 import amauryImage from './assets/team/amaury-reed.jpg'
-import coleImage from './assets/team/cole-waterhouse.png'
-import kenImage from './assets/team/ken-ramirez.png'
+import coleImage from './assets/team/cole-waterhouse.webp'
+import kenImage from './assets/team/ken-ramirez.webp'
 import sanamImage from './assets/team/sanam-nagvekar.jpeg'
 import saraImage from './assets/team/sara-gomez.jpg'
-import xavierImage from './assets/team/xavier-lovato.png'
+import xavierImage from './assets/team/xavier-lovato.webp'
 import zeshanImage from './assets/team/zeshan-ahmed.png'
-import marivelImage from './assets/team/marivel-alfaro.png'
-import adrianImage from './assets/team/adrian-contreras.png'
-import joseImage from './assets/team/jose-morales.png'
-import carsonImage from './assets/team/carson-sutton.png'
-import seanImage from './assets/team/sean-ogrady.png'
-import zacharyImage from './assets/team/zachary-mclaughlin.png'
+import marivelImage from './assets/team/marivel-alfaro.webp'
+import adrianImage from './assets/team/adrian-contreras.webp'
+import joseImage from './assets/team/jose-morales.webp'
+import carsonImage from './assets/team/carson-sutton.webp'
+import seanImage from './assets/team/sean-ogrady.webp'
+import zacharyImage from './assets/team/zachary-mclaughlin.webp'
 import colinImage from './assets/team/colin-delaney.png'
 import rebecaImage from './assets/team/rebeca-contreras.jpg'
 import theodoreImage from './assets/team/theodore-norris.jpg'
 import ethanAndersonImage from './assets/team/ethan-anderson.jpg'
+import ethanMorrisonImage from './assets/team/ethan-morrison.jpg'
 import edgarDiazImage from './assets/team/edgar-diaz.png'
 import oliviaTowersImage from './assets/team/olivia-towers.jpg'
 import roselynnConradyImage from './assets/team/roselynn-conrady.jpg'
@@ -81,19 +96,33 @@ import christopherForondaImage from './assets/team/christopher-foronda.jpg'
 import junailPauleImage from './assets/team/junail-paule.jpg'
 import crystalCraftAtomImage from './assets/crystalcraft/atom.png'
 import crystalCraftCarterImage from './assets/crystalcraft/carter.jpg'
-import crystalCraftDemoImage from './assets/crystalcraft/demo.jpg'
+import crystalCraftDemoImage from './assets/crystalcraft/demo.webp'
 import crystalCraftDownloadImage from './assets/crystalcraft/download.png'
-import crystalCraftFccImage from './assets/crystalcraft/fcc.png'
+import crystalCraftFccImage from './assets/crystalcraft/fcc.webp'
 import crystalCraftGitImage from './assets/crystalcraft/git.png'
-import crystalCraftHcpImage from './assets/crystalcraft/hcp.png'
+import crystalCraftHcpImage from './assets/crystalcraft/hcp.webp'
 import crystalCraftKainImage from './assets/crystalcraft/kain.jpg'
 import crystalCraftPatrickImage from './assets/crystalcraft/patrick.jpg'
 import crystalCraftRosImage from './assets/crystalcraft/ros.jpg'
-import crystalCraftTeamImage from './assets/crystalcraft/team.jpg'
+import crystalCraftTeamImage from './assets/crystalcraft/team.webp'
 import crystalCraftTvImage from './assets/crystalcraft/TV.png'
 import crystalCraftWenImage from './assets/crystalcraft/wen.jpg'
+import enpAdvance4xImage from './assets/resources/enp_advance4x_real.webp'
+import rapidHeatFurnaceImage from './assets/resources/rapid_heat_furnace_instron_real.webp'
+import semHighTemperatureStageImage from './assets/resources/sem_high_temperature_stage_real.webp'
+import semInsituMechanicalImage from './assets/resources/sem_insitu_mechanical_heating_real.webp'
 import publicationsRaw from './data/publications.yaml?raw'
 import fundingRaw from './data/funding.yaml?raw'
+import collaboratorsRaw from './data/collaborators.yaml?raw'
+import {
+  getLanguageFromPath,
+  languageLabels,
+  languageLocales,
+  siteCopy,
+  translate,
+  updateDocumentLanguage,
+  type Language,
+} from './i18n'
 import './App.css'
 
 type MetadataValue = string | number | boolean | string[]
@@ -138,8 +167,34 @@ type NewsPost = {
   date: string
   title: string
   category: string
+  visibility: string
   image?: string
+  images: string[]
   link?: string
+  linkLabel?: string
+  secondaryLink?: string
+  secondaryLinkLabel?: string
+  body: string
+}
+
+type OpportunityStatus = 'Active' | 'Featured' | 'Archived'
+
+type Opportunity = {
+  slug: string
+  title: string
+  type: string
+  deadline: string
+  status: OpportunityStatus
+  summary: string
+  topics: string[]
+  role: string
+  peopleHeading: string
+  people: string[]
+  link: string
+  linkLabel: string
+  secondaryLink?: string
+  secondaryLinkLabel?: string
+  cta: string
   body: string
 }
 
@@ -155,9 +210,37 @@ type Publication = {
 }
 
 type NamedItem = {
+  id?: string
   name: string
   detail: string
   link?: string
+  linkLabel?: string
+}
+
+type Collaborator = {
+  name: string
+  position: string
+  affiliation: string
+  networkNote?: string
+  location: string
+  country: string
+  latitude: number
+  longitude: number
+  researchAreas: string[]
+  links: {
+    label: string
+    href: string
+  }[]
+}
+
+type CollaboratorMapPoint = {
+  location: string
+  country: string
+  latitude: number
+  longitude: number
+  x: number
+  y: number
+  collaborators: Collaborator[]
 }
 
 type VisitorStats = {
@@ -166,9 +249,16 @@ type VisitorStats = {
   first_date: string
   last_date: string
   pageviews: number
+  cumulative?: {
+    pageviews: number
+    first_date: string
+    last_date: string
+    coverage: string
+  }
   unique_visitors: number
   countries: number
   bot_requests_excluded: number
+  cumulative_bots_excluded?: { requests: number; coverage: string }
   country_source_attribution: string
   privacy_note: string
   daily: {
@@ -188,6 +278,19 @@ type VisitorStats = {
   }[]
 }
 
+// User-approved historical baseline from cumulative-pageviews-estimate.ipynb.
+// Add only growth beyond the recorded total at adoption (October 11, 2026).
+// Preserve the raw analytics history separately from this display baseline.
+const historicalPageviewBaseline = {
+  pageviews: 55000,
+  recordedPageviews: 13374,
+  firstDate: '2024-05-01',
+}
+
+// User-selected historical baseline (October 11, 2026), replacing the model's 125,000.
+// Retain source measurements separately; add subsequent recorded growth only.
+const historicalBotBaseline = { requests: 95000, recordedRequests: 20832 }
+
 const peopleModules = import.meta.glob('./content/people/*.md', {
   eager: true,
   query: '?raw',
@@ -201,6 +304,12 @@ const projectModules = import.meta.glob('./content/projects/*.md', {
 }) as Record<string, string>
 
 const newsModules = import.meta.glob('./content/news/*.md', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+}) as Record<string, string>
+
+const opportunityModules = import.meta.glob('./content/opportunities/*.md', {
   eager: true,
   query: '?raw',
   import: 'default',
@@ -220,7 +329,18 @@ const imageRegistry: Record<string, string> = {
   'research-imaging': imagingImage,
   'research-ai-ml': aiMlImage,
   'news/gfmat-htcmc-invited-talk': gfmatTalkImage,
+  'news/mesa-sura-tep-instron': mesaSuraTepInstronImage,
+  'news/mesa-sura-tep-presentation': mesaSuraTepPresentationImage,
+  'news/mesa-sura-tep-sample-prep': mesaSuraTepSamplePrepImage,
+  'news/molssi-act-cms-workshop': molssiActCmsWorkshopImage,
   'sky-soltero': skyImage,
+  'team/maraon-bani': maraonBaniImage,
+  'team/adam-monroe': adamMonroeImage,
+  'team/henry-bahini': henryBahiniImage,
+  'team/ethan-pudasaini': ethanPudasainiImage,
+  'team/isaiah-clemons': isaiahClemonsImage,
+  'team/diego-cea': diegoCeaImage,
+  'team/anders-torgerson': andersTorgersonImage,
   'team/wenwu-xu': wenwuImage,
   'team/shahrier-hasan': shahrierImage,
   'team/katherine-whitmore': katherineImage,
@@ -247,6 +367,7 @@ const imageRegistry: Record<string, string> = {
   'team/rebeca-contreras': rebecaImage,
   'team/theodore-norris': theodoreImage,
   'team/ethan-anderson': ethanAndersonImage,
+  'team/ethan-morrison': ethanMorrisonImage,
   'team/edgar-diaz': edgarDiazImage,
   'team/olivia-towers': oliviaTowersImage,
   'team/roselynn-conrady': roselynnConradyImage,
@@ -282,20 +403,26 @@ const site = {
     'Department of Mechanical Engineering, San Diego State University, 5500 Campanile Drive, San Diego, CA 92182 USA',
   scholar: 'https://scholar.google.com/citations?user=AdbfEI4AAAAJ&hl=en',
   linkedin: 'https://www.linkedin.com/in/wenwuxu',
-  youtube: 'https://www.youtube.com/@2dadsfamily',
+  youtube: 'https://www.youtube.com/@TwoDadsSurrogacy',
 }
 
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'Research', href: '#research' },
-  { label: 'Publications', href: '#publications' },
-  { label: 'Grants', href: '#grants' },
-  { label: 'People', href: '#people' },
-  { label: 'News', href: '#news' },
-  { label: 'Join Us', href: '#join' },
-  { label: 'Teaching & Outreach', href: '#teaching' },
-  { label: 'Visitor Stats', href: '#visitor-stats' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'Research', href: '/research/' },
+  { label: 'Publications', href: '/publications/' },
+  { label: 'People', href: '/people/' },
+  { label: 'Opportunities', href: '/opportunities/' },
+  { label: 'Join Us', href: '/join/' },
+  { label: 'Contact', href: '/contact/' },
+]
+
+const secondaryNavItems = [
+  { label: 'Grants', href: '/grants/' },
+  { label: 'News', href: '/news/' },
+  { label: 'Teaching', href: '/teaching/' },
+  { label: 'Collaborators', href: '/collaborators/' },
+  { label: 'Resources', href: '/resources/' },
+  { label: 'Stats', href: '/#visitor-stats' },
 ]
 
 const researchQuestions = [
@@ -340,6 +467,128 @@ const teachingItems = [
   'ME542: Materials Structure',
   'ME640: Nanomaterials',
   'ME642: Materials Modeling',
+]
+
+const teachingResources = [
+  {
+    course: 'ME542: Materials Structure',
+    label: 'Chapter 3 interactive demonstration',
+    title: 'Seven crystal systems and lattice symmetry',
+    body: 'Explore seven crystal systems with rotatable 3D lattice models. Animate inversion and rotational symmetry, compare lattice parameters, and use a ghost image to follow each operation.',
+    meta: ['Crystal systems', '3D symmetry operations', 'No sign-in required'],
+    href: 'https://mmm.sdsu.edu/teaching/me542/crystal-systems/',
+    linkLabel: 'Open interactive demonstration',
+  },
+  {
+    course: 'ME542: Materials Structure',
+    label: 'Diffraction primer video',
+    title: 'What is light? A 2,500 year speed run',
+    body: 'A three minute cartoon history of light, from Empedocles and Newton to Young, Maxwell, Einstein and the Braggs. It sets up the diffraction chapters with one question: how can a wave reveal the spacing of atoms you cannot see?',
+    meta: ['Animated video', '3 min, captioned', 'No sign-in required'],
+    href: 'https://mmm.sdsu.edu/teaching/me542/what-is-light/',
+    linkLabel: 'Watch the video',
+  },
+  {
+    course: 'ME542: Materials Structure',
+    label: 'Chapter 6 interactive demonstration',
+    title: 'BCC crystal rotation and X-ray diffraction',
+    body: 'Rotate a BCC crystal and follow the corresponding reciprocal-lattice points, Ewald-sphere intersections, and detector spots. Play, pause, select another reflection, or accumulate diffraction spots in your browser.',
+    meta: ['Reciprocal lattice', 'Ewald sphere', 'No sign-in required'],
+    href: 'https://mmm.sdsu.edu/teaching/me542/bcc-xrd/',
+    linkLabel: 'Open interactive demonstration',
+  },
+  {
+    course: 'ME642: Materials Modeling',
+    label: 'MolSSI ACT-CMS Module',
+    title: 'Introduction to AI-Molecular Dynamics',
+    body: 'A seven-lesson module developed through the MolSSI ACT-CMS program, introducing molecular dynamics, atomistic model construction, LAMMPS, Atomsk, OVITO visualization, and responsible AI/LLM-assisted MD workflows for materials modeling students.',
+    meta: ['Multi-part module', '8-12 hours', 'Beginner programming'],
+    href: 'https://act-cms.molssi.org/portal/lessons/Introduction-to-AI-Molecular-Dynamics/',
+  },
+]
+
+const experimentalResources = [
+  {
+    id: 'enp-advance-4x',
+    title: 'Electro-Nano-Pulsing (ENP) Advance 4X Platform',
+    tagline: 'Nanosecond pulsed-current processing for grain-boundary engineering.',
+    image: enpAdvance4xImage,
+    alt: 'Real benchtop ENP system overview with pulsed-current supply, fixture board, monitoring electronics, and oscilloscope.',
+    caption: 'Real lab image: full benchtop ENP setup with pulsed-current supply, fixture board, measurement electronics, and oscilloscope.',
+    description: 'The Xu group develops customized electro-nano-pulsing platforms for grain-boundary engineering in metallic materials. The ENP Advance 4X system applies programmable nanosecond-scale current pulses to small metallic specimens to probe localized electrical, thermal, and electron-wind effects at grain boundaries.',
+    features: [
+      'Ultra-intense nanosecond pulsed-current processing',
+      'Four-pair copper feed-plate architecture on alumina-ceramic PCB',
+      'Removable central chamber for inert Ar or liquid-nitrogen operation',
+      'Designed for small metallic strip specimens',
+      'Supports studies separating Joule-heating and electron-wind effects',
+    ],
+    imageStatus: 'Real lab image',
+  },
+  {
+    id: 'sem-insitu-thermomechanical',
+    title: 'Custom SEM In-Situ Thermo-Mechanical Testing Device',
+    tagline: 'Lab-made fixture for direct SEM observation during thermal-straining.',
+    image: semInsituMechanicalImage,
+    alt: 'Real thermal-straining SEM tester with heating stage, sample position, and force-capacity label.',
+    caption: 'Real lab image: thermal-straining SEM tester with heating stage, sample zone, and mechanical loading hardware.',
+    description: 'The group has developed a customized SEM-compatible mechanical testing device for in-situ thermal-straining studies. Paired with an SEM heating stage, the fixture supports direct observation of deformation and microstructural evolution under coupled thermal and mechanical loading.',
+    features: [
+      'Lab-made SEM-compatible mechanical fixture',
+      'Compatible with in-situ SEM imaging workflows',
+      'Pairs with a heating stage for thermal-straining experiments',
+      'Supports observation of strain localization, cracking, and interface evolution',
+      'Adaptable to customized specimen geometries and loading configurations',
+    ],
+    imageStatus: 'Real lab image',
+  },
+  {
+    id: 'sem-high-temperature-stage',
+    title: 'SEM High-Temperature Heating Stage / Furnace Capability',
+    tagline: 'Elevated-temperature SEM observation and thermal-processing studies.',
+    image: semHighTemperatureStageImage,
+    alt: 'Real SEM hot-stage assembly installed inside an SEM chamber with heater surface and electrical connections.',
+    caption: 'Real lab image: SEM hot-stage assembly installed in the SEM chamber for elevated-temperature experiments.',
+    description: 'The group uses high-temperature SEM-stage capabilities to observe microstructural evolution during thermal exposure and coupled thermal-mechanical loading. These resources support SEM-based high-temperature and flash-sintering studies of ceramic and metallic materials.',
+    features: [
+      'SEM-based observation during controlled heating',
+      'Integrates with customized mechanical loading hardware',
+      'Supports thermal exposure, thermal-straining, and flash-sintering studies',
+      'Tracks morphology, cracking, and grain-boundary behavior',
+      'Apreo 2-compatible heating-stage path with detector compatibility considerations',
+    ],
+    imageStatus: 'Real lab image',
+  },
+  {
+    id: 'rapid-heat-tube-furnace-instron',
+    title: 'Custom Rapid-Heat Tube Furnace / ENP-Compatible Rapid Heating System Integrated with Mechanical Testing',
+    tagline: 'Fast high-temperature experiments under mechanical loading.',
+    image: rapidHeatFurnaceImage,
+    alt: 'Real rapid-heating furnace assembly mounted in an Instron mechanical testing frame.',
+    caption: 'Real lab image: custom rapid-heating furnace integrated with an Instron frame for coupled thermal-mechanical testing.',
+    description: 'The Xu group operates a custom rapid-heat tube furnace designed for thermal-elastic processing and high-temperature mechanical testing. The system integrates with an Instron universal testing machine to enable coupled heating and mechanical loading of small cylindrical specimens.',
+    features: [
+      'Custom-built compact rapid-heat tube furnace',
+      'Designed to bolt directly to an Instron universal testing machine',
+      'Four silicon-carbide heating elements with SCR power control',
+      'Watlow PM6+ PID control with Type N thermocouple',
+      'Can also operate as a standalone table-mounted furnace',
+    ],
+    imageStatus: 'Real lab image',
+  },
+]
+
+const computingResources = [
+  {
+    name: 'SDSU High Performance Computing Cluster',
+    body: 'The group uses SDSU High Performance Computing Cluster resources for CPU- and GPU-based computational research. SDSU HPCC infrastructure provides shared high-performance computing nodes, GPU-enabled resources, and networked storage capacity that support large-scale simulations and data-intensive post-processing.',
+    link: 'https://hpcc.sdsu.edu/hpc-computing-resource-overview/',
+  },
+  {
+    name: 'SDSU TIDE Research Cluster',
+    body: 'The group also uses SDSU Technology Infrastructure for Data Exploration (TIDE) research cluster. TIDE provides SDSU researchers access to research-class CPU, GPU, and storage resources. These resources support containerized research workflows, including computational materials modeling, atomistic simulations, data analysis, and machine-learning-assisted materials research.',
+    link: 'https://sdsu-research-ci.github.io/researchcluster/',
+  },
 ]
 
 const crystalCraftLinks = [
@@ -464,19 +713,37 @@ function asBoolean(value: MetadataValue | undefined) {
   return value === true
 }
 
-function formatDate(value: string) {
+function formatDate(value: string, language: Language = 'en') {
   const date = new Date(`${value}T12:00:00`)
-  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  return date.toLocaleDateString(languageLocales[language], { month: 'short', day: 'numeric', year: 'numeric' })
 }
 
-function formatNumber(value: number) {
-  return new Intl.NumberFormat('en-US').format(value)
+function formatNumber(value: number, language: Language = 'en') {
+  return new Intl.NumberFormat(languageLocales[language]).format(value)
 }
 
-function countryName(code: string) {
+function daysUntil(value: string) {
+  if (!value) return Number.POSITIVE_INFINITY
+  const now = new Date()
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  const deadline = new Date(`${value}T12:00:00`)
+  return Math.ceil((deadline.getTime() - today.getTime()) / 86_400_000)
+}
+
+function normalizeOpportunityStatus(value: string): OpportunityStatus {
+  return value === 'Featured' || value === 'Archived' ? value : 'Active'
+}
+
+function opportunityRank(opportunity: Opportunity) {
+  if (opportunity.status === 'Archived' || daysUntil(opportunity.deadline) < 0) return 2
+  if (opportunity.status === 'Featured') return 0
+  return 1
+}
+
+function countryName(code: string, language: Language = 'en') {
   if (!code || code === 'ZZ') return 'Unknown'
   try {
-    const displayNames = new Intl.DisplayNames(['en'], { type: 'region' })
+    const displayNames = new Intl.DisplayNames([languageLocales[language]], { type: 'region' })
     return displayNames.of(code) ?? code
   } catch {
     return code
@@ -493,8 +760,43 @@ function initials(name: string) {
     .toUpperCase()
 }
 
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max)
+}
+
+function projectWorldPoint(latitude: number, longitude: number) {
+  return {
+    x: clamp(((longitude + 180) / 360) * 100, 1.5, 98.5),
+    y: clamp(((90 - latitude) / 180) * 100, 4, 96),
+  }
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
+function normalizeSearchText(value: string) {
+  return value.toLowerCase().replace(/\s+/g, ' ').trim()
+}
+
+function matchesSearchQuery(values: string[], query: string) {
+  if (!query) return true
+  return normalizeSearchText(values.join(' ')).includes(query)
+}
+
 function getImage(key?: string) {
   return key ? imageRegistry[key] : undefined
+}
+
+function getImages(keys: string[]) {
+  return keys
+    .map((key) => getImage(key))
+    .filter((image): image is string => Boolean(image))
 }
 
 function alumniDegreeRank(role: string) {
@@ -560,16 +862,52 @@ const projects: Project[] = Object.entries(projectModules)
 
 const newsPosts: NewsPost[] = Object.entries(newsModules)
   .map(([path, raw]) => parseMarkdown(raw, slugFromPath(path)))
+  .map((entry) => {
+    const primaryImage = getImage(asString(entry.meta.image))
+    const galleryImages = getImages(asArray(entry.meta.images))
+
+    return {
+      slug: entry.slug,
+      date: asString(entry.meta.date),
+      title: asString(entry.meta.title),
+      category: asString(entry.meta.category),
+      visibility: asString(entry.meta.visibility),
+      image: primaryImage,
+      images: galleryImages.length > 0 ? galleryImages : primaryImage ? [primaryImage] : [],
+      link: asString(entry.meta.link),
+      linkLabel: asString(entry.meta.linkLabel),
+      secondaryLink: asString(entry.meta.secondaryLink),
+      secondaryLinkLabel: asString(entry.meta.secondaryLinkLabel),
+      body: entry.body,
+    }
+  })
+  .sort((a, b) => b.date.localeCompare(a.date))
+
+const opportunities: Opportunity[] = Object.entries(opportunityModules)
+  .map(([path, raw]) => parseMarkdown(raw, slugFromPath(path)))
   .map((entry) => ({
     slug: entry.slug,
-    date: asString(entry.meta.date),
     title: asString(entry.meta.title),
-    category: asString(entry.meta.category),
-    image: getImage(asString(entry.meta.image)),
+    type: asString(entry.meta.type),
+    deadline: asString(entry.meta.deadline),
+    status: normalizeOpportunityStatus(asString(entry.meta.status)),
+    summary: asString(entry.meta.summary),
+    topics: asArray(entry.meta.topics),
+    role: asString(entry.meta.role),
+    peopleHeading: asString(entry.meta.peopleHeading),
+    people: asArray(entry.meta.people),
     link: asString(entry.meta.link),
+    linkLabel: asString(entry.meta.linkLabel),
+    secondaryLink: asString(entry.meta.secondaryLink),
+    secondaryLinkLabel: asString(entry.meta.secondaryLinkLabel),
+    cta: asString(entry.meta.cta) || 'View details',
     body: entry.body,
   }))
-  .sort((a, b) => b.date.localeCompare(a.date))
+  .sort((a, b) => (
+    opportunityRank(a) - opportunityRank(b)
+    || a.deadline.localeCompare(b.deadline)
+    || a.title.localeCompare(b.title)
+  ))
 
 const publications = parseYamlList(publicationsRaw)
   .map((item) => ({
@@ -585,29 +923,150 @@ const publications = parseYamlList(publicationsRaw)
   .sort((a, b) => b.year - a.year) satisfies Publication[]
 
 const funding = parseYamlList(fundingRaw).map((item) => ({
+  id: asString(item.id),
   name: asString(item.name),
   detail: asString(item.detail),
   link: asString(item.link),
+  linkLabel: asString(item.linkLabel),
 })) satisfies NamedItem[]
 
-function App() {
+const collaboratorLinkFields = [
+  ['labWebsite', 'Lab website'],
+  ['personalWebsite', 'Personal website'],
+  ['googleScholar', 'Google Scholar'],
+  ['linkedIn', 'LinkedIn'],
+  ['orcid', 'ORCID'],
+  ['institutionalProfile', 'Institutional profile'],
+  ['facultyProfile', 'Faculty profile'],
+  ['professionalProfile', 'Professional profile'],
+  ['researchGate', 'ResearchGate'],
+  ['scienceDirect', 'ScienceDirect'],
+  ['profile', 'Profile'],
+  ['openReview', 'OpenReview'],
+] as const
+
+const collaborators = parseYamlList(collaboratorsRaw).map((item) => ({
+  name: asString(item.name),
+  position: asString(item.position),
+  affiliation: asString(item.affiliation),
+  networkNote: asString(item.networkNote),
+  location: asString(item.location),
+  country: asString(item.country),
+  latitude: Number(item.latitude),
+  longitude: Number(item.longitude),
+  researchAreas: asArray(item.researchAreas),
+  links: collaboratorLinkFields
+    .map(([key, label]) => ({ label, href: asString(item[key]) }))
+    .filter((link) => link.href),
+})).sort((a, b) => a.name.localeCompare(b.name)) satisfies Collaborator[]
+
+const collaboratorMapLocations = Array.from(
+  collaborators
+    .filter((collaborator) => (
+      collaborator.location
+      && Number.isFinite(collaborator.latitude)
+      && Number.isFinite(collaborator.longitude)
+    ))
+    .reduce((locations, collaborator) => {
+      const key = collaborator.location
+      const group = locations.get(key)
+
+      if (group) {
+        group.collaborators.push(collaborator)
+        return locations
+      }
+
+      const projected = projectWorldPoint(collaborator.latitude, collaborator.longitude)
+      locations.set(key, {
+        location: collaborator.location,
+        country: collaborator.country,
+        latitude: collaborator.latitude,
+        longitude: collaborator.longitude,
+        x: projected.x,
+        y: projected.y,
+        collaborators: [collaborator],
+      })
+
+      return locations
+    }, new Map<string, CollaboratorMapPoint>())
+    .values(),
+).sort((a, b) => a.location.localeCompare(b.location))
+
+const collaboratorMapCountryCount = new Set(
+  collaboratorMapLocations.map((point) => point.country).filter(Boolean),
+).size
+
+type AppProps = {
+  initialPath?: string
+  staticMode?: boolean
+}
+
+function App({ initialPath, staticMode = false }: AppProps) {
+  const pathname = initialPath ?? (typeof window === 'undefined' ? '/' : window.location.pathname)
+  const language = useMemo(
+    () => getLanguageFromPath(pathname),
+    [pathname],
+  )
+  const copy = siteCopy[language]
+  const localizedSite = { ...site, ...copy }
+  const tx = (value: string) => translate(language, value)
+  const deploymentBase = import.meta.env.BASE_URL.replace(/\/$/, '')
+  const sitePath = (route: string, targetLanguage: Language = language) => {
+    const localizedPrefix = targetLanguage === 'zh-TW' ? '/zh-TW' : ''
+    return `${deploymentBase}${localizedPrefix}${route}` || '/'
+  }
+  const languagePath = (targetLanguage: Language) => {
+    const withoutBase = pathname.startsWith(deploymentBase) ? pathname.slice(deploymentBase.length) : pathname
+    const withoutLanguage = withoutBase.replace(/^\/zh-TW(?=\/|$)/i, '') || '/'
+    return sitePath(withoutLanguage, targetLanguage)
+  }
+  const newsLink = (href: string) => href.startsWith('#grant-') ? sitePath(`/grants/${href}`) : href
   const [researchFilter, setResearchFilter] = useState('All')
+  const [publicationScope, setPublicationScope] = useState<'Selected' | 'All'>(staticMode ? 'All' : 'Selected')
   const [publicationFilter, setPublicationFilter] = useState('All')
+  const [publicationQuery, setPublicationQuery] = useState('')
+  const [publicationYear, setPublicationYear] = useState('All')
+  const [collaboratorQuery, setCollaboratorQuery] = useState('')
+  const [collaboratorCountry, setCollaboratorCountry] = useState('All')
+  const [collaboratorArea, setCollaboratorArea] = useState('All')
   const [visitorStats, setVisitorStats] = useState<VisitorStats | null>(null)
+  const [showProjectDetails, setShowProjectDetails] = useState(staticMode)
+  const collaboratorMapElementRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    updateDocumentLanguage(language)
+  }, [language])
 
   useEffect(() => {
     if (!window.location.hash) return
     const id = window.location.hash.slice(1)
     window.setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView()
+      document.getElementById(id)?.scrollIntoView({ behavior: 'auto', block: 'start' })
     }, 0)
-  }, [])
+  }, [visitorStats])
 
   useEffect(() => {
     let active = true
 
-    fetch(`/analytics/visitor-stats.php?ts=${Date.now()}`, { cache: 'no-store' })
-      .then((response) => (response.ok ? response.json() : null))
+    async function loadVisitorStats(): Promise<VisitorStats | null> {
+      // Keep the last saved report available if the server refresh fails.
+      for (const endpoint of ['visitor-stats.php', 'visitor-stats.json']) {
+        try {
+          const response = await fetch(`/analytics/${endpoint}?ts=${Date.now()}`, {
+            cache: 'no-store',
+            signal: AbortSignal.timeout(8000),
+          })
+          if (!response.ok) continue
+          const data: VisitorStats = await response.json()
+          if (data?.daily?.length) return data
+        } catch {
+          // Try the saved JSON report after an error or timeout.
+        }
+      }
+      return null
+    }
+
+    loadVisitorStats()
       .then((data: VisitorStats | null) => {
         if (active && data?.daily?.length) {
           setVisitorStats(data)
@@ -622,9 +1081,128 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    const mapElement = collaboratorMapElementRef.current
+    if (!mapElement || collaboratorMapLocations.length === 0) return undefined
+    const leafletMapElement = mapElement
+
+    let active = true
+    let map: import('leaflet').Map | undefined
+    let observer: IntersectionObserver | undefined
+    let initialized = false
+
+    function isMapNearViewport() {
+      const rect = leafletMapElement.getBoundingClientRect()
+      return rect.top < window.innerHeight + 700 && rect.bottom > -700
+    }
+
+    async function initializeMap() {
+      if (initialized || !active) return
+      initialized = true
+
+      await import('leaflet/dist/leaflet.css')
+      const leaflet = (await import('leaflet')).default
+
+      if (!active) return
+
+      map = leaflet.map(leafletMapElement, {
+        attributionControl: true,
+        maxBounds: [[-85, -190], [85, 190]],
+        maxBoundsViscosity: 0.75,
+        minZoom: 1,
+        scrollWheelZoom: false,
+        worldCopyJump: true,
+        zoomControl: true,
+      })
+
+      leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19,
+      }).addTo(map)
+
+      const markerLayer = leaflet.featureGroup()
+
+      collaboratorMapLocations.forEach((point) => {
+        const collaboratorNames = point.collaborators
+          .map((collaborator) => `<li>${escapeHtml(collaborator.name)}</li>`)
+          .join('')
+
+        const marker = leaflet.marker([point.latitude, point.longitude], {
+          icon: leaflet.divIcon({
+            className: 'collaborator-leaflet-marker',
+            html: `<span><b>${point.collaborators.length}</b></span>`,
+            iconAnchor: [15, 30],
+            iconSize: [30, 30],
+            popupAnchor: [0, -28],
+          }),
+          title: point.location,
+        }).bindPopup(`
+          <strong>${escapeHtml(point.location)}</strong>
+          <small>${escapeHtml(point.country)}</small>
+          <ul>${collaboratorNames}</ul>
+        `)
+
+        markerLayer.addLayer(marker)
+      })
+
+      markerLayer.addTo(map)
+      map.fitBounds(markerLayer.getBounds(), { maxZoom: 3, padding: [28, 28] })
+
+      window.setTimeout(() => map?.invalidateSize(), 120)
+    }
+
+    function handleViewportCheck() {
+      if (isMapNearViewport()) {
+        window.removeEventListener('scroll', handleViewportCheck)
+        window.removeEventListener('resize', handleViewportCheck)
+        window.clearInterval(viewportCheckInterval)
+        observer?.disconnect()
+        void initializeMap()
+      }
+    }
+
+    if ('IntersectionObserver' in window) {
+      observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer?.disconnect()
+          void initializeMap()
+        }
+      }, { rootMargin: '600px 0px' })
+      observer.observe(mapElement)
+    }
+
+    window.addEventListener('scroll', handleViewportCheck, { passive: true })
+    window.addEventListener('resize', handleViewportCheck)
+    const viewportCheckInterval = window.setInterval(handleViewportCheck, 700)
+    handleViewportCheck()
+
+    return () => {
+      active = false
+      observer?.disconnect()
+      window.clearInterval(viewportCheckInterval)
+      window.removeEventListener('scroll', handleViewportCheck)
+      window.removeEventListener('resize', handleViewportCheck)
+      map?.remove()
+    }
+  }, [language])
+
   const researchThemes = useMemo(() => ['All', ...new Set(projects.map((project) => project.theme))], [])
+  const selectedPublications = useMemo(() => publications.filter((publication) => publication.selected), [])
+  const publicationPool = publicationScope === 'Selected' ? selectedPublications : publications
   const publicationThemes = useMemo(
-    () => ['All', ...new Set(publications.flatMap((publication) => publication.themes))],
+    () => ['All', ...new Set(publicationPool.flatMap((publication) => publication.themes))],
+    [publicationPool],
+  )
+  const publicationYears = useMemo(
+    () => ['All', ...new Set(publicationPool.map((publication) => String(publication.year)).filter((year) => year !== '0'))],
+    [publicationPool],
+  )
+  const collaboratorCountries = useMemo(
+    () => ['All', ...Array.from(new Set(collaborators.map((collaborator) => collaborator.country).filter(Boolean))).sort()],
+    [],
+  )
+  const collaboratorAreas = useMemo(
+    () => ['All', ...Array.from(new Set(collaborators.flatMap((collaborator) => collaborator.researchAreas))).sort()],
     [],
   )
 
@@ -632,40 +1210,102 @@ function App() {
     (project) => researchFilter === 'All' || project.theme === researchFilter,
   )
 
-  const filteredPublications = publications.filter(
-    (publication) => publicationFilter === 'All' || publication.themes.includes(publicationFilter),
-  )
+  const publicationSearchQuery = normalizeSearchText(publicationQuery)
+  const filteredPublications = publicationPool.filter((publication) => (
+    (publicationFilter === 'All' || publication.themes.includes(publicationFilter))
+    && (publicationYear === 'All' || String(publication.year) === publicationYear)
+    && matchesSearchQuery([
+      publication.title,
+      publication.authors,
+      publication.venue,
+      String(publication.year),
+      publication.doi ?? '',
+      publication.pdf ?? '',
+      ...publication.themes,
+    ], publicationSearchQuery)
+  ))
+
+  const collaboratorSearchQuery = normalizeSearchText(collaboratorQuery)
+  const filteredCollaborators = collaborators.filter((collaborator) => (
+    (collaboratorCountry === 'All' || collaborator.country === collaboratorCountry)
+    && (collaboratorArea === 'All' || collaborator.researchAreas.includes(collaboratorArea))
+    && matchesSearchQuery([
+      collaborator.name,
+      collaborator.position,
+      collaborator.affiliation,
+      collaborator.networkNote ?? '',
+      collaborator.location,
+      collaborator.country,
+      ...collaborator.researchAreas,
+    ], collaboratorSearchQuery)
+  ))
+
+  function updatePublicationScope(scope: 'Selected' | 'All') {
+    setPublicationScope(scope)
+    setPublicationFilter('All')
+    setPublicationYear('All')
+  }
 
   const groupedPeople = ['Principal Investigator', 'Current Graduate Students', 'Undergraduate Researchers', 'Alumni', 'Former Members']
     .map((group) => ({ group, members: people.filter((person) => person.group === group) }))
     .filter((section) => section.members.length > 0)
 
-  const latestNews = newsPosts.slice(0, 4)
+  const highlightedNews = newsPosts.filter((post) => post.visibility !== 'archive')
+  const latestNews = staticMode ? highlightedNews : highlightedNews.slice(0, 4)
+  const archivedNews = newsPosts.filter((post) => post.visibility === 'archive')
+  const archivedNewsByYear = Array.from(
+    archivedNews.reduce((years, post) => {
+      const year = post.date.slice(0, 4) || 'Archive'
+      const posts = years.get(year) ?? []
+      posts.push(post)
+      years.set(year, posts)
+      return years
+    }, new Map<string, NewsPost[]>()).entries(),
+  ).sort(([yearA], [yearB]) => yearB.localeCompare(yearA))
+  const activeOpportunities = opportunities.filter((opportunity) => opportunityRank(opportunity) < 2)
   const recentVisitorDays = visitorStats?.daily.slice(-14) ?? []
   const maxDailyPageviews = Math.max(1, ...recentVisitorDays.map((day) => day.pageviews))
+  const visibleSecondaryNavItems = secondaryNavItems
 
   return (
     <div className="site-shell">
+      <a className="skip-link" href="#main-content">{tx('Skip to content')}</a>
       <header className="topbar">
-        <a className="brand" href="#home" aria-label={`${site.shortName} home`}>
-          <img className="brand-logo" src={m3LogoImage} alt="" />
+        <a className="brand" href={sitePath('/')} aria-label={`${localizedSite.shortName} ${tx('Home')}`}>
+          <img className="brand-logo" src={m3LogoImage} alt="" decoding="async" />
           <span>
-            <strong>{site.name}</strong>
-            <small>{site.university}</small>
+            <strong>{localizedSite.name}</strong>
+            <small>{localizedSite.university}</small>
           </span>
         </a>
-        <div className="topbar-links" aria-label="Profile and contact links">
+        <div className="topbar-links" aria-label={copy.profileLinksAria}>
+          <div className="language-switch" aria-label={copy.languageAria}>
+            {(['en', 'zh-TW'] as const).map((option) => (
+              <a
+                aria-current={language === option ? 'true' : undefined}
+                className={language === option ? 'active' : ''}
+                href={languagePath(option)}
+                key={option}
+                onClick={(event) => {
+                  event.preventDefault()
+                  window.location.href = languagePath(option)
+                }}
+              >
+                {languageLabels[option]}
+              </a>
+            ))}
+          </div>
           <a className="topbar-link" href={site.scholar} target="_blank" rel="noreferrer">
             <Atom size={16} aria-hidden="true" />
-            Scholar
+            {tx('Scholar')}
           </a>
-          <a className="topbar-link" href={site.linkedin} target="_blank" rel="noreferrer">
+          <a className="topbar-link secondary-profile-link" href={site.linkedin} target="_blank" rel="noreferrer">
             <ExternalLink size={16} aria-hidden="true" />
-            LinkedIn
+            {tx('LinkedIn')}
           </a>
-          <a className="topbar-link" href={site.youtube} target="_blank" rel="noreferrer">
+          <a className="topbar-link secondary-profile-link" href={site.youtube} target="_blank" rel="noreferrer">
             <Play size={16} aria-hidden="true" />
-            YouTube
+            {tx('YouTube')}
           </a>
           <a className="topbar-link email-pill" href={`mailto:${site.email}`}>
             <Mail size={16} aria-hidden="true" />
@@ -674,90 +1314,125 @@ function App() {
         </div>
       </header>
 
-      <nav className="site-nav" aria-label="Main navigation">
-        {navItems.map((item) => (
-          <a key={item.href} href={item.href}>
-            {item.label}
-          </a>
-        ))}
+      <nav className="site-nav" aria-label={copy.mainNavigationAria}>
+        <button
+          className="mobile-nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-navigation-links"
+        >
+          <Menu className="menu-icon" size={18} aria-hidden="true" />
+          <X className="close-icon" size={18} aria-hidden="true" />
+          <span>{tx('Menu')}</span>
+        </button>
+        <div className="site-nav-links" id="main-navigation-links">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href.startsWith('#') ? item.href : sitePath(item.href)}
+              aria-current={pathname === sitePath(item.href) ? 'page' : undefined}
+            >
+              {tx(item.label)}
+            </a>
+          ))}
+          <details className="nav-more">
+            <summary className="nav-more-button">{tx('More')}</summary>
+            <div id="secondary-navigation-links">
+              {visibleSecondaryNavItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href.startsWith('#') ? item.href : sitePath(item.href)}
+                  aria-current={pathname === sitePath(item.href) ? 'page' : undefined}
+                >
+                  {tx(item.label)}
+                </a>
+              ))}
+            </div>
+          </details>
+        </div>
       </nav>
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <section className="hero-section" id="home">
-          <img src={heroImage} alt="" className="hero-bg" />
+          <img src={heroImage} alt="" className="hero-bg" decoding="async" fetchPriority="high" />
           <div className="hero-copy">
-            <p className="eyebrow">San Diego State University / Mechanical Engineering</p>
-            <h1>Multiscale Modeling of Materials Lab</h1>
+            <p className="eyebrow">{tx('San Diego State University / Mechanical Engineering')}</p>
+            <h1>{localizedSite.name}</h1>
             <p>
-              We combine simulation, microstructure characterization, and field-assisted processing to understand and design materials from atoms to engineered structures.
+              {tx('We combine simulation, microstructure characterization, and field-assisted processing to understand and design materials from atoms to engineered structures.')}
             </p>
             <div className="button-row">
-              <a className="button primary" href="#research">
-                Research
+              <a className="button primary" href={sitePath('/research/')}>
+                {tx('Research')}
                 <ChevronRight size={18} aria-hidden="true" />
               </a>
-              <a className="button light" href="#join">
-                Join Us
+              <a className="button light" href={sitePath('/join/')}>
+                {tx('Join Us')}
                 <BriefcaseBusiness size={18} aria-hidden="true" />
               </a>
-              <a className="button light" href="#publications">
-                Publications
+              <a className="button light" href={sitePath('/publications/')}>
+                {tx('Publications')}
                 <FileText size={18} aria-hidden="true" />
               </a>
             </div>
           </div>
           {latestNews.length > 0 && (
-            <aside className="hero-panel" aria-label="Latest lab news">
-              <p className="panel-label">Latest news</p>
+            <aside className="hero-panel" aria-label={copy.heroNewsAria}>
+              <p className="panel-label">{tx('Latest news')}</p>
               {latestNews.slice(0, 2).map((post) => (
-                <a key={post.slug} href={post.link || '#news'}>
-                  <span>{post.category}</span>
-                  <strong>{post.title}</strong>
-                  <small>{formatDate(post.date)}</small>
+                <a key={post.slug} href={sitePath(`/news/${post.slug}/`)}>
+                  <span>{tx(post.category)}</span>
+                  <strong>{tx(post.title)}</strong>
+                  <small>{formatDate(post.date, language)}</small>
                 </a>
               ))}
             </aside>
           )}
         </section>
 
-        <section className="metric-strip" aria-label="Lab snapshot">
+        <section className="metric-strip" aria-label={copy.labSnapshotAria}>
           <div>
             <strong>{projects.length}</strong>
-            <span>active research themes</span>
+            <span>{tx('active research themes')}</span>
           </div>
           <div>
             <strong>{people.length}</strong>
-            <span>current members and alumni listed</span>
+            <span>{tx('current members and alumni listed')}</span>
           </div>
           <div>
-            <strong>{publications.length}</strong>
-            <span>selected publications in data file</span>
+            <strong>{selectedPublications.length}</strong>
+            <span>{tx('featured publications highlighted')}</span>
           </div>
           <div>
             <strong>{funding.length}</strong>
-            <span>grants and sponsored projects listed</span>
+            <span>{tx('grants and sponsored projects listed')}</span>
           </div>
         </section>
 
         <section className="section intro-section">
           <div className="section-heading">
-            <p className="eyebrow">Lab mission</p>
-            <h2>Materials questions, modeled and tested across scales.</h2>
+            <p className="eyebrow">{tx('Lab mission')}</p>
+            <h2>{tx('Materials questions, modeled and tested across scales.')}</h2>
           </div>
           <article className="intro-story">
-            <img src={missionImage} alt="Materials modeling workflow from atoms to microstructure and properties" />
+            <img
+              src={missionImage}
+              alt="Materials modeling workflow from atoms to microstructure and properties"
+              loading="lazy"
+              decoding="async"
+            />
             <div>
-              <h3>Computational materials science with experimental anchors.</h3>
+              <h3>{tx('Computational materials science with experimental anchors.')}</h3>
               <p>
-                The M3 Lab studies nanoscale and microstructure mechanisms in metals, ceramics, composites, and field-assisted processing. The site is organized so research updates, people, news, and publications can be maintained through content files instead of layout code.
+                {tx('The M3 Lab studies nanoscale and microstructure mechanisms in metals, ceramics, composites, and field-assisted processing. We connect computational models with experimental evidence to understand how processing changes material structure and properties.')}
               </p>
               <div className="story-links">
                 <a href={site.scholar} target="_blank" rel="noreferrer">
-                  Google Scholar
+                  {tx('Google Scholar')}
                   <ExternalLink size={15} aria-hidden="true" />
                 </a>
                 <a href="https://mechanical.sdsu.edu/" target="_blank" rel="noreferrer">
-                  SDSU Mechanical Engineering
+                  {tx('SDSU Mechanical Engineering')}
                   <ExternalLink size={15} aria-hidden="true" />
                 </a>
               </div>
@@ -767,14 +1442,14 @@ function App() {
 
         <section className="section question-section">
           <div className="section-heading">
-            <p className="eyebrow">Big questions</p>
-            <h2>Our scientific questions.</h2>
+            <p className="eyebrow">{tx('Big questions')}</p>
+            <h2>{tx('Our scientific questions.')}</h2>
           </div>
           <div className="question-grid">
             {researchQuestions.map((question) => (
               <article key={question}>
                 <Search size={20} aria-hidden="true" />
-                <p>{question}</p>
+                <p>{tx(question)}</p>
               </article>
             ))}
           </div>
@@ -782,86 +1457,182 @@ function App() {
 
         <section className="section research-section" id="research">
           <div className="section-heading wide">
-            <p className="eyebrow">Research</p>
-            <h2>Research projects.</h2>
+            <p className="eyebrow">{tx('Research')}</p>
+            <h2>{tx('Research projects.')}</h2>
             <p>
-              Current projects connect atomistic simulation, microstructure characterization, field-assisted processing, and data-driven materials design.
+              {tx('Current projects connect atomistic simulation, microstructure characterization, field-assisted processing, and data-driven materials design.')}
             </p>
           </div>
-          <div className="filter-row" aria-label="Research theme filters">
+          <div className="filter-row" aria-label={copy.researchFilterAria}>
             {researchThemes.map((theme) => (
               <button
+                aria-pressed={researchFilter === theme}
                 className={researchFilter === theme ? 'active' : ''}
                 key={theme}
                 type="button"
                 onClick={() => setResearchFilter(theme)}
               >
-                {theme}
+                {tx(theme)}
               </button>
             ))}
           </div>
           <div className="project-grid">
             {filteredProjects.map((project) => (
               <article className="project-card" key={project.slug}>
-                {project.image && <img src={project.image} alt="" />}
+                {project.image && <img src={project.image} alt="" loading="lazy" decoding="async" />}
                 <div className="project-copy">
-                  <span className="tag">{project.theme}</span>
-                  <h3>{project.title}</h3>
-                  <p className="summary">{project.summary}</p>
-                  <p>{project.body}</p>
+                  <span className="tag">{tx(project.theme)}</span>
+                  <h3>{tx(project.title)}</h3>
+                  <p className="summary">{tx(project.summary)}</p>
+                  <p>{tx(project.body)}</p>
                   <div className="mini-list">
-                    <strong>Methods</strong>
-                    <div>{project.methods.map((method) => <span key={method}>{method}</span>)}</div>
+                    <strong>{tx('Methods')}</strong>
+                    <div>{project.methods.map((method) => <span key={method}>{tx(method)}</span>)}</div>
                   </div>
-                  <div className="project-meta">
-                    <p><strong>Related papers:</strong> {project.papers.join('; ')}</p>
-                  </div>
+                  <a
+                    className="project-detail-link"
+                    href={sitePath(`/research/${project.slug}/`)}
+                  >
+                    {tx('View project details')}
+                    <ChevronRight size={16} aria-hidden="true" />
+                  </a>
                 </div>
               </article>
             ))}
           </div>
+          {filteredProjects.length > 0 && (
+            <div className="project-detail-section" aria-labelledby="project-detail-title">
+              <div className="section-heading wide compact project-detail-heading">
+                <p className="eyebrow">{tx('Project details')}</p>
+                <h2 id="project-detail-title">{tx('Detailed research directions.')}</h2>
+                <p>{tx('Each project summary below expands the overview cards with research focus and methods for readers who want more context.')}</p>
+                <button
+                  className="button detail-toggle"
+                  type="button"
+                  aria-expanded={showProjectDetails}
+                  aria-controls="project-detail-grid"
+                  onClick={() => setShowProjectDetails((open) => !open)}
+                >
+                  {showProjectDetails ? tx('Hide details') : tx('Show details')}
+                  <ChevronRight size={16} aria-hidden="true" />
+                </button>
+              </div>
+              {showProjectDetails && (
+                <div className="project-detail-grid" id="project-detail-grid">
+                  {filteredProjects.map((project) => (
+                    <article className="project-detail-card" id={`project-${project.slug}`} key={project.slug}>
+                      <div className="project-detail-card-heading">
+                        <span className="tag">{tx(project.theme)}</span>
+                        <h3>{tx(project.title)}</h3>
+                        <p>{tx(project.summary)}</p>
+                      </div>
+                      <div className="project-detail-body">
+                        <section>
+                          <h4>{tx('Research focus')}</h4>
+                          <p>{tx(project.body)}</p>
+                        </section>
+                        <section>
+                          <h4>{tx('Methods')}</h4>
+                          <div className="inline-tags">
+                            {project.methods.map((method) => <span key={method}>{tx(method)}</span>)}
+                          </div>
+                        </section>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </section>
 
         {publications.length > 0 && (
           <section className="section publication-section" id="publications">
             <div className="section-heading wide">
-              <p className="eyebrow">Publications</p>
-              <h2>Selected papers, sortable by theme.</h2>
+              <p className="eyebrow">{tx('Publications')}</p>
+              <h2>{publicationScope === 'Selected' ? copy.featuredPublicationsHeading : copy.allPublicationsHeading}</h2>
               <p>
-                Recent and selected publications from the M3 Lab and collaborators.
+                {publicationScope === 'Selected'
+                  ? copy.selectedPublicationSummary(selectedPublications.length)
+                  : copy.allPublicationSummary(publications.length)}
               </p>
             </div>
-            <div className="filter-row" aria-label="Publication theme filters">
+            <div className="filter-row scope-row" aria-label={copy.publicationScopeAria}>
+              {(['Selected', 'All'] as const).map((scope) => (
+                <button
+                  aria-pressed={publicationScope === scope}
+                  className={publicationScope === scope ? 'active' : ''}
+                  key={scope}
+                  type="button"
+                  onClick={() => updatePublicationScope(scope)}
+                >
+                  {scope === 'Selected' ? tx('Featured') : tx('All papers')}
+                </button>
+              ))}
+            </div>
+            <div className="filter-row" aria-label={copy.publicationFilterAria}>
               {publicationThemes.map((theme) => (
                 <button
+                  aria-pressed={publicationFilter === theme}
                   className={publicationFilter === theme ? 'active' : ''}
                   key={theme}
                   type="button"
                   onClick={() => setPublicationFilter(theme)}
                 >
-                  {theme}
+                  {tx(theme)}
                 </button>
               ))}
             </div>
+            <div className="search-filter-bar" aria-label={tx('Publication search controls')}>
+              <label className="search-field">
+                <Search size={18} aria-hidden="true" />
+                <span>{tx('Search publications')}</span>
+                <input
+                  type="search"
+                  value={publicationQuery}
+                  onChange={(event) => setPublicationQuery(event.target.value)}
+                  placeholder={tx('Title, author, venue, keyword')}
+                />
+              </label>
+              <label className="select-field">
+                <span>{tx('Year')}</span>
+                <select value={publicationYear} onChange={(event) => setPublicationYear(event.target.value)}>
+                  {publicationYears.map((year) => (
+                    <option key={year} value={year}>{year === 'All' ? tx('All years') : year}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <p className="result-summary">
+              {tx('Showing')} {filteredPublications.length} {tx('of')} {publicationPool.length} {tx('publications')}
+            </p>
             <div className="publication-layout">
               <div className="publication-list">
-                {filteredPublications.map((publication) => (
+                {filteredPublications.length > 0 ? filteredPublications.map((publication) => (
                   <article key={publication.title}>
                     <span>{publication.year}</span>
                     <div>
                       <h3>{publication.title}</h3>
                       <p>{publication.authors}. {publication.venue}.</p>
                       <div className="inline-tags">
-                        {publication.themes.map((theme) => <span key={theme}>{theme}</span>)}
+                        {publication.themes.map((theme) => <span key={theme}>{tx(theme)}</span>)}
                       </div>
                       <div className="paper-links">
-                        {publication.doi && <a href={publication.doi}>DOI</a>}
-                        {publication.pdf && <a href={publication.pdf}>PDF</a>}
-                        <a href={site.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
+                        {publication.doi && <a href={publication.doi}>{tx('DOI')}</a>}
+                        {publication.pdf && <a href={publication.pdf}>{tx('PDF')}</a>}
+                        <a href={site.scholar} target="_blank" rel="noreferrer">{tx('Google Scholar')}</a>
                       </div>
                     </div>
                   </article>
-                ))}
+                )) : (
+                  <article className="empty-results">
+                    <span>{tx('No results')}</span>
+                    <div>
+                      <h3>{tx('No publications match these filters.')}</h3>
+                      <p>{tx('Try another year, theme, or search term.')}</p>
+                    </div>
+                  </article>
+                )}
               </div>
             </div>
           </section>
@@ -870,20 +1641,20 @@ function App() {
         {funding.length > 0 && (
           <section className="section grant-section" id="grants">
             <div className="section-heading wide">
-              <p className="eyebrow">Grants</p>
-              <h2>Sponsored projects supporting M3 Lab research.</h2>
-              <p>Current and recent awards supporting materials modeling, processing, characterization, and education innovation.</p>
+              <p className="eyebrow">{tx('Grants')}</p>
+              <h2>{tx('Sponsored projects supporting M3 Lab research.')}</h2>
+              <p>{tx('Current and recent awards supporting materials modeling, processing, characterization, and education innovation.')}</p>
             </div>
             <div className="grant-grid">
               {funding.map((item) => (
-                <article className="grant-card" key={item.name}>
+                <article className="grant-card" id={item.id ? `grant-${item.id}` : undefined} key={item.name}>
                   <Handshake size={24} aria-hidden="true" />
                   <div>
-                    <h3>{item.name}</h3>
-                    <p>{item.detail}</p>
+                    <h3>{tx(item.name)}</h3>
+                    <p>{tx(item.detail)}</p>
                     {item.link && (
                       <a href={item.link} target="_blank" rel="noreferrer">
-                        Program page
+                        {item.linkLabel ? tx(item.linkLabel) : tx('External record')}
                         <ExternalLink size={15} aria-hidden="true" />
                       </a>
                     )}
@@ -897,33 +1668,38 @@ function App() {
         {groupedPeople.length > 0 && (
           <section className="section people-section" id="people">
             <div className="section-heading wide">
-              <p className="eyebrow">People</p>
-              <h2>PI, graduate students, undergraduate researchers, and alumni.</h2>
+              <p className="eyebrow">{tx('People')}</p>
+              <h2>{tx('PI, graduate students, undergraduate researchers, and alumni.')}</h2>
               <p>
-                The M3 Lab brings together graduate students, undergraduate researchers, alumni, and collaborators working across modeling, processing, and characterization.
+                {tx('The M3 Lab brings together graduate students, undergraduate researchers, alumni, and collaborators working across modeling, processing, and characterization.')}
               </p>
             </div>
             <div className="people-groups">
               {groupedPeople.map((section) => (
                 <section key={section.group} className="people-group" aria-labelledby={`${section.group}-title`}>
-                  <h3 id={`${section.group}-title`}>{section.group}</h3>
+                  <h3 id={`${section.group}-title`}>{tx(section.group)}</h3>
                   <div className="person-grid">
                     {section.members.map((person) => (
                       <article className="person-card" key={person.slug}>
                         {person.image ? (
-                          <img src={person.image} alt={`${person.name}, ${person.role}`} />
+                          <img
+                            src={person.image}
+                            alt={`${person.name}, ${person.role}`}
+                            loading="lazy"
+                            decoding="async"
+                          />
                         ) : (
                           <div className="avatar" aria-hidden="true">{initials(person.name)}</div>
                         )}
                         <div>
-                          <span className="tag">{person.role}</span>
+                          <span className="tag">{tx(person.role)}</span>
                           <h4>{person.name}</h4>
                           <p className="dates">{person.dates}</p>
-                          {person.project && <p><strong>Project:</strong> {person.project}</p>}
-                          {person.currentPosition && <p><strong>Current position:</strong> {person.currentPosition}</p>}
-                          <p>{person.body}</p>
+                          {person.project && <p><strong>{tx('Project:')}</strong> {tx(person.project)}</p>}
+                          {person.currentPosition && <p><strong>{tx('Current position:')}</strong> {tx(person.currentPosition)}</p>}
+                          <p>{tx(person.body)}</p>
                           <div className="inline-tags">
-                            {person.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                            {person.tags.map((tag) => <span key={tag}>{tx(tag)}</span>)}
                           </div>
                         </div>
                       </article>
@@ -938,53 +1714,215 @@ function App() {
         {latestNews.length > 0 && (
           <section className="section news-section" id="news">
             <div className="section-heading">
-              <p className="eyebrow">News</p>
-              <h2>Lab news.</h2>
+              <p className="eyebrow">{tx('News')}</p>
+              <h2>{tx('Lab news.')}</h2>
             </div>
             <div className="news-grid">
               {latestNews.map((post) => (
-                <article className="news-card" key={post.slug}>
-                  {post.image && <img src={post.image} alt="" />}
+                <article className="news-card" id={`news-${post.slug}`} key={post.slug}>
+                  {post.images.length > 0 && (
+                    <div className={`news-card-media${post.images.length > 1 ? ' is-gallery' : ''}`}>
+                      {post.images.map((image, index) => (
+                        <img
+                          src={image}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          key={`${post.slug}-image-${index}`}
+                        />
+                      ))}
+                    </div>
+                  )}
                   <div>
-                    <span>{post.category}</span>
-                    <h3>{post.title}</h3>
-                    <p className="date"><CalendarDays size={15} aria-hidden="true" />{formatDate(post.date)}</p>
-                    <p>{post.body}</p>
+                    <span>{tx(post.category)}</span>
+                    <h3><a href={sitePath(`/news/${post.slug}/`)}>{tx(post.title)}</a></h3>
+                    <p className="date"><CalendarDays size={15} aria-hidden="true" />{formatDate(post.date, language)}</p>
+                    <p>{tx(post.body)}</p>
                     {post.link && (
-                      <a href={post.link} target={post.link.startsWith('http') ? '_blank' : undefined} rel={post.link.startsWith('http') ? 'noreferrer' : undefined}>
-                        Read more
+                      <a href={newsLink(post.link)} target={post.link.startsWith('http') ? '_blank' : undefined} rel={post.link.startsWith('http') ? 'noreferrer' : undefined}>
+                        {tx(post.linkLabel || 'Read more')}
                         <ExternalLink size={15} aria-hidden="true" />
                       </a>
+                    )}
+                    {post.secondaryLink && (
+                      <div>
+                        <a href={post.secondaryLink} target={post.secondaryLink.startsWith('http') ? '_blank' : undefined} rel={post.secondaryLink.startsWith('http') ? 'noreferrer' : undefined}>
+                          {tx(post.secondaryLinkLabel || 'Additional details')}
+                          <ExternalLink size={15} aria-hidden="true" />
+                        </a>
+                      </div>
                     )}
                   </div>
                 </article>
               ))}
             </div>
+            {archivedNewsByYear.length > 0 && (
+              <div className="news-archive" aria-labelledby="news-archive-title">
+                <div className="news-archive-heading">
+                  <FileText size={22} aria-hidden="true" />
+                  <div>
+                    <p className="eyebrow">{tx('News Archive')}</p>
+                    <h3 id="news-archive-title">{tx('Documentation records by year.')}</h3>
+                  </div>
+                </div>
+                <div className="news-archive-years">
+                  {archivedNewsByYear.map(([year, posts]) => (
+                    <section className="news-archive-year" key={year} aria-labelledby={`news-archive-${year}`}>
+                      <h4 id={`news-archive-${year}`}>{year}</h4>
+                      <div>
+                        {posts.map((post) => (
+                          <article className="news-archive-item" id={`news-${post.slug}`} key={post.slug}>
+                            <span>{tx(post.category)}</span>
+                            <div>
+                              <h5><a href={sitePath(`/news/${post.slug}/`)}>{tx(post.title)}</a></h5>
+                              <p className="date"><CalendarDays size={15} aria-hidden="true" />{formatDate(post.date, language)}</p>
+                              <p>{tx(post.body)}</p>
+                              {post.link && (
+                                <a href={newsLink(post.link)} target={post.link.startsWith('http') ? '_blank' : undefined} rel={post.link.startsWith('http') ? 'noreferrer' : undefined}>
+                                  {tx(post.linkLabel || 'Read more')}
+                                  <ExternalLink size={15} aria-hidden="true" />
+                                </a>
+                              )}
+                              {post.secondaryLink && (
+                                <div>
+                                  <a href={post.secondaryLink} target={post.secondaryLink.startsWith('http') ? '_blank' : undefined} rel={post.secondaryLink.startsWith('http') ? 'noreferrer' : undefined}>
+                                    {tx(post.secondaryLinkLabel || 'Additional details')}
+                                    <ExternalLink size={15} aria-hidden="true" />
+                                  </a>
+                                </div>
+                              )}
+                            </div>
+                          </article>
+                        ))}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              </div>
+            )}
           </section>
         )}
 
+        <section className="section opportunity-section" id="opportunities" aria-labelledby="opportunities-title">
+          <div className="section-heading wide">
+            <p className="eyebrow">{tx('Opportunities')}</p>
+            <h2 id="opportunities-title">{tx('Academic calls and professional opportunities.')}</h2>
+            <p>
+              {tx('Current and archived faculty positions, conference symposia, journal collections, special issues, calls for papers, calls for abstracts, and professional service opportunities.')}
+            </p>
+          </div>
+          <article className="opportunity-card opportunity-finder" aria-labelledby="dow-finder-title">
+            <div>
+              <p className="eyebrow">{tx('For students and faculty')}</p>
+              <h3 id="dow-finder-title">DoW Opportunity Finder</h3>
+              <p>{tx('Find funded defense-related internships, scholarships, fellowships, and research opportunities, with AI-assisted matching.')}</p>
+            </div>
+            <div className="opportunity-finder-actions">
+              <a className="button primary" href="https://hsrufinder.pages.dev/" target="_blank" rel="noopener noreferrer">
+                {tx('Open opportunity finder')}
+                <ExternalLink size={16} aria-hidden="true" />
+              </a>
+            </div>
+          </article>
+          {activeOpportunities.length === 0 && (
+            <article className="opportunity-empty">
+              <CalendarDays size={24} aria-hidden="true" />
+              <div>
+                <h3>{tx('No active calls are listed right now.')}</h3>
+                <p>{tx('Archived professional-service records remain visible below when available.')}</p>
+              </div>
+            </article>
+          )}
+          {opportunities.length > 0 && (
+            <div className="opportunity-grid">
+              {opportunities.map((opportunity) => {
+                const deadlineDays = daysUntil(opportunity.deadline)
+                const isArchived = opportunity.status === 'Archived' || deadlineDays < 0
+                const isUpcoming = !isArchived && deadlineDays <= 60
+                return (
+                  <article
+                    className={`opportunity-card${isUpcoming ? ' is-upcoming' : ''}${isArchived ? ' is-archived' : ''}`}
+                    key={opportunity.slug}
+                  >
+                    <div className="opportunity-card-header">
+                      <span className="opportunity-type">{tx(opportunity.type)}</span>
+                      <span className={`deadline-pill${isUpcoming ? ' urgent' : ''}`}>
+                        <CalendarDays size={15} aria-hidden="true" />
+                        {isArchived ? tx('Deadline passed') : opportunity.deadline ? copy.deadline(formatDate(opportunity.deadline, language)) : tx('Open until filled')}
+                      </span>
+                    </div>
+                    <div className="opportunity-status-row">
+                      <span>{isArchived ? tx('Archived') : tx(opportunity.status)}</span>
+                      {isUpcoming && <strong>{tx('Upcoming deadline')}</strong>}
+                    </div>
+                    <h3>{tx(opportunity.title)}</h3>
+                    <p className="opportunity-summary">{tx(opportunity.summary)}</p>
+                    <p>{tx(opportunity.body)}</p>
+                    {opportunity.role && <p className="opportunity-role"><strong>{tx('Role:')}</strong> {tx(opportunity.role)}</p>}
+                    {opportunity.people.length > 0 && (
+                      <div className="opportunity-people">
+                        <strong>{opportunity.peopleHeading ? tx(opportunity.peopleHeading) : tx('Organizers')}</strong>
+                        <ul>
+                          {opportunity.people.map((person) => {
+                            const [name, affiliation] = person.split('|').map((part) => part.trim())
+                            return (
+                              <li key={person}>
+                                <span>{name}</span>
+                                {affiliation && <small>{affiliation}</small>}
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      </div>
+                    )}
+                    {opportunity.topics.length > 0 && (
+                      <div className="inline-tags opportunity-tags" aria-label={`${tx(opportunity.title)} ${copy.topicsSuffix}`}>
+                        {opportunity.topics.map((topic) => <span key={topic}>{tx(topic)}</span>)}
+                      </div>
+                    )}
+                    <div className="opportunity-actions">
+                      {opportunity.link && (
+                        <a className="button primary" href={opportunity.link} target="_blank" rel="noreferrer">
+                          {tx(opportunity.cta)}
+                          <Send size={16} aria-hidden="true" />
+                        </a>
+                      )}
+                      {opportunity.secondaryLink && (
+                        <a className="secondary-action" href={opportunity.secondaryLink} target="_blank" rel="noreferrer">
+                          {opportunity.secondaryLinkLabel ? tx(opportunity.secondaryLinkLabel) : tx('Additional details')}
+                          <ExternalLink size={15} aria-hidden="true" />
+                        </a>
+                      )}
+                    </div>
+                  </article>
+                )
+              })}
+            </div>
+          )}
+        </section>
+
         <section className="section join-section" id="join">
           <div className="section-heading wide">
-            <p className="eyebrow">Join Us</p>
-            <h2>Join the M3 Lab.</h2>
+            <p className="eyebrow">{tx('Join Us')}</p>
+            <h2>{tx('Join the M3 Lab.')}</h2>
             <p>
-              The lab welcomes prospective graduate, undergraduate, visiting, and collaborator inquiries that connect clearly to M3 Lab research.
+              {tx('The lab welcomes prospective graduate, undergraduate, visiting, and collaborator inquiries that connect clearly to M3 Lab research.')}
             </p>
           </div>
           <div className="join-grid">
             {joinTracks.map((track) => (
               <article key={track.title}>
                 <BriefcaseBusiness size={22} aria-hidden="true" />
-                <h3>{track.title}</h3>
-                <p>{track.body}</p>
+                <h3>{tx(track.title)}</h3>
+                <p>{tx(track.body)}</p>
                 <ul>
-                  {track.skills.map((skill) => <li key={skill}>{skill}</li>)}
+                  {track.skills.map((skill) => <li key={skill}>{tx(skill)}</li>)}
                 </ul>
                 {'links' in track && track.links && (
                   <div className="join-links">
                     {track.links.map((link) => (
                       <a className="join-link" href={link.href} target="_blank" rel="noreferrer" key={link.href}>
-                        {link.label}
+                        {tx(link.label)}
                         <ExternalLink size={15} aria-hidden="true" />
                       </a>
                     ))}
@@ -993,43 +1931,59 @@ function App() {
               </article>
             ))}
           </div>
-          <aside className="email-checklist">
-            <h3>What to include in your email</h3>
+          <section className="email-checklist" aria-labelledby="email-checklist-title">
+            <h3 id="email-checklist-title">{tx('What to include in your email')}</h3>
             <ul>
-              <li><CheckCircle2 size={18} aria-hidden="true" />Brief research interests and target program</li>
-              <li><CheckCircle2 size={18} aria-hidden="true" />Relevant coursework, skills, or project experience</li>
-              <li><CheckCircle2 size={18} aria-hidden="true" />CV or resume, transcript if available, and expected start term</li>
-              <li><CheckCircle2 size={18} aria-hidden="true" />One or two M3 Lab projects that genuinely interest you</li>
+              <li><CheckCircle2 size={18} aria-hidden="true" />{tx('Brief research interests and target program')}</li>
+              <li><CheckCircle2 size={18} aria-hidden="true" />{tx('Relevant coursework, skills, or project experience')}</li>
+              <li><CheckCircle2 size={18} aria-hidden="true" />{tx('CV or resume, transcript if available, and expected start term')}</li>
+              <li><CheckCircle2 size={18} aria-hidden="true" />{tx('One or two M3 Lab projects that genuinely interest you')}</li>
             </ul>
-            <a className="button primary" href={`mailto:${site.email}`}>Email {site.email}</a>
-          </aside>
+            <a className="button primary" href={`mailto:${site.email}`}>{tx('Email')} {site.email}</a>
+          </section>
         </section>
 
         <section className="section teaching-section" id="teaching">
           <div className="teaching-panel">
             <GraduationCap size={28} aria-hidden="true" />
-            <p className="eyebrow">Teaching</p>
-            <h2>Materials courses and student training.</h2>
+            <p className="eyebrow">{tx('Teaching')}</p>
+            <h2>{tx('Materials courses and student training.')}</h2>
             <ul>
               {teachingItems.map((item) => <li key={item}>{item}</li>)}
             </ul>
+            <div className="teaching-resource-list" aria-label={tx('Featured teaching resources')}>
+              {teachingResources.map((resource) => (
+                <article className="teaching-resource-card" key={resource.title}>
+                  <span>{tx(resource.course)} · {tx(resource.label)}</span>
+                  <h3>{tx(resource.title)}</h3>
+                  <p>{tx(resource.body)}</p>
+                  <div className="inline-tags teaching-resource-tags">
+                    {resource.meta.map((item) => <span key={item}>{tx(item)}</span>)}
+                  </div>
+                  <a href={resource.href} target="_blank" rel="noreferrer">
+                    {tx(resource.linkLabel ?? 'Open ACT-CMS Module')}
+                    <ExternalLink size={15} aria-hidden="true" />
+                  </a>
+                </article>
+              ))}
+            </div>
           </div>
           <article className="teaching-innovation">
             <div className="innovation-copy">
               <BookOpen size={28} aria-hidden="true" />
-              <p className="eyebrow">Teaching Innovation</p>
-              <h2>CrystalCraft: VR/AR materials learning.</h2>
+              <p className="eyebrow">{tx('Teaching Innovation')}</p>
+              <h2>{tx('CrystalCraft: VR/AR materials learning.')}</h2>
               <p>
-                CrystalCraft is an open-source virtual reality application for building atomic models and learning crystal structures at the molecular level. The project turns materials visualization into a calm, creative learning environment developed through an interdisciplinary SDSU student-faculty collaboration.
+                {tx('CrystalCraft is an open-source virtual reality application for building atomic models and learning crystal structures at the molecular level. The project turns materials visualization into a calm, creative learning environment developed through an interdisciplinary SDSU student-faculty collaboration.')}
               </p>
               <ul>
-                {crystalCraftFeatures.map((feature) => <li key={feature}>{feature}</li>)}
+                {crystalCraftFeatures.map((feature) => <li key={feature}>{tx(feature)}</li>)}
               </ul>
               <div className="crystalcraft-links">
                 {crystalCraftLinks.map((link) => (
                   <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
-                    <img src={link.image} alt="" />
-                    {link.label}
+                    <img src={link.image} alt="" loading="lazy" decoding="async" />
+                    {tx(link.label)}
                     <ExternalLink size={15} aria-hidden="true" />
                   </a>
                 ))}
@@ -1038,32 +1992,37 @@ function App() {
             <div className="crystalcraft-video">
               <video controls preload="metadata" poster={crystalCraftDemoImage}>
                 <source src={`${import.meta.env.BASE_URL}crystalcraft/vrvid.mp4`} type="video/mp4" />
-                Your browser does not support HTML5 video.
+                {tx('Your browser does not support HTML5 video.')}
               </video>
-              <p>Early footage from the user perspective in the CrystalCraft VR environment.</p>
+              <p>{tx('Early footage from the user perspective in the CrystalCraft VR environment.')}</p>
             </div>
-            <div className="crystalcraft-gallery" aria-label="CrystalCraft image gallery">
+            <div className="crystalcraft-gallery" aria-label={tx('CrystalCraft image gallery')}>
               {crystalCraftGallery.map((item) => (
                 <figure key={item.title}>
-                  <img src={item.image} alt={item.title} />
-                  <figcaption>{item.title}</figcaption>
+                  <img src={item.image} alt={tx(item.title)} loading="lazy" decoding="async" />
+                  <figcaption>{tx(item.title)}</figcaption>
                 </figure>
               ))}
             </div>
             <div className="crystalcraft-team">
-              <img src={crystalCraftTeamImage} alt="CrystalCraft student and faculty project team" />
+              <img
+                src={crystalCraftTeamImage}
+                alt="CrystalCraft student and faculty project team"
+                loading="lazy"
+                decoding="async"
+              />
               <div>
-                <h3>Interdisciplinary SDSU project team</h3>
+                <h3>{tx('Interdisciplinary SDSU project team')}</h3>
                 <p>
-                  CrystalCraft was created through collaboration across software engineering, game design, mechanical engineering, materials science, 3D modeling, and faculty advising.
+                  {tx('CrystalCraft was created through collaboration across software engineering, game design, mechanical engineering, materials science, 3D modeling, and faculty advising.')}
                 </p>
                 <div className="crystalcraft-team-grid">
                   {crystalCraftTeam.map((member) => (
                     <article key={member.name}>
-                      <img src={member.image} alt={member.name} />
+                      <img src={member.image} alt={member.name} loading="lazy" decoding="async" />
                       <div>
                         <strong>{member.name}</strong>
-                        <span>{member.role}</span>
+                        <span>{tx(member.role)}</span>
                       </div>
                     </article>
                   ))}
@@ -1073,90 +2032,321 @@ function App() {
           </article>
         </section>
 
+        {collaborators.length > 0 && (
+          <section className="section partner-section" id="collaborators">
+            <div className="section-heading wide">
+              <p className="eyebrow">{tx('Collaborators')}</p>
+              <h2>{tx('Collaborators and Professional Network - Past and Present.')}</h2>
+              <p>
+                {tx('Profile cards include collaborators, co-authors, co-editors, advisors, and proposal collaborators across universities, national laboratories, and industry working on computational materials science, atomistic simulations, grain-boundary engineering, field-assisted materials processing, AI/ML-enabled materials research, materials informatics, and engineering education.')}
+              </p>
+            </div>
+            {collaboratorMapLocations.length > 0 && (
+              <div className="collaborator-map-panel" aria-labelledby="collaborator-map-title">
+                <div className="collaborator-map-header">
+                  <div>
+                    <h3 id="collaborator-map-title">
+                      <Globe2 size={24} aria-hidden="true" />
+                      {tx('Global collaboration map')}
+                    </h3>
+                    <p>
+                      {tx('Interactive OpenStreetMap view of institutional locations for current and past collaborators, co-authors, advisors, and professional network colleagues. Zoom, pan, and select markers for names.')}
+                    </p>
+                  </div>
+                  <div className="collaborator-map-metrics" aria-label={tx('Collaboration map summary')}>
+                    <span>
+                      <strong>{collaborators.length}</strong>
+                      {tx('people')}
+                    </span>
+                    <span>
+                      <strong>{collaboratorMapLocations.length}</strong>
+                      {tx('locations')}
+                    </span>
+                    <span>
+                      <strong>{collaboratorMapCountryCount}</strong>
+                      {tx('countries')}
+                    </span>
+                  </div>
+                </div>
+                <div className="collaborator-map-shell collaborator-real-map-shell">
+                  <div
+                    className="collaborator-leaflet-map"
+                    ref={collaboratorMapElementRef}
+                    role="application"
+                    aria-label={tx('Interactive world map with collaborator location markers')}
+                  />
+                </div>
+                <p className="collaborator-map-note">
+                  {tx('Map data and tiles by OpenStreetMap contributors. Use the plus and minus controls to zoom; drag to pan.')}
+                  {' '}
+                  <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noreferrer">
+                    {tx('Report a map issue')}
+                  </a>
+                </p>
+                <div className="collaborator-location-list" role="region" tabIndex={0} aria-label={tx('Collaborator locations')}>
+                  {collaboratorMapLocations.map((point) => (
+                    <div className="collaborator-location-item" key={point.location}>
+                      <MapPin size={16} aria-hidden="true" />
+                      <div>
+                        <strong>{point.location}</strong>
+                        <span>
+                          {point.collaborators.map((collaborator) => collaborator.name).join(', ')}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            <div className="search-filter-bar collaborator-search-controls" aria-label={tx('Collaborator search controls')}>
+              <label className="search-field">
+                <Search size={18} aria-hidden="true" />
+                <span>{tx('Search collaborators')}</span>
+                <input
+                  type="search"
+                  value={collaboratorQuery}
+                  onChange={(event) => setCollaboratorQuery(event.target.value)}
+                  placeholder={tx('Name, institution, city, topic')}
+                />
+              </label>
+              <label className="select-field">
+                <span>{tx('Country')}</span>
+                <select value={collaboratorCountry} onChange={(event) => setCollaboratorCountry(event.target.value)}>
+                  {collaboratorCountries.map((country) => (
+                    <option key={country} value={country}>{country === 'All' ? tx('All countries') : tx(country)}</option>
+                  ))}
+                </select>
+              </label>
+              <label className="select-field">
+                <span>{tx('Research area')}</span>
+                <select value={collaboratorArea} onChange={(event) => setCollaboratorArea(event.target.value)}>
+                  {collaboratorAreas.map((area) => (
+                    <option key={area} value={area}>{area === 'All' ? tx('All areas') : tx(area)}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <p className="result-summary">
+              {tx('Showing')} {filteredCollaborators.length} {tx('of')} {collaborators.length} {tx('collaborators')}
+            </p>
+            <div className="partner-layout">
+              <div>
+                {filteredCollaborators.length > 0 ? filteredCollaborators.map((collaborator) => (
+                  <article className="collaborator-card" key={collaborator.name}>
+                    <h3>
+                      <Handshake size={22} aria-hidden="true" />
+                      {collaborator.name}
+                    </h3>
+                    <p className="collaborator-position">{collaborator.position}</p>
+                    <p>{collaborator.affiliation}</p>
+                    {collaborator.networkNote && (
+                      <p className="collaborator-network-note">
+                        <strong>{tx('Network note')}:</strong> {collaborator.networkNote}
+                      </p>
+                    )}
+                    <div className="inline-tags collaborator-tags">
+                      {collaborator.researchAreas.map((area) => <span key={area}>{tx(area)}</span>)}
+                    </div>
+                    <div className="collaborator-links">
+                      {collaborator.links.map((link) => (
+                        <a href={link.href} target="_blank" rel="noreferrer" key={link.href}>
+                          {link.label}
+                          <ExternalLink size={15} aria-hidden="true" />
+                        </a>
+                      ))}
+                    </div>
+                  </article>
+                )) : (
+                  <article className="collaborator-card empty-results">
+                    <h3>
+                      <Handshake size={22} aria-hidden="true" />
+                      {tx('No collaborators match these filters.')}
+                    </h3>
+                    <p>{tx('Try another country, research area, or search term.')}</p>
+                  </article>
+                )}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <section className="section resource-section" id="resources">
+          <div className="section-heading wide">
+            <p className="eyebrow">{tx('Resources')}</p>
+            <h2>{tx('Experimental and computing resources.')}</h2>
+            <p>
+              {tx('Shared infrastructure supporting M3 Lab experiments, simulations, data analysis, and computational materials research.')}
+            </p>
+          </div>
+          <div className="resource-layout">
+            <section className="resource-block" aria-labelledby="experimental-resources-title">
+              <div className="resource-block-heading">
+                <Atom size={24} aria-hidden="true" />
+                <div>
+                  <h3 id="experimental-resources-title">{tx('Experimental Resources')}</h3>
+                  <p>
+                    {tx('Customized and lab-developed experimental platforms supporting Xu group studies of field-assisted processing, in-situ microscopy, thermal-mechanical coupling, and rapid high-temperature testing.')}
+                  </p>
+                </div>
+              </div>
+              <div className="experimental-resource-grid">
+                {experimentalResources.map((resource) => (
+                  <article className="experimental-resource-card" key={resource.id}>
+                    <figure>
+                      <img
+                        src={resource.image}
+                        alt={resource.alt}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>{tx(resource.caption)}</figcaption>
+                      <span>{tx(resource.imageStatus)}</span>
+                    </figure>
+                    <div>
+                      <h4>{tx(resource.title)}</h4>
+                      <p className="resource-tagline">{tx(resource.tagline)}</p>
+                      <p>{tx(resource.description)}</p>
+                      <ul>
+                        {resource.features.map((feature) => <li key={feature}>{tx(feature)}</li>)}
+                      </ul>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+            <section className="resource-block" aria-labelledby="computing-resources-title">
+              <div className="resource-block-heading">
+                <BarChart3 size={24} aria-hidden="true" />
+                <div>
+                  <h3 id="computing-resources-title">{tx('Computing Resources')}</h3>
+                  <p>
+                    {tx('The Xu Research Group uses high-performance computing resources at San Diego State University to support computational materials science, atomistic simulations, molecular dynamics, data analysis, and simulation-driven materials design.')}
+                  </p>
+                </div>
+              </div>
+              <div className="resource-list">
+                {computingResources.map((resource) => (
+                  <article key={resource.name}>
+                    <h4>{tx(resource.name)}</h4>
+                    <p>{tx(resource.body)}</p>
+                    <a href={resource.link} target="_blank" rel="noreferrer">
+                      {tx('Resource overview')}
+                      <ExternalLink size={15} aria-hidden="true" />
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </div>
+        </section>
+
         {visitorStats && (
           <section className="section visitor-stats-section" id="visitor-stats">
             <div className="section-heading wide">
-              <p className="eyebrow">Visitor Stats</p>
-              <h2>Public website activity.</h2>
-              <p>
-                Aggregated traffic for the last {visitorStats.days} days. Raw IP addresses and individual visitor identifiers are not published.
-              </p>
+              <p className="eyebrow">{tx('Visitor Stats')}</p>
+              <h2>{tx('Public website activity.')}</h2>
             </div>
-            <div className="stats-summary-grid">
-              <article>
-                <BarChart3 size={24} aria-hidden="true" />
-                <span>Pageviews</span>
-                <strong>{formatNumber(visitorStats.pageviews)}</strong>
-              </article>
-              <article>
-                <Search size={24} aria-hidden="true" />
-                <span>Unique visitors</span>
-                <strong>{formatNumber(visitorStats.unique_visitors)}</strong>
-              </article>
-              <article>
-                <Globe2 size={24} aria-hidden="true" />
-                <span>Countries</span>
-                <strong>{formatNumber(visitorStats.countries)}</strong>
-              </article>
-              <article>
-                <CheckCircle2 size={24} aria-hidden="true" />
-                <span>Bots excluded</span>
-                <strong>{formatNumber(visitorStats.bot_requests_excluded)}</strong>
-              </article>
-            </div>
-            <div className="stats-layout">
-              <article className="stats-panel">
-                <div className="stats-panel-heading">
-                  <h3>Recent daily activity</h3>
-                  <span>{formatDate(visitorStats.first_date)} - {formatDate(visitorStats.last_date)}</span>
+            {visitorStats.cumulative?.first_date && (
+              <article className="stats-cumulative" aria-label={tx('Cumulative pageviews')}>
+                <div>
+                  <span>{tx('Cumulative pageviews')}</span>
+                  <strong>{formatNumber(historicalPageviewBaseline.pageviews + Math.max(0, visitorStats.cumulative.pageviews - historicalPageviewBaseline.recordedPageviews), language)}</strong>
                 </div>
-                <div className="daily-bars" aria-label="Daily pageviews for the most recent 14 days">
-                  {recentVisitorDays.map((day) => (
-                    <div className="daily-bar" key={day.date}>
-                      <span>{new Date(`${day.date}T12:00:00`).toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' })}</span>
-                      <div>
-                        <i style={{ width: `${Math.max(4, (day.pageviews / maxDailyPageviews) * 100)}%` }} />
+                <div>
+                  <p>{tx('Since')}: <strong>{formatDate(historicalPageviewBaseline.firstDate, language)}</strong></p>
+                </div>
+              </article>
+            )}
+            {visitorStats.cumulative_bots_excluded && (
+              <article className="stats-cumulative stats-cumulative-bots" aria-label={tx('Cumulative bot requests excluded')}>
+                <div>
+                  <span>{tx('Cumulative bot requests excluded')}</span>
+                  <strong>{formatNumber(historicalBotBaseline.requests + Math.max(0, visitorStats.cumulative_bots_excluded.requests - historicalBotBaseline.recordedRequests), language)}</strong>
+                </div>
+                <div>
+                  <p>{tx('Since')}: <strong>{formatDate(historicalPageviewBaseline.firstDate, language)}</strong></p>
+                  <p className="stats-coverage-note">{tx('Automated requests excluded from pageviews.')}</p>
+                </div>
+              </article>
+            )}
+            <p className="stats-recent-summary">{copy.visitorStatsSummary(formatDate(visitorStats.first_date, language), formatDate(visitorStats.last_date, language))}</p>
+            <>
+              <div className="stats-summary-grid">
+                <article>
+                  <BarChart3 size={24} aria-hidden="true" />
+                  <span>{tx('Pageviews')}</span>
+                  <strong>{formatNumber(visitorStats.pageviews, language)}</strong>
+                </article>
+                <article>
+                  <Search size={24} aria-hidden="true" />
+                  <span>{tx('Unique visitors')}</span>
+                  <strong>{formatNumber(visitorStats.unique_visitors, language)}</strong>
+                </article>
+                <article>
+                  <Globe2 size={24} aria-hidden="true" />
+                  <span>{tx('Countries')}</span>
+                  <strong>{formatNumber(visitorStats.countries, language)}</strong>
+                </article>
+                <article>
+                  <CheckCircle2 size={24} aria-hidden="true" />
+                  <span>{tx('Bots excluded')}</span>
+                  <strong>{formatNumber(visitorStats.bot_requests_excluded, language)}</strong>
+                </article>
+              </div>
+              <div className="stats-layout">
+                <article className="stats-panel">
+                  <div className="stats-panel-heading">
+                    <h3>{tx('Recent daily activity')}</h3>
+                    <span>{formatDate(visitorStats.first_date, language)} - {formatDate(visitorStats.last_date, language)}</span>
+                  </div>
+                  <div className="daily-bars" aria-label="Daily pageviews for the most recent 14 days">
+                    {recentVisitorDays.map((day) => (
+                      <div className="daily-bar" key={day.date}>
+                        <span>{new Date(`${day.date}T12:00:00`).toLocaleDateString(languageLocales[language], { month: 'numeric', day: 'numeric' })}</span>
+                        <div>
+                          <i style={{ width: `${Math.max(4, (day.pageviews / maxDailyPageviews) * 100)}%` }} />
+                        </div>
+                        <strong>{formatNumber(day.pageviews, language)}</strong>
                       </div>
-                      <strong>{formatNumber(day.pageviews)}</strong>
-                    </div>
-                  ))}
-                </div>
-              </article>
-              <article className="stats-panel">
-                <div className="stats-panel-heading">
-                  <h3>Top countries</h3>
-                  <span>By pageviews</span>
-                </div>
-                <div className="stats-list">
-                  {visitorStats.country_totals.slice(0, 8).map((country) => (
-                    <div key={country.country_code}>
-                      <span>{countryName(country.country_code)}</span>
-                      <strong>{formatNumber(country.pageviews)}</strong>
-                    </div>
-                  ))}
-                </div>
-              </article>
-            </div>
+                    ))}
+                  </div>
+                </article>
+                <article className="stats-panel">
+                  <div className="stats-panel-heading">
+                    <h3>{tx('Top countries')}</h3>
+                    <span>{tx('By pageviews')}</span>
+                  </div>
+                  <div className="stats-list">
+                    {visitorStats.country_totals.slice(0, 8).map((country) => (
+                      <div key={country.country_code}>
+                        <span>{countryName(country.country_code, language)}</span>
+                        <strong>{formatNumber(country.pageviews, language)}</strong>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              </div>
+            </>
           </section>
         )}
 
         <section className="contact-section" id="contact">
           <div>
-            <p className="eyebrow">Contact</p>
-            <h2>Connect with the M3 Lab at SDSU.</h2>
+            <p className="eyebrow">{tx('Contact')}</p>
+            <h2>{tx('Connect with the M3 Lab at SDSU.')}</h2>
           </div>
           <div className="contact-grid">
             <a href={`mailto:${site.email}`}>
               <Mail size={22} aria-hidden="true" />
-              <span><strong>Email</strong>{site.email}</span>
+              <span><strong>{tx('Email')}</strong>{site.email}</span>
             </a>
             <div>
               <MapPin size={22} aria-hidden="true" />
-              <span><strong>Address</strong>{site.address}</span>
+              <span><strong>{tx('Address')}</strong>{localizedSite.address}</span>
             </div>
             <a href={site.scholar} target="_blank" rel="noreferrer">
               <Atom size={22} aria-hidden="true" />
-              <span><strong>Google Scholar</strong>Publication profile</span>
+              <span><strong>{tx('Google Scholar')}</strong>{tx('Publication profile')}</span>
             </a>
           </div>
         </section>
@@ -1164,16 +2354,16 @@ function App() {
 
       <footer className="site-footer">
         <div>
-          <strong>{site.shortName}</strong>
-          <span>{site.department} / {site.university}</span>
+          <strong>{localizedSite.shortName}</strong>
+          <span>{localizedSite.department} / {localizedSite.university}</span>
         </div>
         <div>
-          <a href="#home">Back to top</a>
-          <a href={`mailto:${site.email}`}>Contact</a>
-          <a href={site.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
-          <a href="https://accessibility.sdsu.edu/" target="_blank" rel="noreferrer">Accessibility</a>
+          <a href={sitePath('/')}>{tx('Home')}</a>
+          <a href={`mailto:${site.email}`}>{tx('Contact')}</a>
+          <a href={site.scholar} target="_blank" rel="noreferrer">{tx('Google Scholar')}</a>
+          <a href="https://accessibility.sdsu.edu/" target="_blank" rel="noreferrer">{tx('Accessibility')}</a>
         </div>
-        <span>Copyright {new Date().getFullYear()} Wenwu Xu, San Diego State University.</span>
+        <span>{copy.copyright(new Date().getFullYear())}</span>
       </footer>
     </div>
   )

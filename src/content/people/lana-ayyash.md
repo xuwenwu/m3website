@@ -7,7 +7,7 @@ sortOrder: 562
 image: team/lana-ayyash
 project: Experimental measurement of grain-boundary electrical resistance
 tags: [grain boundaries, electrical resistance, aluminum, ME499]
-currentPosition: Undergraduate alumna
+currentPosition: Prototyping Engineer Intern, General Atomics Aeronautical Systems (as of 2026)
 featured: false
 ---
 Lana worked on experimental measurement of grain-boundary electrical resistance in polycrystalline metals, including ME499 work measuring grain-boundary electrical resistivity of aluminum.

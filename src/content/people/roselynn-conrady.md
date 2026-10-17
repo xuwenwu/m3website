@@ -7,7 +7,7 @@ sortOrder: 610
 image: team/roselynn-conrady
 project: Virtual-reality development of automatic switching functions
 tags: [VR, visualization, software]
-currentPosition: Undergraduate alumna
+currentPosition: Systems Engineer, Northrop Grumman (as of 2026)
 featured: false
 ---
 Roselynn worked on virtual-reality development of automatic switching functions.

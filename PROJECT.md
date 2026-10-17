@@ -32,5 +32,5 @@ website and related content updates.
 - Sky Soltero is included as a current undergraduate student researcher
 - The full local roster is migrated from the current WordPress team page
 - Public research, recruiting, profile, and SDSU News content has been incorporated where useful
-- The live WordPress site has not been updated from this workspace
+- The main site and `/new/` use this shared static-site source; legacy WordPress directories are retained on the host
 - This project can continue to accumulate content, design, and deployment notes

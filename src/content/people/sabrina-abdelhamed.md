@@ -7,7 +7,7 @@ sortOrder: 603
 image: team/sabrina-abdelhamed
 project: In-situ SEM of flash sintering of 8YSZ
 tags: [flash sintering, in-situ SEM, ceramics]
-currentPosition: Undergraduate alumna
+currentPosition: Systems Engineer, Northrop Grumman (as of 2026)
 featured: false
 ---
 Sabrina worked on in-situ SEM study of flash sintering of 8 mol% yttria-stabilized zirconia.

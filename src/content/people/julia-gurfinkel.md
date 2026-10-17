@@ -7,7 +7,7 @@ sortOrder: 611
 image: team/julia-gurfinkel
 project: Sample design and prototyping for aluminum micro-tensile testing
 tags: [prototyping, tensile testing, aluminum]
-currentPosition: Undergraduate alumna
+currentPosition: Test Engineer, General Atomics Aeronautical Systems (as of 2026)
 featured: false
 ---
 Julia worked on sample design and prototyping of aluminum metal for micro-tensile testing.

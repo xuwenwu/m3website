@@ -36,8 +36,12 @@ jobs:
       - name: Run lint checks
         run: npm run lint
 
-      - name: Build preview website
-        run: npm run build:new
+      - name: Build and validate both website versions
+        run: |
+          npm run build:root
+          npm run test:seo:root
+          npm run build:new
+          npm run test:seo:new
 
       - name: Package preview website
         shell: bash
@@ -50,7 +54,23 @@ jobs:
             zip -qr ../m3-new-deploy.zip new
           )
 
+      - name: Check whether this source is already published
+        id: live
+        shell: bash
+        run: |
+          set -euo pipefail
+          LIVE_SHA=$(curl -fsS --connect-timeout 15 --max-time 30 \
+            "https://mmm.sdsu.edu/new/site-release.json?commit=${GITHUB_SHA}" \
+            | jq -r '.source_commit // empty' 2>/dev/null || true)
+          if [ "${LIVE_SHA}" = "${GITHUB_SHA}" ]; then
+            echo "already_current=true" >> "$GITHUB_OUTPUT"
+            echo "This source commit is already published at /new/."
+          else
+            echo "already_current=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Configure deployment key
+        if: steps.live.outputs.already_current != 'true'
         shell: bash
         env:
           CPANEL_SSH_PRIVATE_KEY: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }}
@@ -65,6 +85,7 @@ jobs:
           chmod 600 "$HOME/.ssh/id_ed25519"
 
       - name: Upload and publish preview website
+        if: steps.live.outputs.already_current != 'true'
         shell: bash
         run: |
           set -euo pipefail

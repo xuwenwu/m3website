@@ -4,7 +4,7 @@ role: Undergraduate Researcher / MESA Summer Undergraduate Research Academy Inte
 group: Undergraduate Researchers
 dates: 2026
 sortOrder: 190
-image:
+image: team/isaiah-clemons
 project: TEP experiments and characterization of Cu
 tags: [TEP, copper, characterization, MESA]
 currentPosition:

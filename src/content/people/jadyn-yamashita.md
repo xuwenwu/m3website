@@ -7,7 +7,7 @@ sortOrder: 410
 image: team/jadyn-yamashita
 project: Electro-nano-pulsing technology
 tags: [ENP, processing, experiments]
-currentPosition: Undergraduate alumnus
+currentPosition: B.S./M.S. Mechanical Engineering student, San Diego State University (as of 2026)
 featured: false
 ---
 Jadyn previously worked on electro-nano-pulsing technology as an undergraduate researcher.

@@ -7,7 +7,7 @@ sortOrder: 622
 image: team/pablo-hinojosa-amaya
 project: Finite-element modeling for a bimodal grain-boundary serration model
 tags: [FEA, grain boundaries, microstructure]
-currentPosition: Undergraduate alumnus
+currentPosition: Bioengineering student, San Diego State University (as of 2026)
 featured: false
 ---
 Pablo worked on finite-element modeling for a bimodal grain-boundary serration model.

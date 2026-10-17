@@ -1,54 +1,41 @@
-# Deployment Notes
+# Deployment
 
-The recommended first deployment is a non-destructive test copy at:
+Shared source builds https://mmm.sdsu.edu/ and https://mmm.sdsu.edu/new/.
+The source repository is https://github.com/xuwenwu/m3website.
 
-```text
-https://mmm.sdsu.edu/new/
-```
+## Build and validate
 
-This keeps the current WordPress site untouched while the redesign is reviewed.
-
-## Build for the Test Subdirectory
+Use Node.js 22.12 or newer with the locked dependencies (`npm ci`).
 
 ```powershell
-npm ci
 npm run lint
 npm run build:new
-npm run preview
+npm run test:seo:new
 ```
 
-Upload the contents of `dist/` to the `new` folder on the SDSU/RohanCP server.
-
-Important: upload the files inside `dist/`, not the `dist` folder itself. After upload, the server folder should look like:
-
-```text
-new/
-  index.html
-  assets/
-  favicon.svg
-  icons.svg
-```
-
-## Build for the Final Root Site
-
-Use this only when you are ready to replace the current root site:
+Save the preview output before building root: each build replaces `dist/`.
 
 ```powershell
-npm ci
-npm run lint
 npm run build:root
+npm run test:seo:root
 ```
 
-Upload the contents of `dist/` to the public web root for `mmm.sdsu.edu`.
+Each build contains 56 English/Traditional Chinese pages and three standalone teaching resources. Individual routes are real HTML directories; do not redirect them to the homepage. Production permits indexing. Preview uses staging crawler directives and production canonical URLs.
 
-## Routing Notes
+## Publish
 
-The current site uses one page with section anchors such as `#research`, `#people`, and `#join`. It does not use client-side routes like `/research`, so an Apache `.htaccess` fallback is not required for the current version.
+Publish `/new/` first and verify it. Publish root when the user explicitly authorizes it. A request to update both authorizes both versions for that release.
 
-If future versions add real routes such as `/research` or `/people`, the server may need a fallback rule that serves `index.html` for those paths.
+Back up files that will be replaced and verify uploaded file hashes. Preserve server configuration, WordPress archives, server-managed analytics reports, and unrelated directories. Do not upload review fixtures, reports, private keys, `node_modules/`, or `.prerender/`.
 
-## WordPress Notes
+The existing SSH configuration is in `scripts/deploy-cpanel-new.ps1` and `scripts/deploy-cpanel-root.ps1`. Private keys remain outside this repository.
 
-For the first deployment, do not convert this into a WordPress theme. Use static hosting in `/new/` if SDSU/RohanCP allows file upload.
+Each build publishes `site-release.json`, identifying its source Git commit, deployment base, and navigation version. Root and preview should have the same source commit and navigation version, with different bases.
 
-Convert to a WordPress theme later only if you decide that editing through the WordPress dashboard is more important than the simpler Markdown/YAML workflow in this repository.
+## GitHub workflow
+
+Pushes to main validate both builds and deploy preview. If the same commit has already been published locally, the workflow recognizes its release marker and skips redundant SSH upload. This accommodates SDSU hosts that respond locally but time out from GitHub-hosted runners. Unpublished commits retain the existing automatic preview deployment.
+
+## Verify live
+
+Run `node scripts/audit-live-parity.mjs`. Check mobile Menu > More > Teaching, dismissal after selection, desktop dropdown dismissal, keyboard navigation, both languages, statistics links, teaching media, and news-to-grant links. Root must remain indexable; preview must retain staging protection.

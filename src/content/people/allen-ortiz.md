@@ -7,7 +7,7 @@ sortOrder: 621
 image: team/allen-ortiz
 project: In-situ SEM tensile tester
 tags: [in-situ SEM, tensile testing, instrumentation]
-currentPosition: Undergraduate alumnus
+currentPosition: Aerospace Engineering student, University of Southern California (as of 2026)
 featured: false
 ---
 Allen worked on the in-situ SEM tensile tester.

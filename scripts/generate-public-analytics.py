@@ -20,6 +20,8 @@ LOG_DIR = os.environ.get("M3_ANALYTICS_LOG_DIR", "/home/mmm/logs")
 PUBLIC_DIR = os.environ.get("M3_ANALYTICS_PUBLIC_DIR", "/home/mmm/public_html/analytics")
 OUTPUT_PATH = os.path.join(PUBLIC_DIR, "visitor-stats.json")
 CACHE_DIR = os.environ.get("M3_ANALYTICS_CACHE_DIR", "/home/mmm/.m3-analytics")
+HISTORY_PATH = os.environ.get("M3_ANALYTICS_HISTORY_PATH", os.path.join(CACHE_DIR, "cumulative-pageviews.json"))
+BOT_HISTORY_PATH = os.environ.get("M3_ANALYTICS_BOT_HISTORY_PATH", os.path.join(CACHE_DIR, "cumulative-bot-requests.json"))
 
 
 LINE_RE = re.compile(
@@ -178,6 +180,77 @@ def list_log_files():
     return sorted(paths)
 
 
+def merge_cumulative_pageviews(observed, history_path=HISTORY_PATH):
+    # Preserve aggregate counts after source logs rotate away. Repeated scans do
+    # not add the same requests again. Only date-level counts are retained.
+    history = {}
+    periods = []
+    if os.path.exists(history_path):
+        with open(history_path, encoding="utf-8") as handle:
+            saved = json.load(handle)
+        if saved.get("version") != 1:
+            raise ValueError("Unsupported cumulative analytics history version")
+        history = saved["daily_pageviews"]
+        periods = saved.get("recovered_periods", [])
+        for day, count in history.items():
+            dt.datetime.strptime(day, "%Y-%m-%d")
+            if type(count) is not int or count < 0:
+                raise ValueError("Invalid cumulative analytics count")
+    for day, count in observed.items():
+        history[day] = max(history.get(day, 0), count)
+    # Historical snapshots may retain a period total without its daily rows.
+    # Count the larger of the saved period total and its known daily counts,
+    # never both. Disjoint intervals also prevent recovered snapshots overlapping.
+    recovered = 0
+    previous_end = ""
+    for period in sorted(periods, key=lambda p: p["first_date"]):
+        first, last, count = period["first_date"], period["last_date"], period["pageviews"]
+        dt.datetime.strptime(first, "%Y-%m-%d")
+        dt.datetime.strptime(last, "%Y-%m-%d")
+        if first > last or first <= previous_end or type(count) is not int or count < 0:
+            raise ValueError("Invalid or overlapping recovered analytics period")
+        previous_end = last
+        daily_total = sum(value for day, value in history.items() if first <= day <= last)
+        recovered += max(0, count - daily_total)
+    os.makedirs(os.path.dirname(history_path), exist_ok=True)
+    with open(history_path + ".tmp", "w", encoding="utf-8") as handle:
+        json.dump({"version": 1, "daily_pageviews": history, "recovered_periods": periods}, handle, sort_keys=True, indent=2)
+        handle.write("\n")
+    os.replace(history_path + ".tmp", history_path)
+    days = sorted(day for day, count in history.items() if count > 0)
+    return {
+        "pageviews": sum(history.values()) + recovered,
+        "minimum": True,
+        "recovered_period_pageviews": recovered,
+        "first_date": days[0] if days else "",
+        "last_date": days[-1] if days else "",
+        "coverage": "partial_logs_and_recovered_snapshots",
+        "note": "Minimum supported by retained logs and recovered analytics snapshots, with overlapping periods counted only once. Historical records are incomplete; the full lifetime total and original tracking start date are unknown. Repeat requests are included; known bots and static files are excluded.",
+    }
+
+
+def merge_cumulative_bot_requests(observed, history_path=BOT_HISTORY_PATH):
+    history = {}
+    if os.path.exists(history_path):
+        with open(history_path, encoding="utf-8") as handle:
+            saved = json.load(handle)
+        if saved.get("version") != 1:
+            raise ValueError("Unsupported cumulative bot history version")
+        history = saved["daily_bot_requests"]
+    for day, count in list(history.items()) + list(observed.items()):
+        dt.datetime.strptime(day, "%Y-%m-%d")
+        if day < "2024-05-01" or type(count) is not int or count < 0:
+            raise ValueError("Invalid cumulative bot count")
+    for day, count in observed.items():
+        history[day] = max(history.get(day, 0), count)
+    os.makedirs(os.path.dirname(history_path), exist_ok=True)
+    with open(history_path + ".tmp", "w", encoding="utf-8") as handle:
+        json.dump({"version": 1, "daily_bot_requests": history}, handle, sort_keys=True, indent=2)
+        handle.write("\n")
+    os.replace(history_path + ".tmp", history_path)
+    return {"requests": sum(history.values()), "coverage": "retained_logs_since_2024-05-01"}
+
+
 def build_report():
     cutoff = dt.date.today() - dt.timedelta(days=DAYS)
     by_day_hits = Counter()
@@ -194,6 +267,8 @@ def build_report():
     first_date = None
     last_date = None
     log_files = list_log_files()
+    cumulative_by_day = Counter()
+    cumulative_bots_by_day = Counter()
 
     for path in log_files:
         with gzip.open(path, "rt", encoding="utf-8", errors="replace") as handle:
@@ -205,15 +280,20 @@ def build_report():
                 method = match.group("method")
                 ua = match.group("ua")
                 request_date = parse_date(match.group("stamp"))
-                if request_date < cutoff:
-                    continue
                 if status >= 400 or method not in {"GET", "HEAD"}:
                     continue
                 if is_bot(ua):
-                    bot_requests += 1
+                    if request_date >= dt.date(2024, 5, 1):
+                        cumulative_bots_by_day[request_date.isoformat()] += 1
+                    if request_date >= cutoff:
+                        bot_requests += 1
                     continue
                 request_path = normalize_path(match.group("url"))
                 if is_static_path(request_path):
+                    continue
+
+                cumulative_by_day[request_date.isoformat()] += 1
+                if request_date < cutoff:
                     continue
 
                 ip = match.group("ip")
@@ -240,6 +320,8 @@ def build_report():
         "first_date": first_date.isoformat() if first_date else "",
         "last_date": last_date.isoformat() if last_date else "",
         "pageviews": included_pageviews,
+        "cumulative": merge_cumulative_pageviews(cumulative_by_day),
+        "cumulative_bots_excluded": merge_cumulative_bot_requests(cumulative_bots_by_day),
         "unique_visitors": len(all_visitors),
         "countries": len(country_hits),
         "bot_requests_excluded": bot_requests,

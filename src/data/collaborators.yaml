@@ -1,13 +1,776 @@
 ---
-- name: "SDSU Mechanical Engineering"
-  detail: "Home department for the M3 Lab."
-  link: "https://mechanical.sdsu.edu/"
-- name: "SDSU College of Engineering"
-  detail: "College context for research facilities, recruiting, and student training."
-  link: "https://engineering.sdsu.edu/"
-- name: "Google Scholar profile"
-  detail: "Public Google Scholar profile for Wenwu Xu."
-  link: "https://scholar.google.com/citations?user=AdbfEI4AAAAJ&hl=en"
-- name: "ScienceDirect / Scopus author profile"
-  detail: "Scopus-indexed author page listing publication metrics and recent papers."
-  link: "https://www.sciencedirect.com/author/7404429179/wenwu-xu"
+- name: "Adrian Sabau"
+  position: "Senior Research Staff Member"
+  affiliation: "Oak Ridge National Laboratory"
+  location: "Oak Ridge, TN, USA"
+  country: "United States"
+  latitude: 35.931
+  longitude: -84.310
+  researchAreas: [Computational fluid dynamics, Energy transport, Phase changes, Interface tracking, Additive manufacturing]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=STsPNOEAAAAJ"
+  institutionalProfile: "https://www.ornl.gov/staff-profile/adrian-sabau"
+  personalWebsite: "https://adriansabau.net/"
+- name: "Andrew Horsfield"
+  position: "Retired Professor"
+  affiliation: "Imperial College London"
+  location: "London, United Kingdom"
+  country: "United Kingdom"
+  latitude: 51.498
+  longitude: -0.174
+  researchAreas: [Materials engineering, Condensed matter physics, Atomistic simulation]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=xkfxdHEAAAAJ"
+  institutionalProfile: "https://profiles.imperial.ac.uk/a.horsfield"
+- name: "Arezoo Emdadi"
+  position: "Assistant Professor"
+  affiliation: "Missouri University of Science and Technology, Department of Materials Science and Engineering"
+  location: "Rolla, MO, USA"
+  country: "United States"
+  latitude: 37.953
+  longitude: -91.775
+  researchAreas: [Phase-field modeling, Microstructure evolution, Fracture mechanics, Multiphase materials, Computational materials science]
+  institutionalProfile: "https://mst.elsevierpure.com/en/persons/arezoo-emdadi/"
+  researchGate: "https://www.researchgate.net/profile/Arezoo-Emdadi"
+- name: "Avanish Mishra"
+  position: "Staff Scientist"
+  affiliation: "Los Alamos National Laboratory, Theoretical Division"
+  location: "Los Alamos, NM, USA"
+  country: "United States"
+  latitude: 35.882
+  longitude: -106.303
+  researchAreas: [AI for materials science, First-principles methods, Molecular dynamics, Materials informatics, Quantum computing]
+  personalWebsite: "https://mavanish.github.io/"
+  orcid: "https://orcid.org/0000-0003-3997-0445"
+- name: "Brandon Bocklund"
+  position: "Postdoctoral Researcher"
+  affiliation: "Lawrence Livermore National Laboratory, Materials Science Division"
+  location: "Livermore, CA, USA"
+  country: "United States"
+  latitude: 37.682
+  longitude: -121.768
+  researchAreas: [CALPHAD, Thermodynamic modeling, Uncertainty quantification, Phase equilibria, Computational materials science]
+  orcid: "https://orcid.org/0000-0002-3264-8413"
+- name: "Chu Lun Alex Leung"
+  position: "Associate Professor in Imaging of Advanced Materials and Manufacturing"
+  affiliation: "University College London, Department of Mechanical Engineering; Research Complex at Harwell"
+  location: "London, United Kingdom"
+  country: "United Kingdom"
+  latitude: 51.524
+  longitude: -0.134
+  researchAreas: [Advanced manufacturing, Synchrotron imaging, X-ray imaging, Additive manufacturing, Materials processing]
+  institutionalProfile: "https://profiles.ucl.ac.uk/67091-chu-lun-alex-leung"
+  professionalProfile: "https://www.rc-harwell.ac.uk/who-we-are/group-leader/chu-lun-alex-leung"
+  orcid: "https://orcid.org/0000-0002-4153-7512"
+- name: "Dmitry G. Eskin"
+  position: "Professor"
+  affiliation: "Brunel University London; Brunel Centre for Advanced Solidification Technology (BCAST)"
+  location: "Uxbridge, United Kingdom"
+  country: "United Kingdom"
+  latitude: 51.532
+  longitude: -0.472
+  researchAreas: [Aluminum alloys, Solidification, Casting, Physical metallurgy]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=LaWZDy4AAAAJ"
+  institutionalProfile: "https://www.brunel.ac.uk/people/dmitry-eskin"
+  orcid: "https://orcid.org/0000-0002-0303-2249"
+- name: "Dierk Raabe"
+  position: "Director and Scientific Member"
+  affiliation: "Max Planck Institute for Sustainable Materials; RWTH Aachen University"
+  location: "Aachen, Germany"
+  country: "Germany"
+  latitude: 50.775
+  longitude: 6.083
+  researchAreas: [Sustainable metallurgy, Alloy design, Microstructure physics, Atom probe tomography, Computational materials science]
+  institutionalProfile: "https://www.mpg.de/466426/nachhaltige-materialien-raabe"
+  personalWebsite: "https://www.dierk-raabe.com/"
+  researchGate: "https://www.researchgate.net/profile/Dierk-Raabe"
+  orcid: "https://orcid.org/0000-0003-0194-6124"
+- name: "Elisa Torresani"
+  position: "Assistant Professor"
+  affiliation: "San Diego State University, Department of Mechanical Engineering"
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Powder metallurgy, Sintering, Spark plasma sintering, Additive manufacturing]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=sQ57WwQAAAAJ"
+  institutionalProfile: "https://mechanical.sdsu.edu/people/elisa-torresani"
+  orcid: "https://orcid.org/0000-0003-0705-4282"
+- name: "Enyu Guo"
+  position: "Professor"
+  affiliation: "Dalian University of Technology, School of Materials Science and Engineering"
+  location: "Dalian, China"
+  country: "China"
+  latitude: 38.879
+  longitude: 121.525
+  researchAreas: [Light alloys, Materials processing, Microstructure characterization, Additive manufacturing, Structural materials]
+  institutionalProfile: "https://faculty.dlut.edu.cn/2017013197/en/yjgk/992998/list/index.htm"
+  scienceDirect: "https://www.sciencedirect.com/author/54915253600/enyu-guo"
+  profile: "https://loop.frontiersin.org/people/2423108/publications"
+- name: "Eugene Olevsky"
+  position: "Dean of the College of Engineering; Distinguished Professor; Director, Powder Technology Laboratory"
+  affiliation: "San Diego State University"
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Powder processing, Sintering, Spark plasma sintering, Ceramic and metallic materials, Computational modeling]
+  institutionalProfile: "https://mechanical.sdsu.edu/people/eugene-olevsky"
+  labWebsite: "https://www.ptl.sdsu.edu/"
+- name: "Ghanshyam Pilania"
+  position: "Senior Scientist"
+  affiliation: "General Electric; Los Alamos National Laboratory"
+  location: "Niskayuna, NY, USA"
+  country: "United States"
+  latitude: 42.814
+  longitude: -73.930
+  researchAreas: [Materials informatics, Machine learning, Computational materials science, Oxides, Radiation-tolerant materials]
+  personalWebsite: "https://sites.google.com/view/ghanshyampilania/home"
+  orcid: "https://orcid.org/0000-0003-4460-1572"
+- name: "Iakovos Tzanakis"
+  position: "Professor in Engineering Materials"
+  affiliation: "Oxford Brookes University"
+  location: "Oxford, United Kingdom"
+  country: "United Kingdom"
+  latitude: 51.754
+  longitude: -1.254
+  researchAreas: [Ultrasonic processing, Cavitation, Bubble dynamics, Sonochemistry, Materials processing]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=X1RenJ8AAAAJ"
+  institutionalProfile: "https://www.brookes.ac.uk/profiles/staff/iakovos-tzanakis"
+  labWebsite: "https://cav-it.co.uk/teachers-profile"
+- name: "James M. Goff"
+  position: "Researcher"
+  affiliation: "Sandia National Laboratories"
+  location: "Albuquerque, NM, USA"
+  country: "United States"
+  latitude: 35.084
+  longitude: -106.650
+  researchAreas: [Atomistic simulations, Machine-learned interatomic potentials, Atomic cluster expansion, Molecular dynamics, Computational materials science]
+  orcid: "https://orcid.org/0000-0001-7026-7200"
+  profile: "https://meetings-archive.aps.org/sccm/2025/l07/4/"
+- name: "James Saal"
+  position: "Senior Director of External Research Programs"
+  affiliation: "Citrine Informatics; Johns Hopkins Engineering for Professionals"
+  location: "Redwood City, CA, USA"
+  country: "United States"
+  latitude: 37.486
+  longitude: -122.236
+  researchAreas: [Materials informatics, Materials science, Materials design, CALPHAD, ICME]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=IVZ3-ecAAAAJ"
+  facultyProfile: "https://ep.jhu.edu/faculty/james-saal/"
+  professionalProfile: "https://info.citrine.io/citrine-campus"
+- name: "Jian Luo"
+  position: "Professor"
+  affiliation: "University of California San Diego, Department of NanoEngineering; Materials Science and Engineering Program"
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Grain-boundary complexions, Interfaces, Ceramics and metals, Energy materials, Thermodynamic modeling]
+  institutionalProfile: "https://matsci.ucsd.edu/faculty/jian-luo"
+  profile: "https://profiles.ucsd.edu/jian.luo"
+  labWebsite: "https://jianluo.ucsd.edu/"
+- name: "Jing Gu"
+  position: "Professor"
+  affiliation: "San Diego State University, Department of Chemistry and Biochemistry"
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Photoelectrochemistry, Hydrogen fuel, Plastic upcycling, 2D material development, Catalysis]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=Dw-ziMkAAAAJ"
+  institutionalProfile: "https://sciences.sdsu.edu/people/jing-gu"
+  labWebsite: "https://thegu-lab.sdsu.edu/index.php/dr-jing-gu/"
+- name: "Juan J. Melendez"
+  position: "Full Professor"
+  affiliation: "University of Extremadura, Department of Physics"
+  location: "Badajoz, Spain"
+  country: "Spain"
+  latitude: 38.879
+  longitude: -6.970
+  researchAreas: [Condensed matter physics, Solid-state physics, Computational materials, Diffusion, Defects]
+  institutionalProfile: "https://fisteor.cms.unex.es/investigadores/juan-j-melendez/"
+  personalWebsite: "https://landau.unex.es/~sphinx/juanjo/index.html"
+  orcid: "https://orcid.org/0000-0003-1036-6666"
+- name: "Kaka Ma"
+  position: "Associate Professor"
+  affiliation: "Texas A&M University, Department of Materials Science and Engineering"
+  location: "College Station, TX, USA"
+  country: "United States"
+  latitude: 30.618
+  longitude: -96.340
+  researchAreas: [Powder processing, Additive manufacturing, Field assisted sintering, Energy materials, Harsh-environment materials]
+  institutionalProfile: "https://engineering.tamu.edu/materials/profiles/ma-kaka.html"
+  researchGate: "https://www.researchgate.net/profile/Kaka-Ma"
+- name: "Khaled Morsi"
+  position: "Professor"
+  affiliation: "San Diego State University, Department of Mechanical Engineering"
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Nanomaterials, Powder metallurgy, Engineering materials, Advanced materials processing, Thermodynamics]
+  institutionalProfile: "https://mechanical.sdsu.edu/people/khaled-morsi"
+  labWebsite: "https://morsi.sdsu.edu"
+- name: "Kun Lu"
+  position: "Associate Professor"
+  affiliation: "University of Alabama, School of Library and Information Studies"
+  location: "Tuscaloosa, AL, USA"
+  country: "United States"
+  latitude: 33.209
+  longitude: -87.569
+  researchAreas: [Natural language processing, Text mining, Information retrieval, Materials-science literature mining, Machine learning]
+  institutionalProfile: "https://issr.ua.edu/people/kun-lu/"
+- name: "Lilian Davila"
+  position: "Assistant Professional Researcher"
+  affiliation: "University of California Merced, Chemical and Materials Engineering"
+  location: "Merced, CA, USA"
+  country: "United States"
+  latitude: 37.365
+  longitude: -120.425
+  researchAreas: [Nanostructures, Nanomaterials, Biomaterials, Environmental materials, Computational and experimental materials methods]
+  institutionalProfile: "https://engineering.ucmerced.edu/content/lilian-davila"
+  profile: "https://hsri.ucmerced.edu/content/lilian-davila-phd"
+- name: "Luwen (Vivian) Huangfu"
+  position: "Assistant Professor"
+  affiliation: "San Diego State University, Fowler College of Business, Management Information Systems Department"
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Artificial intelligence, Machine learning, Business analytics, Public health, Food and nutrition, Software engineering]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=BMo9cZ4AAAAJ"
+  institutionalProfile: "https://business.sdsu.edu/directory/lhuangfu"
+  openReview: "https://openreview.net/profile?id=~Luwen_Huangfu1"
+- name: "Martin Seyring"
+  position: "Research Scientist for Electron and Optical Microscopy"
+  affiliation: "Schmalkalden University of Applied Sciences, Faculty of Electrical Engineering"
+  location: "Schmalkalden, Germany"
+  country: "Germany"
+  latitude: 50.721
+  longitude: 10.443
+  researchAreas: [Electron microscopy, Phase transformations, Interfaces, Materials diagnostics]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=LZOzrKMAAAAJ"
+  institutionalProfile: "https://www.hs-schmalkalden.de/en/mitarbeiter/detail-view/martin-seyring"
+- name: "Mark Asta"
+  position: "Professor of Materials Science and Engineering"
+  affiliation: "University of California Berkeley; Lawrence Berkeley National Laboratory"
+  location: "Berkeley, CA, USA"
+  country: "United States"
+  latitude: 37.871
+  longitude: -122.273
+  researchAreas: [Computational materials science, Atomistic simulation, Thermodynamics, Alloy design, First-principles modeling]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=oHshsEUAAAAJ"
+  institutionalProfile: "https://mse.berkeley.edu/people_new/asta/"
+  facultyProfile: "https://vcresearch.berkeley.edu/faculty/mark-asta"
+  labWebsite: "https://asta.mse.berkeley.edu/"
+- name: "Markus Rettenmayr"
+  position: "Professor of Metallic Materials"
+  affiliation: "Friedrich-Schiller-Universität Jena, Otto Schott Institute of Materials Research"
+  location: "Jena, Germany"
+  country: "Germany"
+  latitude: 50.928
+  longitude: 11.589
+  researchAreas: [Metallic materials, Phase transformations, Solidification, Interfaces, Biocompatible metallic materials]
+  institutionalProfile: "https://www.physik.uni-jena.de/4460/rettenmayr-markus-1960-2022"
+  profile: "https://www.jsmc-phd.de/faculty/54.html"
+  researchGate: "https://www.researchgate.net/profile/Markus-Rettenmayr"
+- name: "Massoud Malaki"
+  position: "Assistant Professor"
+  affiliation: "Imam Khomeini International University"
+  location: "Qazvin, Iran"
+  country: "Iran"
+  latitude: 36.280
+  longitude: 50.004
+  researchAreas: [Ultrasonics, Manufacturing, Composite materials, MXene]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=_rXFDQQAAAAJ"
+  profile: "https://loop.frontiersin.org/people/157381/overview"
+- name: "Murat Keceli"
+  position: "Assistant Computational Scientist"
+  affiliation: "Argonne National Laboratory"
+  location: "Lemont, IL, USA"
+  country: "United States"
+  latitude: 41.718
+  longitude: -87.982
+  researchAreas: [Computational chemistry, High-performance computing, Machine learning, Molecular simulations, Scientific workflows]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=wby3zK0AAAAJ"
+  institutionalProfile: "https://www.alcf.anl.gov/about/people/murat-keceli"
+  personalWebsite: "https://sites.google.com/site/keceli/"
+- name: "Mukil Ayyasamy"
+  position: "Research Engineer"
+  affiliation: "GE Aerospace Research Center, Probabilistic Design and Materials Informatics Group"
+  location: "Niskayuna, NY, USA"
+  country: "United States"
+  latitude: 42.814
+  longitude: -73.930
+  researchAreas: [Computational materials modeling, Materials informatics, Density functional theory, Phase-field modeling, Machine learning]
+  professionalProfile: "https://www.tms.org/portal/portal/Meetings___Events/2026/AIcourse2026/instructors.aspx?hkey=b618d8db-9e00-431f-a53b-7babdc8fd433"
+  researchGate: "https://www.researchgate.net/profile/Mukil-Ayyasamy"
+- name: "Nana Ofori-Opoku"
+  position: "Assistant Professor"
+  affiliation: "McMaster University, Department of Materials Science and Engineering"
+  location: "Hamilton, Canada"
+  country: "Canada"
+  latitude: 43.260
+  longitude: -79.919
+  researchAreas: [Materials modeling, Microstructure evolution, Phase-field methods, Solidification, Additive manufacturing]
+  institutionalProfile: "https://www.eng.mcmaster.ca/materials/faculty/dr-nana-ofori-opoku/"
+  labWebsite: "https://noforiopoku.mcmaster.ca/"
+- name: "Peter D. Lee"
+  position: "Professor of Materials Science"
+  affiliation: "University College London, Department of Mechanical Engineering"
+  location: "London, United Kingdom"
+  country: "United Kingdom"
+  latitude: 51.524
+  longitude: -0.134
+  researchAreas: [Synchrotron imaging, Additive manufacturing, Tomography, Solidification, Materials design]
+  institutionalProfile: "https://profiles.ucl.ac.uk/66855-peter-lee"
+  orcid: "https://orcid.org/0000-0002-3898-8881"
+- name: "Pinar Acar"
+  position: "Assistant Professor"
+  affiliation: "Virginia Tech, Department of Mechanical Engineering"
+  location: "Blacksburg, VA, USA"
+  country: "United States"
+  latitude: 37.229
+  longitude: -80.413
+  researchAreas: [Materials design, Multiscale modeling, Optimization, Uncertainty quantification, Machine learning]
+  institutionalProfile: "https://me.vt.edu/people/faculty/acar-pinar.html"
+  researchGate: "https://www.researchgate.net/profile/Pinar-Acar-3"
+- name: "Qiaofu Zhang"
+  position: "Assistant Professor"
+  affiliation: "University of Alabama, Department of Metallurgical and Materials Engineering"
+  location: "Tuscaloosa, AL, USA"
+  country: "United States"
+  latitude: 33.209
+  longitude: -87.550
+  researchAreas: [Integrated computational materials engineering, Additive manufacturing, Advanced manufacturing, Thermodynamics, Machine learning]
+  institutionalProfile: "https://eng.ua.edu/eng-directory/dr-qiaofu-zhang/"
+  researchGate: "https://www.researchgate.net/profile/Qiaofu-Zhang"
+  orcid: "https://orcid.org/0000-0003-0632-5351"
+- name: "Ram Devanathan"
+  position: "Director, Energy Processes and Materials Division"
+  affiliation: "Pacific Northwest National Laboratory"
+  location: "Richland, WA, USA"
+  country: "United States"
+  latitude: 46.343
+  longitude: -119.279
+  researchAreas: [Extreme-environment materials, Multiscale modeling, Machine learning, Radiation damage, Defects and diffusion]
+  institutionalProfile: "https://www.pnnl.gov/people/ram-devanathan"
+  profile: "https://www.pnnl.gov/experts/ram-devanathan-phd"
+- name: "Sara Adibi"
+  position: "Assistant Professor"
+  affiliation: "San Diego State University, Department of Mechanical Engineering"
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Computational mechanics, Multiscale materials modeling, Predictive materials design, Data-driven materials modeling, Molecular dynamics]
+  googleScholar: "https://scholar.google.com/citations?user=ISqWkacAAAAJ&hl=en"
+  institutionalProfile: "https://mechanical.sdsu.edu/people/sara-adibi"
+  labWebsite: "https://sadibi.sdsu.edu"
+  orcid: "https://orcid.org/0000-0003-2233-619X"
+- name: "Santosh KC"
+  position: "Assistant Professor"
+  affiliation: "San Diego State University, Department of Mechanical Engineering"
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Computational materials, Energy storage, Semiconductors, Quantum materials, High-performance computing]
+  institutionalProfile: "https://mechanical.sdsu.edu/people/santosh-kc"
+  labWebsite: "https://sites.google.com/sjsu.edu/cmrl/home"
+- name: "Shengqiang Cai"
+  position: "Professor"
+  affiliation: "University of California San Diego, Mechanical and Aerospace Engineering; Materials Science and Engineering"
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Soft materials, Electro-chemo-mechanics, Energy materials, Bio-inspired design, 3D fabrication]
+  institutionalProfile: "https://matsci.ucsd.edu/faculty/shengqiang-cai"
+  profile: "https://profiles.ucsd.edu/shengqiang.cai"
+  labWebsite: "https://sites.google.com/ucsd.edu/caigroup/contact-and-links"
+  orcid: "https://orcid.org/0000-0002-6852-7680"
+- name: "Stephanie Lippmann"
+  position: "Assistant Professor"
+  affiliation: "Friedrich-Schiller-Universität Jena, Institute of Applied Physics, Germany"
+  location: "Jena, Germany"
+  country: "Germany"
+  latitude: 50.928
+  longitude: 11.589
+  researchAreas: [Metallic materials, Phase transformations, Solidification, CALPHAD, Electron microscopy]
+  institutionalProfile: "https://www.physik.uni-jena.de/en/iap/21153/metallic-materials"
+  profile: "https://gepris.dfg.de/gepris/person/288549432"
+- name: "Valerie Leppert"
+  position: "Professor Emeritus"
+  affiliation: "University of California Merced, Chemical and Materials Engineering"
+  location: "Merced, CA, USA"
+  country: "United States"
+  latitude: 37.365
+  longitude: -120.425
+  researchAreas: [Electron microscopy, Nanomaterials, Environmental materials, Materials characterization, Nanoscience education]
+  institutionalProfile: "https://engineering.ucmerced.edu/content/valerie-leppert"
+- name: "Victoria Miller"
+  position: "Associate Professor"
+  affiliation: "University of Florida, Department of Materials Science and Engineering"
+  location: "Gainesville, FL, USA"
+  country: "United States"
+  latitude: 29.643
+  longitude: -82.354
+  researchAreas: [Metals and alloys, Manufacturing, On-orbit manufacturing, Gas turbine engine materials, Materials under extreme environments]
+  institutionalProfile: "https://www.eng.ufl.edu/about/contact/college-directory/name/victoria-miller/"
+  labWebsite: "https://monster.mse.ufl.edu/people/"
+- name: "Vikas Tomar"
+  position: "Professor"
+  affiliation: "Purdue University, School of Aeronautics and Astronautics"
+  location: "West Lafayette, IN, USA"
+  country: "United States"
+  latitude: 40.423
+  longitude: -86.922
+  researchAreas: [Materials in extreme environments, Mechanics of materials, Nanomechanical Raman spectroscopy, Interfaces, Multiphysics modeling]
+  institutionalProfile: "https://engineering.purdue.edu/jump/21b6150"
+  researchGate: "https://www.researchgate.net/profile/Vikas-Tomar-5"
+- name: 'Wibe Albert "Bert" de Jong'
+  position: "Senior Scientist"
+  affiliation: "Lawrence Berkeley National Laboratory, Computational Research Division"
+  location: "Berkeley, CA, USA"
+  country: "United States"
+  latitude: 37.871
+  longitude: -122.273
+  researchAreas: [Computational chemistry, Quantum chemistry, High-performance computing, Quantum computing, Materials discovery]
+  professionalProfile: "https://shinstitute.org/bert-de-jong/"
+  profile: "https://loop.frontiersin.org/people/299386"
+  researchGate: "https://www.researchgate.net/profile/Wibe-De-Jong"
+  openReview: "https://openreview.net/profile?id=~Wibe_Albert_de_Jong1"
+- name: "Xiaoyan Song"
+  position: "Distinguished Professor"
+  affiliation: "Beijing University of Technology, College of Materials Science and Engineering"
+  location: "Beijing, China"
+  country: "China"
+  latitude: 39.905
+  longitude: 116.405
+  researchAreas: [Metallic nanomaterials, Computational materials science, Cermets, Rare-earth materials, Grain-boundary engineering]
+  institutionalProfile: "https://english.bjut.edu.cn/info/1578/6967.htm"
+  researchGate: "https://www.researchgate.net/profile/Xiaoyan-Song"
+  scienceDirect: "https://www.sciencedirect.com/author/57741720500/xiaoyan-song"
+  orcid: "https://orcid.org/0000-0003-3844-729X"
+- name: "Yang Yang"
+  position: "Assistant Professor"
+  affiliation: "San Diego State University, Department of Mechanical Engineering"
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Bioinspired 3D printing, Advanced materials, Multifunctional composites, Robotics and wearable sensors, Energy harvesting]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=2bLrLwsAAAAJ"
+  labWebsite: "https://yanglab.sdsu.edu/"
+- name: "Josh Beckham"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2026-2027 cohort"
+  affiliation: "The University of Texas at Austin"
+  networkNote: "Project: Advancing Molecular Docking Skills for First-Year Undergraduates in CUREs through Infectious Disease Drug Discovery."
+  location: "Austin, TX, USA"
+  country: "United States"
+  latitude: 30.285
+  longitude: -97.734
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2026-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Joseph Bennett"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2026-2027 cohort"
+  affiliation: "University of Maryland Baltimore County"
+  networkNote: "Project: Calculating Crystallographic Trends in Inorganic Chemistry."
+  location: "Baltimore, MD, USA"
+  country: "United States"
+  latitude: 39.255
+  longitude: -76.711
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2026-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Fabian Faulstich"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2026-2027 cohort"
+  affiliation: "Rensselaer Polytechnic Institute"
+  networkNote: "Project: Transforming Quantum Many-Body Education via Modular Open-Source Software."
+  location: "Troy, NY, USA"
+  country: "United States"
+  latitude: 42.729
+  longitude: -73.678
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2026-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Youngjoo Kim"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2026-2027 cohort"
+  affiliation: "SUNY Old Westbury"
+  networkNote: "Project: Analysis of Omics data using Python/Colab in Biochemistry class."
+  location: "Old Westbury, NY, USA"
+  country: "United States"
+  latitude: 40.799
+  longitude: -73.574
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2026-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Heidi Klem"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2026-2027 cohort"
+  affiliation: "Louisiana State University"
+  networkNote: "Project: A Digital Dive into the Four Levels of Protein Structure."
+  location: "Baton Rouge, LA, USA"
+  country: "United States"
+  latitude: 30.414
+  longitude: -91.178
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2026-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Kelly Lancaster"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2026-2027 cohort"
+  affiliation: "Texas State University"
+  networkNote: "Project: Dye-ing for Quantum: Modeling Conjugated Molecules."
+  location: "San Marcos, TX, USA"
+  country: "United States"
+  latitude: 29.889
+  longitude: -97.938
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2026-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "David Ramirez"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2026-2027 cohort"
+  affiliation: "The Catholic University of America"
+  networkNote: "Project: Exploration of Molecular Symmetry and Bonding using Python and Jupyter Notebooks."
+  location: "Washington, DC, USA"
+  country: "United States"
+  latitude: 38.936
+  longitude: -76.998
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2026-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Samuel Shepard"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2026-2027 cohort"
+  affiliation: "Allegheny College"
+  networkNote: "Project: Modeling and printing of 3D surfaces for real gas visualization."
+  location: "Meadville, PA, USA"
+  country: "United States"
+  latitude: 41.649
+  longitude: -80.146
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2026-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Megan Tichy"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2026-2027 cohort"
+  affiliation: "University of Rochester"
+  networkNote: "Project: POGIL + Python for Teaching Spectroscopy, Thermodynamics and Kinetics."
+  location: "Rochester, NY, USA"
+  country: "United States"
+  latitude: 43.129
+  longitude: -77.628
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2026-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Ning Wang"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2026-2027 cohort"
+  affiliation: "The University of Texas at Tyler"
+  networkNote: "Project: Machine-learning-ready chemical engineering cyberinfrastructure pipeline."
+  location: "Tyler, TX, USA"
+  country: "United States"
+  latitude: 32.315
+  longitude: -95.252
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2026-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "William Ames"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2025-2027 cohort"
+  affiliation: "Juniata College"
+  networkNote: "Project: Modeling reaction kinetics in Python with QM-calculated transition-state energies."
+  location: "Huntingdon, PA, USA"
+  country: "United States"
+  latitude: 40.499
+  longitude: -78.015
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2025-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Keith Fraser"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2025-2027 cohort"
+  affiliation: "Rensselaer Polytechnic Institute"
+  networkNote: "Project: Structural Bioinformatics."
+  location: "Troy, NY, USA"
+  country: "United States"
+  latitude: 42.729
+  longitude: -73.678
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2025-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Robin Grotjahn"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2025-2027 cohort"
+  affiliation: "Santa Clara University"
+  networkNote: "Project: High Performance Computing Applications in a General Chemistry Laboratory."
+  location: "Santa Clara, CA, USA"
+  country: "United States"
+  latitude: 37.349
+  longitude: -121.939
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2025-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Heidi Hendrickson"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2025-2027 cohort"
+  affiliation: "Lafayette College"
+  networkNote: "Project: Quantum information science modules in physical chemistry."
+  location: "Easton, PA, USA"
+  country: "United States"
+  latitude: 40.699
+  longitude: -75.208
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2025-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Linlin Jensen"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2025-2027 cohort"
+  affiliation: "The Pennsylvania State University"
+  networkNote: "Project: Data Analysis and Visualization with AI-enhanced Programming in General Chemistry."
+  location: "University Park, PA, USA"
+  country: "United States"
+  latitude: 40.798
+  longitude: -77.860
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2025-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Prajay Patel"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2025-2027 cohort"
+  affiliation: "University of Dallas"
+  networkNote: "Project: Transitioning from Excel to Python for inquiry-based data analysis in physical chemistry labs."
+  location: "Irving, TX, USA"
+  country: "United States"
+  latitude: 32.846
+  longitude: -96.922
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2025-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Craig Smith"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2025-2027 cohort"
+  affiliation: "Washington University in St. Louis"
+  networkNote: "Project: Interactive Protein Structure Analysis Using Jupyter Notebooks."
+  location: "St. Louis, MO, USA"
+  country: "United States"
+  latitude: 38.648
+  longitude: -90.306
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2025-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Nik Tsotakos"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2025-2027 cohort"
+  affiliation: "The Pennsylvania State University"
+  networkNote: "Project: Modeling mutation effects population-wide using Python."
+  location: "University Park, PA, USA"
+  country: "United States"
+  latitude: 40.798
+  longitude: -77.860
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2025-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Cecilia Vollbrecht"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2025-2027 cohort"
+  affiliation: "Kalamazoo College"
+  networkNote: "Project: Visualization of quantum mechanical models and spectroscopy applications using Python."
+  location: "Kalamazoo, MI, USA"
+  country: "United States"
+  latitude: 42.291
+  longitude: -85.601
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2025-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Wenwu Xu"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2025-2027 cohort"
+  affiliation: "San Diego State University"
+  networkNote: "Project: Transforming Materials Modeling Education through LLM-Assisted Coding and HPC Integration for SDSU's Doctoral Engineering Program."
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, Materials modeling education, 2025-2027 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Lori Banks"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2024-2026 cohort"
+  affiliation: "Prairie View A&M University"
+  networkNote: "Project: Coding for Biological Research Training."
+  location: "Prairie View, TX, USA"
+  country: "United States"
+  latitude: 30.093
+  longitude: -95.989
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2024-2026 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Gergely Gidofalvi"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2024-2026 cohort"
+  affiliation: "Gonzaga University"
+  networkNote: "Project: Rovibrational spectrum of H-35Cl: comparison between theory and experiment."
+  location: "Spokane, WA, USA"
+  country: "United States"
+  latitude: 47.667
+  longitude: -117.402
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2024-2026 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Kevin Greenman"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2024-2026 cohort"
+  affiliation: "Catholic Institute of Technology"
+  networkNote: "Project: Jupyter module on molecular representation for introductory chemistry."
+  location: "Castel Gandolfo, Italy"
+  country: "Italy"
+  latitude: 41.745
+  longitude: 12.651
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2024-2026 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Rachel Kurchin"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2024-2026 cohort"
+  affiliation: "Carnegie Mellon University"
+  networkNote: "Project: Diffusion lab for introductory materials science."
+  location: "Pittsburgh, PA, USA"
+  country: "United States"
+  latitude: 40.444
+  longitude: -79.944
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2024-2026 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Christine Morales"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2024-2026 cohort"
+  affiliation: "University of Mount Union"
+  networkNote: "Project: Python-based Jupyter notebooks in the analytical chemistry laboratory."
+  location: "Alliance, OH, USA"
+  country: "United States"
+  latitude: 40.904
+  longitude: -81.105
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2024-2026 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Brandy Russell"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2024-2026 cohort"
+  affiliation: "Gustavus Adolphus College"
+  networkNote: "Project: Data analysis and visualization using Python in general chemistry."
+  location: "Saint Peter, MN, USA"
+  country: "United States"
+  latitude: 44.323
+  longitude: -93.970
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2024-2026 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Steve Singleton"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2024-2026 cohort"
+  affiliation: "Coe College"
+  networkNote: "Project: Guided-inquiry computing in the physical chemistry curriculum."
+  location: "Cedar Rapids, IA, USA"
+  country: "United States"
+  latitude: 41.987
+  longitude: -91.659
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2024-2026 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Dom Sirianni"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2024-2026 cohort"
+  affiliation: "Daemen University"
+  networkNote: "Project: Symbolic calculus in biophysical chemistry."
+  location: "Amherst, NY, USA"
+  country: "United States"
+  latitude: 42.963
+  longitude: -78.789
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2024-2026 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Marc ter Horst"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2024-2026 cohort"
+  affiliation: "University of North Carolina at Chapel Hill"
+  networkNote: "Project: Graduate-level organic chemistry."
+  location: "Chapel Hill, NC, USA"
+  country: "United States"
+  latitude: 35.904
+  longitude: -79.047
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2024-2026 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Marie van Staveren"
+  position: "MolSSI ACT-CMS Faculty Fellow, 2024-2026 cohort"
+  affiliation: "University of Maryland, Baltimore County"
+  networkNote: "Project: Data Analysis Quick Pages for Experimental Physical Chemistry."
+  location: "Baltimore, MD, USA"
+  country: "United States"
+  latitude: 39.255
+  longitude: -76.711
+  researchAreas: [MolSSI ACT-CMS, Faculty fellowship, Computational molecular science education, 2024-2026 cohort]
+  professionalProfile: "https://molssi.org/fellowship/act-cms-faculty-fellows/"
+- name: "Motomichi Koyama"
+  position: "Associate Professor"
+  affiliation: "Tohoku University, Institute for Materials Research"
+  networkNote: "Host professor for Wenwu Xu's FY2024 JSPS Invitational Fellowship for Research in Japan."
+  location: "Sendai, Japan"
+  country: "Japan"
+  latitude: 38.268
+  longitude: 140.869
+  researchAreas: [Hydrogen embrittlement, Environmentally robust materials, Structural materials, Mechanical properties, Materials design]
+  googleScholar: "https://scholar.google.com/citations?hl=en&user=fbNJHBMAAAAJ"
+  institutionalProfile: "https://www.r-info.tohoku.ac.jp/en/55e8605f1026406d2980f31197070389.html"
+  labWebsite: "https://www.imr.tohoku.ac.jp/en/about/divisions-and-centers/research-division/12.html"

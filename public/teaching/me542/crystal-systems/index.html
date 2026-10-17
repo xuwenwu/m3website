@@ -1,0 +1,600 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Seven Crystal Systems | ME542 | M3 Lab</title><meta name="description" content="Explore seven crystal systems with interactive 3D lattice models and animated symmetry operations."></head><body>
+
+
+<style>
+  :root {
+    --ground: #F2F4F7;
+    --panel: #FFFFFF;
+    --panel-2: #E9EDF2;
+    --line: #CDD4DD;
+    --ink: #1B2430;
+    --ink-2: #4A5866;
+    --ink-3: #7B8794;
+    --accent: #C8102E;        /* symmetry elements – the deck's emphasis red */
+    --accent-soft: #F6D5DA;
+    --lattice: #1F4E79;       /* lattice points – the deck's blue */
+    --lattice-soft: #D4E1EE;
+    --ghost: #9AA6B2;
+    --scene: #F7F8FA;
+    --focus: #1F4E79;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0E1319; --panel: #161C24; --panel-2: #1E2630; --line: #2C3641;
+      --ink: #E9EDF2; --ink-2: #B4BEC9; --ink-3: #7F8B98;
+      --accent: #FF6B6B; --accent-soft: #4A1F26; --lattice: #7FB3E6; --lattice-soft: #1E3247;
+      --ghost: #6B7684; --scene: #121820; --focus: #7FB3E6; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0E1319; --panel: #161C24; --panel-2: #1E2630; --line: #2C3641;
+    --ink: #E9EDF2; --ink-2: #B4BEC9; --ink-3: #7F8B98;
+    --accent: #FF6B6B; --accent-soft: #4A1F26; --lattice: #7FB3E6; --lattice-soft: #1E3247;
+    --ghost: #6B7684; --scene: #121820; --focus: #7FB3E6; color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; font-size: 15px; line-height: 1.45;
+    padding-block: 0; padding-inline: 16px;
+  }
+  .app { max-width: 1280px; margin: 0 auto; display: grid; gap: 16px;
+         grid-template-columns: 250px minmax(0, 1fr) 300px; grid-template-rows: auto 1fr; min-height: 100vh; padding-block: 18px 24px; }
+  header { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 24px; }
+  .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+  h1 { font-family: "Newsreader", Georgia, "Times New Roman", serif; font-weight: 500; font-size: clamp(26px, 3vw, 34px); margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+  header p { margin: 0; color: var(--ink-2); max-width: 62ch; flex-basis: 100%; }
+
+  nav.systems { display: flex; flex-direction: column; gap: 6px; }
+  nav.systems .hint { font-size: 12px; color: var(--ink-3); letter-spacing: .06em; text-transform: uppercase; padding: 0 4px 4px; }
+  .sys { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; align-items: center; text-align: left;
+         padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); color: var(--ink);
+         cursor: pointer; font: inherit; transition: border-color .15s, background .15s; }
+  .sys:hover { border-color: var(--ink-3); }
+  .sys:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .sys[aria-pressed="true"] { border-color: var(--accent); background: var(--panel); box-shadow: inset 3px 0 0 var(--accent); }
+  .sys .name { font-family: "Newsreader", Georgia, serif; font-size: 18px; font-weight: 500; }
+  .sys .sym { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--accent); white-space: nowrap; }
+  .sys .metric { grid-column: 1 / -1; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--ink-3); }
+
+  .viewer { position: sticky; top: 16px; align-self: start; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .stage { position: relative; aspect-ratio: 4 / 3; max-height: calc(100vh - 64px); border-radius: 14px; background: var(--scene); border: 1px solid var(--line); overflow: hidden; }
+  .stage canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  .stage .caption { position: absolute; left: 14px; top: 12px; pointer-events: none; }
+  .stage .caption .t { font-family: "Newsreader", Georgia, serif; font-size: 22px; font-weight: 500; }
+  .stage .caption .s { font-size: 13px; color: var(--ink-2); }
+  .stage .status { position: absolute; left: 14px; bottom: 12px; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--ink-2);
+                   background: color-mix(in srgb, var(--panel) 82%, transparent); padding: 4px 8px; border-radius: 6px; pointer-events: none; }
+  .controls { display: flex; flex-direction: row; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .btn { font: inherit; font-size: 13px; font-weight: 500; padding: 7px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+  .btn:hover { border-color: var(--ink-3); }
+  .btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { filter: brightness(1.05); }
+  .btn[aria-pressed="true"] { background: var(--panel-2); }
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: var(--ink-2); padding: 0 6px; }
+  .legend .tip { margin-left: auto; color: var(--ink-3); }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: -1px; margin-right: 5px; }
+
+  aside.facts { display: flex; flex-direction: column; gap: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .card h2 { font-family: "Newsreader", Georgia, serif; font-weight: 500; font-size: 18px; margin: 0 0 8px; }
+  .card p { margin: 0; color: var(--ink-2); }
+  .params { width: 100%; border-collapse: collapse; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; font-variant-numeric: tabular-nums; }
+  .params td { padding: 4px 0; border-bottom: 1px solid var(--line); }
+  .params tr:last-child td { border-bottom: 0; }
+  .params td:first-child { color: var(--ink-3); width: 2.2em; }
+  .params td:last-child { text-align: right; color: var(--ink-2); }
+  .params td.free { color: var(--ink); font-weight: 500; }
+  .constraint { margin-top: 8px; font-size: 13px; color: var(--ink-2); }
+  .constraint b { color: var(--ink); font-weight: 600; }
+  .chip { display: inline-block; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin: 2px 4px 6px 0; }
+  .free-note { font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+  .notice { border-left: 3px solid var(--accent); padding-left: 10px; }
+  kbd { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; }
+
+  @media (max-width: 1000px) {
+    .app { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; }
+    nav.systems { flex-direction: row; flex-wrap: wrap; }
+    nav.systems .hint { flex-basis: 100%; }
+    .sys { flex: 1 1 150px; }
+    .viewer { position: relative; top: auto; }
+    .stage { max-height: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .sys, .btn { transition: none; } }
+  body.record { padding: 0; }
+  body.record .app { display: block; max-width: none; padding: 0; min-height: 0; }
+  body.record header, body.record nav, body.record aside, body.record .controls, body.record .legend { display: none; }
+  body.record .viewer { position: relative; top: auto; display: block; }
+  body.record .stage { width: 800px; height: 600px; aspect-ratio: auto; max-height: none; border-radius: 0; border: 0; }
+</style>
+
+<div class="app">
+  <header>
+    <span class="eyebrow">ME 542 · Materials Structures · Chapter 3</span>
+    <h1>Seven Crystal Systems</h1>
+    <p>Crystal systems classify crystal point symmetry. These ideal lattice models illustrate compatible cell geometry and selected lattice-symmetry operations. Pick a system and press <b>Play symmetry</b>. Drag to orbit or scroll to zoom. A real crystal also has an atomic motif, which can lower the symmetry of its lattice.</p>
+  <p><a href="/teaching/">Back to M3 Lab Teaching</a> · <a href="https://dictionary.iucr.org/Crystal_system" target="_blank" rel="noreferrer">Crystal-system definitions (IUCr)</a></p></header>
+
+  <nav class="systems" aria-label="Crystal systems">
+    <div class="hint">Choose a crystal system</div>
+  </nav>
+
+  <section class="viewer">
+  <div class="stage" aria-label="3D view">
+    <div class="caption"><div class="t" id="capTitle"></div><div class="s" id="capSub"></div></div>
+
+    <div class="status" id="status">ready</div>
+  </div>
+    <div class="controls">
+      <button class="btn primary" id="playBtn">Play symmetry</button>
+      <button class="btn" id="ghostBtn" aria-pressed="true">Ghost of start: on</button>
+      <button class="btn" id="spinBtn" aria-pressed="true">Auto-orbit: on</button>
+      <button class="btn" id="resetBtn">Reset view</button>
+    </div>
+  <div class="legend"><span><i style="background:var(--lattice)"></i>lattice point</span><span><i style="background:var(--accent)"></i>symmetry element · tagged point</span><span><i style="background:var(--ghost)"></i>starting position</span><span class="tip">Space = play · drag to orbit · scroll to zoom</span></div>
+  </section>
+
+  <aside class="facts">
+    <div class="card">
+      <h2>Lattice parameters</h2>
+      <table class="params" id="paramTable"></table>
+      <div class="constraint" id="constraint"></div>
+      <div class="free-note" id="freeNote"></div><p class="free-note">Lengths are in arbitrary units. The displayed inequalities describe typical examples; accidental metric equalities alone do not establish higher crystal symmetry.</p>
+    </div>
+    <div class="card">
+      <h2>Lattice symmetry illustrated</h2>
+      <div id="chips"></div>
+      <p id="essential"></p>
+    </div>
+    <div class="card notice">
+      <h2>What to notice</h2>
+      <p id="notice"></p>
+    </div>
+    <div class="card">
+      <h2>Bravais lattices in this system</h2>
+      <p id="bravais"></p>
+    </div>
+  </aside>
+</div>
+
+<script src="./three.min.js"></script>
+<script>
+(function () {
+  const DEG = Math.PI / 180;
+  // ---------------------------------------------------------------- data: the seven systems
+  // Sample values are illustrative; constraints are what matters. Symmetry ops are what "Play" performs.
+  const SYSTEMS = [
+    { id: 'triclinic', name: 'Triclinic', a: 1.0, b: 1.3, c: 0.8, al: 72, be: 112, ga: 98, view: { phi: 1.05 },
+      constraint: 'a ≠ b ≠ c;  α ≠ β ≠ γ', free: 6, freeSet: ['a','b','c','al','be','ga'],
+      chips: ['1̄ (inversion) only'], holohedry: '−1',
+      essential: 'A generic triclinic lattice has inversion symmetry but no nontrivial rotational symmetry or mirror plane. The atomic motif can remove inversion: triclinic crystals belong to point group 1 or −1.',
+      notice: 'Inversion sends every point r to −r through the cell centre. Watch the tagged corner pass through the centre and land on the diagonally opposite corner: the cell maps onto itself even though it has no “nice” shape at all.',
+      bravais: 'One: aP (primitive only). Any centred triclinic cell can be re-chosen as a smaller primitive one.',
+      ops: [{ type: 'invert' }] },
+    { id: 'monoclinic', name: 'Monoclinic', a: 1.0, b: 0.8, c: 1.2, al: 90, be: 110, ga: 90,
+      constraint: 'a ≠ b ≠ c;  α = γ = 90°, β ≠ 90°', free: 4, freeSet: ['a','b','c','be'],
+      chips: ['2-fold axis ∥ b', 'mirror plane ⊥ b'], holohedry: '2/m',
+      essential: 'This monoclinic lattice has a 2-fold axis parallel to b and a mirror plane perpendicular to b. These are distinct operations. The unique-b cell has α = γ = 90°, while β is free. Monoclinic crystal point groups are 2, m, and 2/m.',
+      notice: 'A half turn about the b axis through the cell centre. The tilted a–c face swings round and lands exactly on itself; try to imagine the same half turn about a or c — it fails because β ≠ 90°.',
+      bravais: 'Two: mP and mC. A body-centred choice is the same lattice as mC with a and c re-chosen.',
+      ops: [{ type: 'rotate', axis: 'b', angle: 180 }] },
+    { id: 'orthorhombic', name: 'Orthorhombic', a: 1.0, b: 1.4, c: 0.7, al: 90, be: 90, ga: 90,
+      constraint: 'a ≠ b ≠ c;  α = β = γ = 90°', free: 3, freeSet: ['a','b','c'],
+      chips: ['three ⊥ 2-fold axes', '(or 2-folds and mirrors)'], holohedry: 'mmm',
+      essential: 'This orthorhombic lattice has three mutually perpendicular 2-fold axes along the cell edges and mirror planes perpendicular to those axes. The cell angles are 90°, with three independent edge lengths. Orthorhombic crystal point groups are 222, mm2, and mmm.',
+      notice: 'Three half turns in a row, about a, then b, then c. Every one returns the brick to itself. No quarter turn works: a ≠ b ≠ c, so a 90° turn about c would swap a long edge with a short one.',
+      bravais: 'Four: oP, oC, oI, oF. Because the three axes are inequivalent, no re-choice of axes collapses a centred cell onto a smaller one of the same type.',
+      ops: [{ type: 'rotate', axis: 'a', angle: 180 }, { type: 'rotate', axis: 'b', angle: 180 }, { type: 'rotate', axis: 'c', angle: 180 }] },
+    { id: 'tetragonal', name: 'Tetragonal', a: 1.0, b: 1.0, c: 1.5, al: 90, be: 90, ga: 90, view: { phi: 0.95 },
+      constraint: 'a = b ≠ c;  α = β = γ = 90°', free: 2, freeSet: ['a','c'],
+      chips: ['one 4-fold axis ∥ c'], holohedry: '4/mmm',
+      essential: 'The tetragonal lattice illustrated has a 4-fold axis along c. A quarter turn exchanges a and b, requiring a = b and right angles. The height c is independent. A tetragonal crystal can retain a 4-fold rotation or a 4-fold rotoinversion axis, depending on its point group.',
+      notice: 'Two quarter turns about c. After the first, the tagged corner sits where a neighbouring corner was; the square base is indistinguishable from before. Stretching c does not disturb the 4-fold — squashing the base into a rectangle would.',
+      bravais: 'Two: tP and tI. A C-centred or F-centred tetragonal cell is the same lattice as tP or tI in a cell rotated by 45° with a′ = a/√2.',
+      ops: [{ type: 'rotate', axis: 'c', angle: 90 }, { type: 'rotate', axis: 'c', angle: 90 }] },
+    { id: 'trigonal', name: 'Trigonal (rhombohedral cell)', short: 'Trigonal', a: 1.0, b: 1.0, c: 1.0, al: 72, be: 72, ga: 72, up: 'diag111', view: { phi: 1.05, theta: 0.35 },
+      constraint: 'a = b = c;  α = β = γ ≠ 90°', free: 2, freeSet: ['a','al'],
+      chips: ['one 3-fold axis'], holohedry: '−3m',
+      essential: 'One 3-fold axis. In the rhombohedral cell it runs along the body diagonal: a third of a turn about it cycles a → b → c, which is why the three edges are equal and the three angles are equal. The angle α stays free (α = 60° gives fcc, 90° simple cubic, 109.47° bcc).',
+      notice: 'A 120° turn about the long body diagonal. The three edges meeting at the tagged corner rotate into one another; the rhombohedron — a cube stretched or squashed along a diagonal — lands on itself.',
+      bravais: 'Trigonal crystals may have hR (rhombohedral) or hP (hexagonal) translation lattices. This model shows a primitive rhombohedral hR cell. The R-centred hexagonal setting has three lattice points per cell; a primitive hP cell has one.',
+      ops: [{ type: 'rotate', axis: 'diag111', angle: 120 }] },
+    { id: 'hexagonal', name: 'Hexagonal', a: 1.0, b: 1.0, c: 1.35, al: 90, be: 90, ga: 120, view: { phi: 0.82, theta: 0.45 },
+      constraint: 'a = b ≠ c;  α = β = 90°, γ = 120°', free: 2, freeSet: ['a','c'],
+      chips: ['one 6-fold axis ∥ c'], holohedry: '6/mmm',
+      essential: 'One 6-fold axis along c. A 60° turn must carry a onto another lattice translation of the same length, which fixes a = b and γ = 120° (or 60°). Three of the 120° rhombic cells together form the hexagonal prism. Hexagonal crystals may retain a 6-fold rotation or a 6-fold rotoinversion axis, depending on their point group.',
+      notice: 'A 60° turn about c. Every lattice point lands on a lattice point — but the three rhombic cells land on the other three halves of the prism. The symmetry belongs to the lattice, not to any one cell.',
+      bravais: 'Hexagonal crystals use the hP Bravais lattice. The hexagonal family also includes trigonal crystals, which may use hP or hR. An R-centred hexagonal setting describes hR, a rhombohedral lattice.',
+      ops: [{ type: 'rotate', axis: 'c', angle: 60 }, { type: 'rotate', axis: 'c', angle: 60 }] },
+    { id: 'cubic', name: 'Cubic', a: 1.0, b: 1.0, c: 1.0, al: 90, be: 90, ga: 90, view: { phi: 1.0 },
+      constraint: 'a = b = c;  α = β = γ = 90°', free: 1, freeSet: ['a'],
+      chips: ['four 3-fold axes along <111>'], holohedry: 'm−3m',
+      essential: 'Four 3-fold axes along the body diagonals — not the 4-fold axes. A 3-fold about one diagonal cycles a → b → c; a second, differently oriented 3-fold then forces all three to be perpendicular. Cubic point groups 23 and m3̄ have no 4-fold axis at all.',
+      notice: 'Third turns about two different body diagonals. Each carries the cube onto itself while the tagged corner hops to a new corner. Together the four diagonals lock in a = b = c and 90° angles with a single free parameter.',
+      bravais: 'Three: cP, cI, cF. Centring only one pair of faces would single out an axis and destroy the diagonal 3-folds — that lattice is tetragonal.',
+      ops: [{ type: 'rotate', axis: 'diag111', angle: 120 }, { type: 'rotate', axis: 'diag-111', angle: 120 }] },
+  ];
+
+  // ---------------------------------------------------------------- helpers
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const ease = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
+  function latticeVectors(s) {
+    const al = s.al * DEG, be = s.be * DEG, ga = s.ga * DEG;
+    const A = new THREE.Vector3(s.a, 0, 0);
+    const B = new THREE.Vector3(s.b * Math.cos(ga), s.b * Math.sin(ga), 0);
+    const cx = s.c * Math.cos(be);
+    const cy = s.c * (Math.cos(al) - Math.cos(be) * Math.cos(ga)) / Math.sin(ga);
+    const cz = Math.sqrt(Math.max(0, s.c * s.c - cx * cx - cy * cy));
+    const C = new THREE.Vector3(cx, cy, cz);
+    return { A, B, C };
+  }
+  // crystal frame (c up = +z) -> three.js frame (y up): (x, y, z) -> (x, z, -y)
+  const toWorld = (v) => new THREE.Vector3(v.x, v.z, -v.y);
+
+  // ---------------------------------------------------------------- scene
+  const stage = document.querySelector('.stage');
+  const params = new URLSearchParams(location.search);
+  const RECORD = params.get('record');
+  if (RECORD) document.body.classList.add('record');
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: !!RECORD });
+  renderer.setPixelRatio(RECORD ? 1 : Math.min(window.devicePixelRatio || 1, 2));
+  stage.appendChild(renderer.domElement);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(32, 4 / 3, 0.1, 100);
+  const world = new THREE.Group(); scene.add(world);
+
+  const hemi = new THREE.HemisphereLight(0xffffff, 0x8899aa, 0.85); scene.add(hemi);
+  const key = new THREE.DirectionalLight(0xffffff, 0.75); key.position.set(3, 5, 4); scene.add(key);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.25); fill.position.set(-4, -2, -3); scene.add(fill);
+
+  const mats = {};
+  function refreshMaterials() {
+    const lattice = new THREE.Color(css('--lattice'));
+    const accent = new THREE.Color(css('--accent'));
+    const ghost = new THREE.Color(css('--ghost'));
+    const ink = new THREE.Color(css('--ink-2'));
+    renderer.setClearColor(new THREE.Color(css('--scene')), 1);
+    mats.point = mats.point || new THREE.MeshStandardMaterial({ roughness: 0.45, metalness: 0.05 });
+    mats.point.color.copy(lattice);
+    mats.tag = mats.tag || new THREE.MeshStandardMaterial({ roughness: 0.4, metalness: 0.05 });
+    mats.tag.color.copy(accent);
+    mats.edge = mats.edge || new THREE.MeshStandardMaterial({ roughness: 0.6, metalness: 0.0 });
+    mats.edge.color.copy(ink);
+    mats.edgeLight = mats.edgeLight || new THREE.MeshStandardMaterial({ roughness: 0.6, transparent: true, opacity: 0.55 });
+    mats.edgeLight.color.copy(ink);
+    mats.face = mats.face || new THREE.MeshStandardMaterial({ transparent: true, opacity: 0.10, side: THREE.DoubleSide, depthWrite: false, roughness: 1 });
+    mats.face.color.copy(lattice);
+    mats.ghostEdge = mats.ghostEdge || new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.5 });
+    mats.ghostEdge.color.copy(ghost);
+    mats.ghostPoint = mats.ghostPoint || new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.35 });
+    mats.ghostPoint.color.copy(ghost);
+    mats.axis = mats.axis || new THREE.MeshStandardMaterial({ roughness: 0.5, metalness: 0.1 });
+    mats.axis.color.copy(accent);
+    mats.axisFlat = mats.axisFlat || new THREE.MeshBasicMaterial({ side: THREE.DoubleSide });
+    mats.axisFlat.color.copy(accent);
+    mats.axisDim = mats.axisDim || new THREE.MeshStandardMaterial({ roughness: 0.5, metalness: 0.1, transparent: true, opacity: 0.28, depthWrite: false });
+    mats.axisDim.color.copy(accent);
+    mats.axisFlatDim = mats.axisFlatDim || new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, transparent: true, opacity: 0.28, depthWrite: false });
+    mats.axisFlatDim.color.copy(accent);
+  }
+  refreshMaterials();
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  mq.addEventListener && mq.addEventListener('change', () => { refreshMaterials(); });
+  new MutationObserver(() => refreshMaterials()).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  // geometry caches
+  const sphereGeo = new THREE.SphereGeometry(1, 24, 16);
+  const cylGeo = new THREE.CylinderGeometry(1, 1, 1, 12, 1, true);
+  const R_POINT = 0.05, R_EDGE = 0.011, R_AXIS = 0.02;
+
+  function edgeMesh(p, q, radius, material) {
+    const m = new THREE.Mesh(cylGeo, material);
+    placeEdge(m, p, q, radius);
+    return m;
+  }
+  function placeEdge(m, p, q, radius) {
+    const d = new THREE.Vector3().subVectors(q, p);
+    const len = d.length();
+    m.position.copy(p).addScaledVector(d, 0.5);
+    m.scale.set(radius, len, radius);
+    m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), d.clone().normalize());
+  }
+  function pointMesh(p, radius, material) {
+    const m = new THREE.Mesh(sphereGeo, material);
+    m.position.copy(p); m.scale.setScalar(radius);
+    return m;
+  }
+
+  // A cell = 8 corners (world coords), 12 edges, 6 faces
+  const CORNERS = [[0,0,0],[1,0,0],[0,1,0],[1,1,0],[0,0,1],[1,0,1],[0,1,1],[1,1,1]];
+  const EDGES = [[0,1],[2,3],[4,5],[6,7],[0,2],[1,3],[4,6],[5,7],[0,4],[1,5],[2,6],[3,7]];
+  const FACES = [[0,1,3,2],[4,5,7,6],[0,1,5,4],[2,3,7,6],[0,2,6,4],[1,3,7,5]];
+
+  function cellCorners(vecs, origin, Q) {
+    return CORNERS.map(([i,j,k]) => {
+      const v = new THREE.Vector3().addScaledVector(vecs.A, i).addScaledVector(vecs.B, j).addScaledVector(vecs.C, k);
+      const w = toWorld(v); if (Q) w.applyQuaternion(Q);
+      return w.add(origin);
+    });
+  }
+  function buildCell(corners, opts) {
+    const g = new THREE.Group();
+    const edgeMat = opts.ghost ? mats.ghostEdge : (opts.light ? mats.edgeLight : mats.edge);
+    const r = opts.ghost ? R_EDGE * 0.9 : (opts.light ? R_EDGE * 0.7 : R_EDGE);
+    g.userData.edges = EDGES.map(([i, j]) => { const m = edgeMesh(corners[i], corners[j], r, edgeMat); g.add(m); return m; });
+    g.userData.points = corners.map((p, idx) => {
+      const tagged = opts.tagIndex === idx && !opts.ghost;
+      const m = pointMesh(p, opts.ghost ? R_POINT * 0.8 : (tagged ? R_POINT * 1.35 : R_POINT), opts.ghost ? mats.ghostPoint : (tagged ? mats.tag : mats.point));
+      g.add(m); return m;
+    });
+    if (!opts.ghost && !opts.noFaces) {
+      const geo = new THREE.BufferGeometry();
+      const pos = [];
+      FACES.forEach(([a, b, c, d]) => { [a, b, c, a, c, d].forEach(k => pos.push(corners[k].x, corners[k].y, corners[k].z)); });
+      geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+      geo.computeVertexNormals();
+      const faces = new THREE.Mesh(geo, mats.face); faces.renderOrder = -1; g.add(faces); g.userData.faces = faces;
+    }
+    g.userData.corners = corners.map(p => p.clone());
+    return g;
+  }
+  function updateCell(g, corners) {
+    EDGES.forEach(([i, j], k) => placeEdge(g.userData.edges[k], corners[i], corners[j], g.userData.edges[k].scale.x));
+    corners.forEach((p, idx) => g.userData.points[idx].position.copy(p));
+    if (g.userData.faces) {
+      const arr = g.userData.faces.geometry.attributes.position.array; let n = 0;
+      FACES.forEach(([a, b, c, d]) => { [a, b, c, a, c, d].forEach(k => { arr[n++] = corners[k].x; arr[n++] = corners[k].y; arr[n++] = corners[k].z; }); });
+      g.userData.faces.geometry.attributes.position.needsUpdate = true;
+      g.userData.faces.geometry.computeVertexNormals();
+    }
+  }
+  function nGonMarker(n, size) {
+    // flat marker perpendicular to the axis (axis = local +y): lens for 2, polygon for 3/4/6
+    const shape = new THREE.Shape();
+    if (n === 2) {
+      shape.moveTo(-size, 0); shape.quadraticCurveTo(0, size * 0.9, size, 0); shape.quadraticCurveTo(0, -size * 0.9, -size, 0);
+    } else {
+      for (let i = 0; i < n; i++) { const t = (i / n) * Math.PI * 2 + Math.PI / 2; const x = Math.cos(t) * size, y = Math.sin(t) * size; i ? shape.lineTo(x, y) : shape.moveTo(x, y); }
+      shape.closePath();
+    }
+    const m = new THREE.Mesh(new THREE.ShapeGeometry(shape), mats.axisFlat);
+    m.rotation.x = -Math.PI / 2;
+    return m;
+  }
+  function axisRod(center, dir, halfLen, nfold, key) {
+    const g = new THREE.Group();
+    const d = dir.clone().normalize();
+    const p = center.clone().addScaledVector(d, -halfLen), q = center.clone().addScaledVector(d, halfLen);
+    const rod = edgeMesh(p, q, R_AXIS, mats.axis); g.add(rod);
+    const marks = [q, p].map((end) => {
+      const mk = nGonMarker(nfold, 0.09);
+      const holder = new THREE.Group(); holder.position.copy(end);
+      holder.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), d);
+      holder.add(mk); g.add(holder); return mk;
+    });
+    g.userData.key = key;
+    g.userData.setActive = (on) => { rod.material = on ? mats.axis : mats.axisDim; marks.forEach(m => m.material = on ? mats.axisFlat : mats.axisFlatDim); };
+    return g;
+  }
+  function highlightAxis(key) {   // key = null -> all axes at full strength
+    if (!axes) return;
+    axes.children.forEach(ch => { if (ch.userData.setActive) ch.userData.setActive(key === null || ch.userData.key === key); });
+  }
+
+  // ---------------------------------------------------------------- state
+  let current = null;         // system object
+  let live = null;            // moving cell group(s)
+  let ghost = null;
+  let axes = null;
+  let cells = [];             // {group, baseCorners}
+  let opQueue = [];           // ops in progress
+  let anim = null;            // current op {op, t0, dur}
+  let showGhost = true, autoSpin = !RECORD;
+  let center = new THREE.Vector3();
+  let extent = 1;
+  let axisDirs = {};
+  const clock = new THREE.Clock();
+  let playT = 0;              // record-mode time
+
+  function clearWorld() {
+    while (world.children.length) world.remove(world.children[0]);
+    live = null; ghost = null; axes = null; cells = []; anim = null; opQueue = [];
+  }
+  function setSystem(s) {
+    current = s;
+    clearWorld();
+    const vecs = latticeVectors(s);
+    // optional re-orientation so that a chosen direction (e.g. the trigonal 3-fold axis) points up
+    let Q = null;
+    if (s.up) {
+      const A0 = toWorld(vecs.A), B0 = toWorld(vecs.B), C0 = toWorld(vecs.C);
+      const d0 = { diag111: new THREE.Vector3().add(A0).add(B0).add(C0).normalize(), c: C0.clone().normalize() }[s.up];
+      Q = new THREE.Quaternion().setFromUnitVectors(d0, new THREE.Vector3(0, 1, 0));
+    }
+    const W = (v) => { const w = toWorld(v); if (Q) w.applyQuaternion(Q); return w; };
+    const A = W(vecs.A), B = W(vecs.B), C = W(vecs.C);
+    axisDirs = { a: A.clone().normalize(), b: B.clone().normalize(), c: C.clone().normalize(),
+                 diag111: new THREE.Vector3().add(A).add(B).add(C).normalize(),
+                 'diag-111': new THREE.Vector3().addScaledVector(A, -1).add(B).add(C).normalize() };
+    const origins = [];
+    if (s.id === 'hexagonal') {
+      // three 120° cells sharing one edge (the c axis through the shared corner) form the hexagonal prism
+      const q120 = new THREE.Quaternion().setFromAxisAngle(axisDirs.c, 120 * DEG);
+      const q240 = new THREE.Quaternion().setFromAxisAngle(axisDirs.c, 240 * DEG);
+      const shared = new THREE.Vector3();               // shared corner at origin
+      const V1 = { A: vecs.A, B: vecs.B, C: vecs.C };
+      const c1 = cellCorners(V1, shared, Q);
+      const rot = (pts, q) => pts.map(p => p.clone().applyQuaternion(q));
+      const c2 = rot(c1, q120), c3 = rot(c1, q240);
+      center = C.clone().multiplyScalar(0.5);            // centre of the prism
+      [c1, c2, c3].forEach(cs => cs.forEach(p => p.sub(center)));
+      center.set(0, 0, 0);
+      live = new THREE.Group();
+      const g1 = buildCell(c1, { tagIndex: 1 }); const g2 = buildCell(c2, { light: true, noFaces: true }); const g3 = buildCell(c3, { light: true, noFaces: true });
+      live.add(g1, g2, g3); cells = [g1, g2, g3];
+      ghost = new THREE.Group(); [c1, c2, c3].forEach(cs => ghost.add(buildCell(cs, { ghost: true })));
+      extent = 1.55;
+    } else {
+      const c0 = cellCorners(vecs, new THREE.Vector3(), Q);
+      center = new THREE.Vector3(); c0.forEach(p => center.add(p)); center.multiplyScalar(1 / 8);
+      c0.forEach(p => p.sub(center)); center.set(0, 0, 0);
+      const g = buildCell(c0, { tagIndex: 1 });
+      live = new THREE.Group(); live.add(g); cells = [g];
+      ghost = new THREE.Group(); ghost.add(buildCell(c0, { ghost: true }));
+      extent = Math.max(...c0.map(p => p.length())) * 1.15;
+    }
+    world.add(ghost); world.add(live);
+    ghost.visible = false;
+    // symmetry elements
+    axes = new THREE.Group();
+    const half = extent * 1.05;
+    const uniq = [...new Set(s.ops.filter(o => o.type === 'rotate').map(o => o.axis))];
+    uniq.forEach(k => axes.add(axisRod(new THREE.Vector3(), axisDirs[k], half, Math.round(360 / s.ops.find(o => o.axis === k).angle), k)));
+    if (s.id === 'cubic') { // draw all four body diagonals; two are played
+      ['diag1-11', 'diag11-1'].forEach(kk => {
+        const d = kk === 'diag1-11' ? new THREE.Vector3().add(A).addScaledVector(B, -1).add(C) : new THREE.Vector3().add(A).add(B).addScaledVector(C, -1);
+        axes.add(axisRod(new THREE.Vector3(), d.normalize(), half, 3, kk));
+      });
+    }
+    if (s.id === 'triclinic') {
+      const inv = new THREE.Mesh(sphereGeo, mats.tag); inv.scale.setScalar(0.06); axes.add(inv);
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(0.13, 0.012, 8, 40), mats.axisFlat); axes.add(ring);
+      const ring2 = ring.clone(); ring2.rotation.x = Math.PI / 2; axes.add(ring2);
+    }
+    world.add(axes);
+    // reset motion
+    live.quaternion.identity();
+    cells.forEach(g => updateCell(g, g.userData.corners));
+    fitCamera();
+    renderFacts(s);
+    document.querySelectorAll('.sys').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.id === s.id)));
+    setStatus('ready — press Play symmetry');
+    document.getElementById('capTitle').textContent = s.name;
+    document.getElementById('capSub').textContent = s.constraint;
+  }
+
+  // ---------------------------------------------------------------- camera / orbit
+  let theta = 0.62, phi = 1.12, dist = 6.2;   // spherical
+  function fitCamera() {
+    const v = (current && current.view) || {};
+    dist = extent * (RECORD ? 3.9 : 3.6); theta = v.theta !== undefined ? v.theta : 0.62; phi = v.phi !== undefined ? v.phi : 1.08;
+  }
+  function updateCamera() {
+    camera.position.set(dist * Math.sin(phi) * Math.sin(theta), dist * Math.cos(phi), dist * Math.sin(phi) * Math.cos(theta));
+    camera.lookAt(0, 0, 0);
+  }
+  let dragging = false, lastX = 0, lastY = 0;
+  const el = renderer.domElement;
+  el.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; lastY = e.clientY; el.setPointerCapture(e.pointerId); });
+  el.addEventListener('pointermove', e => { if (!dragging) return; theta -= (e.clientX - lastX) * 0.008; phi = Math.min(Math.PI - 0.15, Math.max(0.15, phi - (e.clientY - lastY) * 0.008)); lastX = e.clientX; lastY = e.clientY; });
+  el.addEventListener('pointerup', () => dragging = false);
+  el.addEventListener('pointercancel', () => dragging = false);
+  el.addEventListener('wheel', e => { e.preventDefault(); dist = Math.min(extent * 9, Math.max(extent * 1.6, dist * (1 + Math.sign(e.deltaY) * 0.08))); }, { passive: false });
+
+  let lastW = 0, lastH = 0;
+  function resize() {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h || (w === lastW && h === lastH)) return;
+    lastW = w; lastH = h;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+  if (window.ResizeObserver) new ResizeObserver(resize).observe(stage);
+
+  // ---------------------------------------------------------------- symmetry playback
+  const OP_DUR = 1.5, GAP = 0.45;
+  function startPlay() {
+    if (!current) return;
+    live.quaternion.identity();
+    cells.forEach(g => updateCell(g, g.userData.corners));
+    opQueue = current.ops.slice();
+    anim = null; playT = 0;
+    ghost.visible = showGhost;
+    nextOp(t);
+  }
+  function nextOp(now) {
+    if (!opQueue.length) { anim = null; highlightAxis(null); setStatus('back on itself — every lattice point on a lattice point'); return; }
+    const op = opQueue.shift();
+    anim = { op, t0: now + GAP, dur: OP_DUR, baseQ: live.quaternion.clone(), done: false };
+    highlightAxis(op.type === 'rotate' ? op.axis : null);
+    setStatus(op.type === 'invert' ? 'inversion through the centre: r → −r' : `rotate ${op.angle}° about ${axisLabel(op.axis)}`);
+  }
+  function axisLabel(k) { return { a: 'a', b: 'b', c: 'c', diag111: 'the [111] body diagonal', 'diag-111': 'the [−111] body diagonal' }[k] || k; }
+  function stepAnim(now) {
+    if (!anim) return;
+    const p = Math.min(1, Math.max(0, (now - anim.t0) / anim.dur));
+    const e = ease(p);
+    if (anim.op.type === 'rotate') {
+      const q = new THREE.Quaternion().setFromAxisAngle(axisDirs[anim.op.axis], anim.op.angle * DEG * e);
+      live.quaternion.copy(q).multiply(anim.baseQ);
+    } else if (anim.op.type === 'invert') {
+      const k = 1 - 2 * e;                                  // r -> -r through the centre
+      cells.forEach(g => updateCell(g, g.userData.corners.map(c => c.clone().multiplyScalar(k))));
+    }
+    if (p >= 1 && !anim.done) { anim.done = true; anim.endAt = now + GAP; }
+    if (anim.done && now >= anim.endAt) nextOp(now);
+  }
+  function setStatus(t) { document.getElementById('status').textContent = t; }
+
+  // ---------------------------------------------------------------- facts panel
+  function renderFacts(s) {
+    const rows = [['a', s.a.toFixed(2), 'a'], ['b', s.b.toFixed(2), 'b'], ['c', s.c.toFixed(2), 'c'], ['α', s.al + '°', 'al'], ['β', s.be + '°', 'be'], ['γ', s.ga + '°', 'ga']];
+    document.getElementById('paramTable').innerHTML = rows.map(([k, v, key]) => `<tr><td>${k}</td><td class="${s.freeSet.includes(key) ? 'free' : ''}">${s.freeSet.includes(key) ? 'free' : 'fixed by symmetry'}</td><td>${v}</td></tr>`).join('');
+    document.getElementById('constraint').innerHTML = `<b>${s.constraint}</b>`;
+    document.getElementById('freeNote').textContent = `${s.free} free parameter${s.free > 1 ? 's' : ''} · lattice point group ${s.holohedry} (values shown are one example)`;
+    document.getElementById('chips').innerHTML = s.chips.map(c => `<span class="chip">${c}</span>`).join('');
+    document.getElementById('essential').textContent = s.essential;
+    document.getElementById('notice').textContent = s.notice;
+    document.getElementById('bravais').textContent = s.bravais;
+  }
+
+  // ---------------------------------------------------------------- UI
+  const nav = document.querySelector('nav.systems');
+  SYSTEMS.forEach(s => {
+    const b = document.createElement('button'); b.className = 'sys'; b.dataset.id = s.id; b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = `<span class="name">${s.short || s.name}</span><span class="sym">${s.holohedry}</span><span class="metric">${s.constraint}</span>`;
+    b.addEventListener('click', () => { setSystem(s); });
+    nav.appendChild(b);
+  });
+  document.getElementById('playBtn').addEventListener('click', () => startPlay());
+  document.getElementById('ghostBtn').addEventListener('click', e => { showGhost = !showGhost; e.currentTarget.setAttribute('aria-pressed', String(showGhost)); e.currentTarget.textContent = `Ghost of start: ${showGhost ? 'on' : 'off'}`; if (ghost && !showGhost) ghost.visible = false; });
+  document.getElementById('spinBtn').addEventListener('click', e => { autoSpin = !autoSpin; e.currentTarget.setAttribute('aria-pressed', String(autoSpin)); e.currentTarget.textContent = `Auto-orbit: ${autoSpin ? 'on' : 'off'}`; });
+  document.getElementById('resetBtn').addEventListener('click', () => { fitCamera(); });
+  window.addEventListener('keydown', e => { if (e.key === ' ' && document.activeElement.tagName !== 'BUTTON') { e.preventDefault(); startPlay(); } });
+
+  // ---------------------------------------------------------------- loop
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let t = 0;
+  function frame(dtOverride) {
+    const dt = dtOverride !== undefined ? dtOverride : clock.getDelta();
+    t += dt;
+    if (autoSpin && !dragging && !reduced) theta += dt * 0.12;
+    if (RECORD) theta = ((current && current.view && current.view.theta !== undefined) ? current.view.theta : 0.62) + playT * 0.0;
+    resize();
+    stepAnim(t);
+    updateCamera();
+    renderer.render(scene, camera);
+  }
+  function loop() { frame(); requestAnimationFrame(loop); }
+
+  // ---------------------------------------------------------------- boot
+  resize();
+  const startId = RECORD || 'cubic';
+  setSystem(SYSTEMS.find(s => s.id === startId) || SYSTEMS[6]);
+  if (RECORD) {
+    // deterministic stepping for frame capture: window.__step(dt) advances the animation by dt seconds
+    startPlay();
+    window.__duration = GAP + current.ops.length * (OP_DUR + GAP) + 1.0;
+    window.__step = function (dt) { playT += dt; frame(dt); return playT; };
+    frame(0);
+  } else {
+    loop();
+  }
+})();
+</script>
+</body></html>

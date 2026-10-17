@@ -7,7 +7,7 @@ sortOrder: 573
 image: team/amaury-reed
 project: In-situ imaging apparatus for flash-sintering ceramics
 tags: [flash sintering, instrumentation, ceramics]
-currentPosition: Undergraduate alumnus
+currentPosition: GNC Engineer, Lockheed Martin (as of 2026)
 featured: false
 ---
 Amaury worked on an in-situ imaging apparatus for studying flash-sintering processes of ceramics and received SDSU student research assistantship support in Spring 2020.

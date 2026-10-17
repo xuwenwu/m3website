@@ -7,7 +7,7 @@ sortOrder: 560
 image: team/brandon-dimmick
 project: Thermal-elastic processing for localized grain-boundary engineering
 tags: [TEP, grain boundaries, processing]
-currentPosition: Undergraduate alumnus
+currentPosition: Mechanical Engineering Student / Prototyping Engineer (as of 2026)
 featured: false
 ---
 Brandon worked on thermal-elastic processing for localized grain-boundary engineering.

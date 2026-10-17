@@ -5,27 +5,34 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "build:new": "tsc -b && vite build --base=/new/",
-    "build:root": "tsc -b && vite build --base=/",
+    "build": "npm run build:root",
+    "build:new": "tsc -b && vite build --base=/new/ && vite build --ssr src/entry-server.tsx --outDir .prerender --base=/new/ && node scripts/generate-static-pages.mjs --base=/new/",
+    "build:root": "tsc -b && vite build --base=/ && vite build --ssr src/entry-server.tsx --outDir .prerender --base=/ && node scripts/generate-static-pages.mjs --base=/",
+    "test:seo": "npm run test:seo:new",
+    "test:seo:new": "node scripts/validate-static-pages.mjs --base=/new/",
+    "test:seo:root": "node scripts/validate-static-pages.mjs --base=/",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "leaflet": "^1.9.4",
     "lucide-react": "^1.17.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/leaflet": "^1.9.21",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "cheerio": "^1.1.2",
     "eslint": "^10.3.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
+    "sharp": "^0.35.1",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12"

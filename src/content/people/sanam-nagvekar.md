@@ -7,7 +7,7 @@ sortOrder: 572
 image: team/sanam-nagvekar
 project: In-situ imaging apparatus for flash-sintering ceramics
 tags: [flash sintering, instrumentation, ceramics]
-currentPosition: Undergraduate alumna
+currentPosition: Mechanical Engineer, Intuitive Surgical (as of 2026)
 featured: false
 ---
 Sanam worked on an in-situ imaging apparatus for studying flash-sintering processes of ceramics and received SDSU student research assistantship support in Spring 2020.

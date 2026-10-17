@@ -7,7 +7,7 @@ sortOrder: 563
 image: team/ethan-anderson
 project: Experimental measurement of grain-boundary electrical resistance
 tags: [grain boundaries, electrical resistance, metals]
-currentPosition: Undergraduate alumnus
+currentPosition: R&D Product Design Engineer, Callaway Golf (as of 2026)
 featured: false
 ---
 Ethan worked on experimental measurement of grain-boundary electrical resistance in polycrystalline metals.

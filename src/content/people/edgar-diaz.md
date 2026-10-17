@@ -7,7 +7,7 @@ sortOrder: 564
 image: team/edgar-diaz
 project: Electro-nano-pulser system assembly and testing
 tags: [ENP, instrumentation, grain boundaries]
-currentPosition: Undergraduate alumnus
+currentPosition: SDSU IAC Center lead student, San Diego State University Industrial Assessment Center (as of 2026)
 featured: false
 ---
 Edgar worked on assembly and testing of the electro-nano-pulser system for localized grain-boundary engineering.

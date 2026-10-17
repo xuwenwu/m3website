@@ -7,7 +7,7 @@ sortOrder: 608
 image:
 project: Tensile testing of aluminum metal using a micro-tensile tester
 tags: [tensile testing, aluminum, instrumentation]
-currentPosition: Undergraduate alumnus
+currentPosition: Engineering role, General Atomics (as of 2026)
 featured: false
 ---
 Jason worked on tensile testing of aluminum metal using a micro-tensile tester.

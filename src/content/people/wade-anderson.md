@@ -7,7 +7,7 @@ sortOrder: 501
 image: team/wade-anderson
 project: Sample preparation for ENP processing of aluminum metal
 tags: [ENP, sample preparation, aluminum]
-currentPosition: Undergraduate alumnus
+currentPosition: Fire Protection Engineer and Code Consultant / EIT (as of 2026)
 featured: false
 ---
 Wade worked on sample preparation for electro-nano-pulsing processing of aluminum metal.
