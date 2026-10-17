@@ -21,7 +21,7 @@ fs.mkdirSync(output, { recursive: true });
       console.log((await section.ariaSnapshot()).slice(0, 330));
       assert.equal(await video.count(), 1);
       assert.equal(await video.getAttribute('preload'), 'none');
-      assert((await video.locator('source').getAttribute('src')).endsWith('wenwu-xu-journey-v3.mp4'));
+      assert((await video.locator('source').getAttribute('src')).endsWith('wenwu-xu-journey-v4.mp4'));
       assert.equal(await video.getAttribute('autoplay'), null);
       assert.notEqual(await video.getAttribute('playsinline'), null);
       assert.equal(requests.length, 0, 'Video should not download before interaction');
@@ -41,12 +41,20 @@ fs.mkdirSync(output, { recursive: true });
       const duration = await video.evaluate(v => v.duration);
       assert(Math.abs(duration - 85) < 0.2);
       // Seek to the revised SDSU scene and then to the closing card.
-      for (const time of [74, 82]) {
+      for (const time of [3, 74, 82]) {
         await video.evaluate((v, t) => { v.currentTime = t; }, time);
         await page.waitForFunction(t => {
           const v = document.querySelector('#wenwu-xu-journey video');
           return !v.seeking && Math.abs(v.currentTime - t) < 0.2 && v.readyState >= 2 && !v.error;
         }, time);
+        if (time === 3) {
+          const samples = await video.evaluate(v => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => {
+            const c = document.createElement('canvas'); c.width = v.videoWidth; c.height = v.videoHeight;
+            const ctx = c.getContext('2d'); ctx.drawImage(v, 0, 0);
+            resolve([[755, 480], [350, 350]].map(([x, y]) => Array.from(ctx.getImageData(x, y, 1, 1).data).slice(0, 3)));
+          }))));
+          assert(Math.max(...samples[0].map((v, i) => Math.abs(v - samples[1][i]))) < 12, 'Taiwan and mainland highlight colors must match');
+        }
       }
       assert.equal(await video.locator('track').count(), 2);
       await video.evaluate(v => { for (const track of v.textTracks) track.mode = 'hidden'; });
@@ -59,7 +67,7 @@ fs.mkdirSync(output, { recursive: true });
       await video.scrollIntoViewIfNeeded();
       if (!language && route === '/people/') await section.screenshot({ path: `${output}/${label}-${width}.png` });
       assert.deepEqual(errors, []);
-      results.push({ width, language: language || 'en', route, duration, decode: true, seek: true, subtitleCues: 28, timeline: true, noPreload: true, passed: true });
+      results.push({ width, language: language || 'en', route, duration, decode: true, seek: true, mapColorMatch: true, subtitleCues: 28, timeline: true, noPreload: true, passed: true });
       await context.close();
     }
     fs.writeFileSync(`${output}/${label}-checks.json`, JSON.stringify(results, null, 2));

@@ -32,13 +32,13 @@ export default function LifeJourney({ language }: { language: Language }) {
         preload="none"
         width="1080"
         height="1080"
-        poster={`${media}wenwu-xu-journey-poster-v3.webp`}
+        poster={`${media}wenwu-xu-journey-poster-v4.webp`}
         aria-label={title}
       >
-        <source src={`${media}wenwu-xu-journey-v3.mp4`} type="video/mp4" />
+        <source src={`${media}wenwu-xu-journey-v4.mp4`} type="video/mp4" />
         <track kind="subtitles" src={`${media}journey-en.vtt`} srcLang="en" label="English milestones" />
         <track kind="subtitles" src={`${media}journey-zh-TW.vtt`} srcLang="zh-TW" label="繁體中文里程碑" />
-        <a href={`${media}wenwu-xu-journey-v3.mp4`}>{chinese ? '下載影片（MP4）' : 'Download the video (MP4)'}</a>
+        <a href={`${media}wenwu-xu-journey-v4.mp4`}>{chinese ? '下載影片（MP4）' : 'Download the video (MP4)'}</a>
       </video>
       <details className="life-journey-timeline">
         <summary>{chinese ? '閱讀文字版旅程' : 'Read the journey as a text timeline'}</summary>
