@@ -50,6 +50,7 @@ for (const file of files) {
   const label = relative('dist', file).replace(/\\/g, '/')
   const text = $('main').text().replace(/\s+/g, ' ').trim()
   const isHomepage = label === 'index.html' || label === 'zh-TW/index.html'
+  const isCollaborators = label === 'collaborators/index.html' || label === 'zh-TW/collaborators/index.html'
 
   if (text.length < (isHomepage ? 50000 : 80)) failures.push(`${label}: insufficient pre-rendered main content (${text.length})`)
   if ($('h1').length !== 1) failures.push(`${label}: expected one h1, found ${$('h1').length}`)
@@ -60,7 +61,14 @@ for (const file of files) {
   if (!isStaging && noindexCount !== 0) failures.push(`${label}: production page unexpectedly contains noindex`)
   if ($('script[data-page-schema]').length !== 1) failures.push(`${label}: page schema count is ${$('script[data-page-schema]').length}`)
   if (isHomepage && $('script[type="module"]').length !== 1) failures.push(`${label}: interactive homepage module is missing`)
-  if (!isHomepage && $('script[type="module"]').length !== 0) failures.push(`${label}: static page unexpectedly includes client module`)
+  if (!isHomepage && $('script[type="module"]').length !== (isCollaborators ? 1 : 0)) failures.push(`${label}: unexpected interactive module count`)
+  if (isCollaborators) {
+    if ($('script[type="module"][data-collaborator-map]').length !== 1 || $('.collaborator-leaflet-map[data-locations]').length !== 1) failures.push(`${label}: interactive collaborator map is missing`)
+    const locations = JSON.parse($('.collaborator-leaflet-map').attr('data-locations') ?? '[]')
+    if (locations.length < 1 || !locations.every((point) => Number.isFinite(point.latitude) && Number.isFinite(point.longitude) && point.collaborators?.length)) failures.push(`${label}: collaborator map coordinates or names are missing`)
+    const mapScript = $('script[data-collaborator-map]').attr('src')
+    if (!(await stat(join('dist', mapScript.slice(base.length + 1)))).size) failures.push(`${label}: map module asset is missing`)
+  }
   if ($(`script[src="${base}/site-navigation.js?v=${navigationHash}"][defer]`).length !== 1) failures.push(`${label}: shared navigation script or its cache version is missing`)
   if ($('.mobile-nav-toggle[aria-controls="main-navigation-links"][aria-expanded="false"]').length !== 1) failures.push(`${label}: collapsible mobile menu is missing`)
   if ($('a.skip-link[href="#main-content"]').length !== 1 || $('main#main-content[tabindex="-1"]').length !== 1) failures.push(`${label}: keyboard skip link or target is missing`)

@@ -9,6 +9,9 @@ const base = baseArg === '/' ? '' : `/${baseArg.replace(/^\/+|\/+$/g, '')}`
 const isStaging = base === '/new'
 const productionOrigin = 'https://mmm.sdsu.edu'
 const distDir = 'dist'
+const buildManifest = JSON.parse(await readFile(join(distDir, '.vite/manifest.json'), 'utf8'))
+const mapEntry = buildManifest['src/entry-map.ts']
+if (!mapEntry?.file) throw new Error('Collaborator map entry is missing from the build')
 const navigationHash = createHash('sha256').update(await readFile(join(distDir, 'site-navigation.js'))).digest('hex').slice(0, 12)
 const template = (await readFile(join(distDir, 'index.html'), 'utf8'))
   .replace(`${base}/site-navigation.js`, `${base}/site-navigation.js?v=${navigationHash}`)
@@ -111,8 +114,6 @@ function simplifyStaticControls($) {
   $('.filter-row, .search-filter-bar, .result-summary, .detail-toggle').remove()
   $('.site-nav').removeClass('is-open').addClass('static-nav')
   $('.mobile-secondary-nav-link').remove()
-  $('.collaborator-leaflet-map').remove()
-  $('.collaborator-map-note').remove()
   $('button').filter((_, element) => !$(element).is('.mobile-nav-toggle') && !$(element).closest('video').length).remove()
 }
 
@@ -172,7 +173,11 @@ async function writePage(route, language, options) {
 
   const $ = cheerio.load(template, { decodeEntities: false })
   $('#root').replaceWith($app('#root'))
-  $('script[type="module"]').remove()
+  $('script[type="module"], link[rel="modulepreload"]').remove()
+  if (options.slug === 'collaborators') {
+    $('body').append(`<script type="module" data-collaborator-map src="${base}/${mapEntry.file}"></script>`)
+    for (const css of mapEntry.css ?? []) $('head').append(`<link rel="stylesheet" href="${base}/${css}">`)
+  }
   setHead($, {
     route,
     language,

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { startCollaboratorMap } from './collaborator-map'
 import {
   Atom,
   BarChart3,
@@ -771,14 +772,6 @@ function projectWorldPoint(latitude: number, longitude: number) {
   }
 }
 
-function escapeHtml(value: string) {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;')
-}
 
 function normalizeSearchText(value: string) {
   return value.toLowerCase().replace(/\s+/g, ' ').trim()
@@ -1082,108 +1075,8 @@ function App({ initialPath, staticMode = false }: AppProps) {
   }, [])
 
   useEffect(() => {
-    const mapElement = collaboratorMapElementRef.current
-    if (!mapElement || collaboratorMapLocations.length === 0) return undefined
-    const leafletMapElement = mapElement
-
-    let active = true
-    let map: import('leaflet').Map | undefined
-    let observer: IntersectionObserver | undefined
-    let initialized = false
-
-    function isMapNearViewport() {
-      const rect = leafletMapElement.getBoundingClientRect()
-      return rect.top < window.innerHeight + 700 && rect.bottom > -700
-    }
-
-    async function initializeMap() {
-      if (initialized || !active) return
-      initialized = true
-
-      await import('leaflet/dist/leaflet.css')
-      const leaflet = (await import('leaflet')).default
-
-      if (!active) return
-
-      map = leaflet.map(leafletMapElement, {
-        attributionControl: true,
-        maxBounds: [[-85, -190], [85, 190]],
-        maxBoundsViscosity: 0.75,
-        minZoom: 1,
-        scrollWheelZoom: false,
-        worldCopyJump: true,
-        zoomControl: true,
-      })
-
-      leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        maxZoom: 19,
-      }).addTo(map)
-
-      const markerLayer = leaflet.featureGroup()
-
-      collaboratorMapLocations.forEach((point) => {
-        const collaboratorNames = point.collaborators
-          .map((collaborator) => `<li>${escapeHtml(collaborator.name)}</li>`)
-          .join('')
-
-        const marker = leaflet.marker([point.latitude, point.longitude], {
-          icon: leaflet.divIcon({
-            className: 'collaborator-leaflet-marker',
-            html: `<span><b>${point.collaborators.length}</b></span>`,
-            iconAnchor: [15, 30],
-            iconSize: [30, 30],
-            popupAnchor: [0, -28],
-          }),
-          title: point.location,
-        }).bindPopup(`
-          <strong>${escapeHtml(point.location)}</strong>
-          <small>${escapeHtml(point.country)}</small>
-          <ul>${collaboratorNames}</ul>
-        `)
-
-        markerLayer.addLayer(marker)
-      })
-
-      markerLayer.addTo(map)
-      map.fitBounds(markerLayer.getBounds(), { maxZoom: 3, padding: [28, 28] })
-
-      window.setTimeout(() => map?.invalidateSize(), 120)
-    }
-
-    function handleViewportCheck() {
-      if (isMapNearViewport()) {
-        window.removeEventListener('scroll', handleViewportCheck)
-        window.removeEventListener('resize', handleViewportCheck)
-        window.clearInterval(viewportCheckInterval)
-        observer?.disconnect()
-        void initializeMap()
-      }
-    }
-
-    if ('IntersectionObserver' in window) {
-      observer = new IntersectionObserver((entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          observer?.disconnect()
-          void initializeMap()
-        }
-      }, { rootMargin: '600px 0px' })
-      observer.observe(mapElement)
-    }
-
-    window.addEventListener('scroll', handleViewportCheck, { passive: true })
-    window.addEventListener('resize', handleViewportCheck)
-    const viewportCheckInterval = window.setInterval(handleViewportCheck, 700)
-    handleViewportCheck()
-
-    return () => {
-      active = false
-      observer?.disconnect()
-      window.clearInterval(viewportCheckInterval)
-      window.removeEventListener('scroll', handleViewportCheck)
-      window.removeEventListener('resize', handleViewportCheck)
-      map?.remove()
-    }
+    const element = collaboratorMapElementRef.current
+    if (element) return startCollaboratorMap(element, collaboratorMapLocations)
   }, [language])
 
   const researchThemes = useMemo(() => ['All', ...new Set(projects.map((project) => project.theme))], [])
@@ -2072,6 +1965,9 @@ function App({ initialPath, staticMode = false }: AppProps) {
                   <div
                     className="collaborator-leaflet-map"
                     ref={collaboratorMapElementRef}
+                    data-locations={staticMode ? JSON.stringify(collaboratorMapLocations.map(({ location, country, latitude, longitude, collaborators }) => ({ location, country, latitude, longitude, collaborators: collaborators.map(({ name }) => ({ name })) }))) : undefined}
+                    data-loading-message={tx('Loading collaboration map…')}
+                    data-error-message={tx('The map could not load. Please use the location list below.')}
                     role="application"
                     aria-label={tx('Interactive world map with collaborator location markers')}
                   />

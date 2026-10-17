@@ -135,6 +135,8 @@ const zhText: Record<string, string> = {
   'LinkedIn': 'LinkedIn',
   'YouTube': 'YouTube',
   'Menu': '選單',
+  'Loading collaboration map…': '正在載入合作網絡地圖…',
+  'The map could not load. Please use the location list below.': '地圖無法載入，請使用下方的位置清單。',
   'Skip to content': '跳至主要內容',
   'Diffraction primer video': '繞射導論影片',
   'What is light? A 2,500 year speed run': '光是什麼？兩千五百年的極速之旅',

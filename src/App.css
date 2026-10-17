@@ -2138,6 +2138,15 @@
   font-family: var(--sans);
 }
 
+.collaborator-leaflet-map[data-map-state="loading"],
+.collaborator-leaflet-map[data-map-state="error"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+
 .collaborator-leaflet-map .leaflet-control-attribution {
   color: #334155;
   font-size: 11px;

@@ -13,7 +13,7 @@ async function get(path) {
   })())
   return cache.get(path)
 }
-const normalize = s => s.replaceAll('/new/', '/').replace(/(index|leaflet-src)-[\w-]+\.(js|css)/g, '$1-BUILD.$2')
+const normalize = s => s.replaceAll('/new/', '/').replace(/([\w-]+?)-[\w-]{8}\.(js|css)/g, '$1-BUILD.$2')
 const sitemapPaths = text => [...text.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => new URL(m[1]).pathname.replace(/^\/new\//, '/')).sort()
 const rootMap = await get('/sitemap.xml'), newMap = await get('/new/sitemap.xml')
 const rootRoutes = sitemapPaths(rootMap.text), newRoutes = sitemapPaths(newMap.text)
@@ -42,26 +42,35 @@ for (const path of routes) {
 const assetResults = []
 for (const path of assets) {
   // Bundle filenames differ by build base; compare the paired bundles separately below.
-  if (/\/assets\/index-[\w-]+\.(js|css)$/.test(path)) continue
+  if (/\/assets\/[\w-]+-[\w-]{8}\.(js|css)$/.test(path)) continue
   const [a,b] = await Promise.all([get(path), get('/new' + path)])
   const textual = /\.(html|js|css|xml|txt|json|svg)$/i.test(path)
   assetResults.push({ path, rootStatus:a.status, newStatus:b.status, equal: textual ? normalize(a.text)===normalize(b.text) : a.bytes.equals(b.bytes) })
 }
 const bundles = []
-for (const ext of ['js','css']) {
-  const paths = await Promise.all(['/', '/new/'].map(async base => {
-    const html = (await get(base)).text
-    return html.match(new RegExp('(?:src|href)="([^" ]*/assets/index-[^" ]+\\.'+ext+')"'))?.[1]
-  }))
-  if (paths.every(Boolean)) {
+const paired = new Set()
+async function compareBundle(paths) {
+  const key = paths.join('|')
+  if (paired.has(key)) return
+  paired.add(key)
     const [a,b] = await Promise.all(paths.map(get))
-    bundles.push({ type:ext, paths, rootStatus:a.status, newStatus:b.status, equal:normalize(a.text)===normalize(b.text), hashes:[a,b].map(x=>createHash('sha256').update(x.bytes).digest('hex')) })
-    if (ext === 'js') {
-      const chunkPaths = [a,b].map((v,i)=>paths[i].replace(/index-[\w-]+\.js$/,v.text.match(/leaflet-src-[\w-]+\.js/)?.[0] || 'MISSING'))
-      const [c,d] = await Promise.all(chunkPaths.map(get))
-      bundles.push({type:'map-chunk',paths:chunkPaths,rootStatus:c.status,newStatus:d.status,equal:normalize(c.text)===normalize(d.text)})
+    bundles.push({ type:paths[0].endsWith('.css')?'css':'js', paths, rootStatus:a.status, newStatus:b.status, equal:normalize(a.text)===normalize(b.text), hashes:[a,b].map(x=>createHash('sha256').update(x.bytes).digest('hex')) })
+    const references = text => new Map([...text.matchAll(/([\w-]+-[\w-]{8}\.(?:js|css))/g)].map(m=>[normalize(m[1]),m[1]]))
+    const left = references(a.text), right = references(b.text)
+    for (const [name, file] of left) {
+      if (right.has(name)) await compareBundle(['/assets/'+file,'/new/assets/'+right.get(name)])
     }
-  }
+}
+for (const route of ['/', '/collaborators/']) {
+  const html = await Promise.all([get(route), get('/new'+route)])
+  const entries = html.map(value => {
+    const $ = cheerio.load(value.text)
+    return new Map($('script[type="module"][src],link[rel="stylesheet"][href]').toArray().map(el=>{
+      const url = $(el).attr('src') || $(el).attr('href')
+      return [normalize(url),url]
+    }))
+  })
+  for (const [key,path] of entries[0]) if (entries[1].has(key)) await compareBundle([path,entries[1].get(key)])
 }
 const report = { checkedAt:new Date().toISOString(), sitemapEqual:JSON.stringify(rootRoutes)===JSON.stringify(newRoutes), pages:results, assets:assetResults, bundles }
 await mkdir('../drafts', {recursive:true})
