@@ -108,5 +108,7 @@
       "institution": "San Diego State University"
     }
   ],
+  "edition": "v3",
+  "visual_style": "Stronger blue water, sage land, darker boundaries, bold tracked city labels and country headings.",
   "editorial_note": "Recomposed from the supplied animation. Academic dates aligned with the existing website biography. Original soundtrack retained with end fades."
 }

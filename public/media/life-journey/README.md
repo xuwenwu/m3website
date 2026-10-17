@@ -4,6 +4,12 @@
 The original is preserved in the user's Google Drive. Published with the user's
 authorization on 16 October 2026.
 
+The current player uses **v3**, which strengthens the map's blue water, sage land,
+boundaries, and small labels. Large city callouts track the original character
+after arrival, and country/destination headings supply geographic context. These
+callouts follow the character's position in the animation, not inferred map
+coordinates. The previous v2 export is retained for existing direct links.
+
 The edit retains the map animation, character, travel route, and original
 soundtrack. It recomposes the lower chapter panel at a larger size, replaces
 the age counter with year labels, shortens repeated travel transitions, adds
@@ -20,7 +26,7 @@ optional milestone subtitles and a localized HTML timeline. The subtitle
 tracks describe visual milestones; they are not a transcription of audio.
 Playback is user initiated (`preload="none"`, no autoplay, inline controls).
 
-To render from the preserved original, install Pillow in a Python environment
+To render from the preserved original, install Pillow and NumPy in a Python environment
 and provide an ffmpeg executable:
 
 ```text
