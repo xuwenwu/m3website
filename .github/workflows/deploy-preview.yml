@@ -114,6 +114,10 @@ jobs:
           DEPLOYMENT_STATUS: ${{ job.status }}
         run: |
           set -euo pipefail
+          # Start from the latest status record before editing it. Reruns check
+          # out the original source commit, whose previous status can be stale.
+          git fetch origin main
+          git checkout -B deployment-status origin/main
           mkdir -p .github
           cat > .github/preview-deployment-status.json <<EOF
           {
@@ -129,6 +133,5 @@ jobs:
           git add .github/preview-deployment-status.json
           if ! git diff --cached --quiet; then
             git commit -m "Record preview deployment result [skip ci]"
-            git pull --rebase origin main
             git push origin HEAD:main
           fi
