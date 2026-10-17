@@ -1933,7 +1933,7 @@ function App({ initialPath, staticMode = false }: AppProps) {
               <p className="eyebrow">{tx('Collaborators')}</p>
               <h2>{tx('Collaborators and Professional Network - Past and Present.')}</h2>
               <p>
-                {tx('Profile cards include collaborators, co-authors, co-editors, advisors, and proposal collaborators across universities, national laboratories, and industry working on computational materials science, atomistic simulations, grain-boundary engineering, field-assisted materials processing, AI/ML-enabled materials research, materials informatics, and engineering education.')}
+                {tx('Meet collaborators, co-authors, advisors, and professional colleagues connected through research, teaching, scientific symposia, committees, and workshops across universities, national laboratories, industry, and research organizations.')}
               </p>
             </div>
             {collaboratorMapLocations.length > 0 && (
@@ -2039,7 +2039,7 @@ function App({ initialPath, staticMode = false }: AppProps) {
                     <p>{collaborator.affiliation}</p>
                     {collaborator.networkNote && (
                       <p className="collaborator-network-note">
-                        <strong>{tx('Network note')}:</strong> {collaborator.networkNote}
+                        <strong>{tx('Network note')}:</strong> {tx(collaborator.networkNote)}
                       </p>
                     )}
                     <div className="inline-tags collaborator-tags">

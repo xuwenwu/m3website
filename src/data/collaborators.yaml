@@ -774,3 +774,223 @@
   googleScholar: "https://scholar.google.com/citations?hl=en&user=fbNJHBMAAAAJ"
   institutionalProfile: "https://www.r-info.tohoku.ac.jp/en/55e8605f1026406d2980f31197070389.html"
   labWebsite: "https://www.imr.tohoku.ac.jp/en/about/divisions-and-centers/research-division/12.html"
+- name: "Ashley Ringer McDonald"
+  position: "Professor of Chemistry"
+  affiliation: "California Polytechnic State University, San Luis Obispo"
+  networkNote: "Research and teaching network."
+  location: "San Luis Obispo, CA, USA"
+  country: "United States"
+  latitude: 35.3
+  longitude: -120.66
+  researchAreas: [Computational chemistry, Scientific computing education]
+  personalWebsite: "https://armcdona.github.io/about/"
+- name: "Milton S. Torikachvili"
+  position: "Professor of Physics"
+  affiliation: "San Diego State University, Department of Physics"
+  networkNote: "Research and teaching network."
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Superconductivity, Condensed matter physics]
+  institutionalProfile: "https://physics.sdsu.edu/people/milton-torikachvili/"
+- name: "Kwan Kim"
+  position: "Materials Researcher"
+  affiliation: "University College London; Research Complex at Harwell"
+  networkNote: "Research and teaching network."
+  location: "Harwell, Oxfordshire, United Kingdom"
+  country: "United Kingdom"
+  latitude: 51.575
+  longitude: -1.314
+  researchAreas: [Additive manufacturing, Synchrotron imaging]
+  institutionalProfile: "https://www.rc-harwell.ac.uk/who-we-are/phd-students/kwan-kim"
+- name: "Cyrus Hirjibehedin"
+  position: "Technical Staff; Superconducting Qubits Team Lead"
+  affiliation: "MIT Lincoln Laboratory, Quantum-Enabled Computation Group"
+  networkNote: "Research and teaching network."
+  location: "Lexington, MA, USA"
+  country: "United States"
+  latitude: 42.447
+  longitude: -71.229
+  researchAreas: [Superconducting quantum devices, Quantum information]
+  institutionalProfile: "https://www.ll.mit.edu/biographies/cyrus-f-hirjibehedin"
+- name: "Kyle Serniak"
+  position: "Assistant Group Leader, Quantum-Enabled Computation"
+  affiliation: "MIT Lincoln Laboratory"
+  networkNote: "Research and teaching network."
+  location: "Lexington, MA, USA"
+  country: "United States"
+  latitude: 42.447
+  longitude: -71.229
+  researchAreas: [Superconducting quantum devices, Quantum information]
+  institutionalProfile: "https://www.ll.mit.edu/biographies/kyle-serniak"
+- name: "Jeanette Sperhac"
+  position: "Research Computing and Software"
+  affiliation: "San Diego Supercomputer Center, University of California San Diego"
+  networkNote: "Research and teaching network."
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.884
+  longitude: -117.239
+  researchAreas: [Research software, Scientific data infrastructure]
+  labWebsite: "https://www.sdsc.edu/"
+- name: "Felisha Herrera Villarreal"
+  position: "Professor of Postsecondary Education; RES-ISTE Director"
+  affiliation: "San Diego State University, College of Education"
+  networkNote: "Research and teaching network."
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Higher education, STEM education, Research equity]
+  institutionalProfile: "https://felishaherrera.sdsu.edu/"
+- name: "Xin Zhang"
+  position: "Assistant Professor of Computer Science"
+  affiliation: "San Diego State University, Department of Computer Science"
+  networkNote: "Research and teaching network."
+  location: "San Diego, CA, USA"
+  country: "United States"
+  latitude: 32.775
+  longitude: -117.071
+  researchAreas: [Artificial intelligence, Data science]
+  institutionalProfile: "https://cs.sdsu.edu/people/xin-zhang/"
+- name: "Oliver K. Johnson"
+  position: "Faculty, Mechanical Engineering"
+  affiliation: "Brigham Young University, Department of Mechanical Engineering"
+  networkNote: "Professional connection through scientific symposium and committee activities."
+  location: "Provo, UT, USA"
+  country: "United States"
+  latitude: 40.249
+  longitude: -111.649
+  researchAreas: [Microstructure design, Grain-boundary networks, Multiscale modeling]
+  professionalProfile: "https://brightspotcdn.byu.edu/15/cd/f8957198458a91e581d3d4116fbe/cv-oliver-johnson-2022.pdf"
+- name: "Ashley D. Spear"
+  position: "Professor; Associate Chair for Faculty"
+  affiliation: "University of Utah, Department of Mechanical Engineering"
+  networkNote: "Professional connection through scientific symposium and committee activities."
+  location: "Salt Lake City, UT, USA"
+  country: "United States"
+  latitude: 40.764
+  longitude: -111.842
+  researchAreas: [Materials characterization, Computational mechanics, Data-driven materials science]
+  institutionalProfile: "https://mmm.mech.utah.edu/people/"
+- name: "Sam T. Reeve"
+  position: "Computational Scientist"
+  affiliation: "Oak Ridge National Laboratory, Computational Sciences and Engineering Division"
+  networkNote: "Professional connection through scientific symposium and committee activities."
+  location: "Oak Ridge, TN, USA"
+  country: "United States"
+  latitude: 35.931
+  longitude: -84.31
+  researchAreas: [Particle simulation, High-performance computing, Additive manufacturing]
+  institutionalProfile: "https://www.ornl.gov/staff-profile/sam-t-reeve"
+- name: "Andrew Kao"
+  position: "Professor of Materials Science and Engineering"
+  affiliation: "University of Greenwich"
+  networkNote: "Professional connection through scientific symposium and committee activities."
+  location: "Chatham, United Kingdom"
+  country: "United Kingdom"
+  latitude: 51.397
+  longitude: 0.536
+  researchAreas: [Solidification, Materials processing, Computational modeling]
+  institutionalProfile: "https://www.gre.ac.uk/people/rep/faculty-of-engineering-and-science/andrew-kao"
+- name: "Lichao Fang"
+  position: "Assistant Professor"
+  affiliation: "Worcester Polytechnic Institute, Mechanical and Materials Engineering"
+  networkNote: "Professional connection through scientific symposium and committee activities."
+  location: "Worcester, MA, USA"
+  country: "United States"
+  latitude: 42.274
+  longitude: -71.807
+  researchAreas: [Computational materials science, Materials processing]
+  institutionalProfile: "https://www.wpi.edu/people/faculty/lfang3"
+- name: "Chukwunwike (Nwike) Iloeje"
+  position: "Energy Systems Scientist; UChicago CASE Senior Scientist"
+  affiliation: "Argonne National Laboratory; University of Chicago"
+  networkNote: "Professional connection through scientific symposium and committee activities."
+  location: "Lemont, IL, USA"
+  country: "United States"
+  latitude: 41.718
+  longitude: -87.982
+  researchAreas: [Energy systems, Sustainable manufacturing, Materials processing]
+  institutionalProfile: "https://pme.uchicago.edu/directory/researcher/chukwunwike-nwike-iloeje"
+- name: "Debarshi Datta"
+  position: "Assistant Professor in Data Science"
+  affiliation: "Florida Atlantic University, Christine E. Lynn College of Nursing"
+  networkNote: "Professional connection through the ASCENDR Opportunity Advising Think Lab."
+  location: "Boca Raton, FL, USA"
+  country: "United States"
+  latitude: 26.373
+  longitude: -80.101
+  researchAreas: [Data science, Health data analytics]
+  institutionalProfile: "https://www.fau.edu/nursing/directory/debarshi-datta/"
+- name: "John Weishampel"
+  position: "Dean of the College of Graduate Studies; Professor"
+  affiliation: "University of Central Florida"
+  networkNote: "Professional connection through the ASCENDR Opportunity Advising Think Lab."
+  location: "Orlando, FL, USA"
+  country: "United States"
+  latitude: 28.602
+  longitude: -81.2
+  researchAreas: [Ecology, Remote sensing, Graduate education]
+  institutionalProfile: "https://sciences.ucf.edu/biology/person/john-weishampel/"
+- name: "Kate Klemic"
+  position: "Director, Science and Technology Engagement and Analysis"
+  affiliation: "Virginia Tech Applied Research Corporation"
+  networkNote: "Professional connection through the ASCENDR Opportunity Advising Think Lab."
+  location: "Arlington, VA, USA"
+  country: "United States"
+  latitude: 38.881
+  longitude: -77.115
+  researchAreas: [Science and technology engagement, Research facilitation]
+  institutionalProfile: "https://vt-arc.org/our_team/"
+- name: "Cindy Ramboyong"
+  position: "Senior Technical Project Manager"
+  affiliation: "Virginia Tech Applied Research Corporation"
+  networkNote: "Professional connection through the ASCENDR Opportunity Advising Think Lab."
+  location: "Arlington, VA, USA"
+  country: "United States"
+  latitude: 38.881
+  longitude: -77.115
+  researchAreas: [Research program management, Workshop facilitation]
+  professionalProfile: "https://www.linkedin.com/in/cindyramboyong"
+- name: "Ariana Arciero"
+  position: "Director of Programs and Initiatives"
+  affiliation: "Alliance of Hispanic Serving Research Universities; University of Texas at El Paso"
+  networkNote: "Professional connection through the ASCENDR Opportunity Advising Think Lab."
+  location: "El Paso, TX, USA"
+  country: "United States"
+  latitude: 31.77
+  longitude: -106.5
+  researchAreas: [Graduate education, Faculty development]
+  institutionalProfile: "https://www.hsru.org/who-we-are"
+- name: "Sandra Najera"
+  position: "Programs and Initiatives"
+  affiliation: "Alliance of Hispanic Serving Research Universities; University of Texas at El Paso"
+  networkNote: "Professional connection through the ASCENDR Opportunity Advising Think Lab."
+  location: "El Paso, TX, USA"
+  country: "United States"
+  latitude: 31.77
+  longitude: -106.5
+  researchAreas: [Graduate education, Research program management]
+  institutionalProfile: "https://www.hsru.org/who-we-are"
+- name: "Madhumita Joshi"
+  position: "Director of Postdoctoral Success"
+  affiliation: "The University of Texas at San Antonio, The Graduate School"
+  networkNote: "Professional connection through the ASCENDR Opportunity Advising Think Lab."
+  location: "San Antonio, TX, USA"
+  country: "United States"
+  latitude: 29.584
+  longitude: -98.618
+  researchAreas: [Postdoctoral development, Mentoring]
+  institutionalProfile: "https://graduateschool.utsa.edu/postdoctoral-affairs/postdoctoral-office.html"
+- name: "Alla Mirzoyan"
+  position: "Graduate Education and Research Training"
+  affiliation: "Florida International University, University Graduate School"
+  networkNote: "Professional connection through the ASCENDR Opportunity Advising Think Lab."
+  location: "Miami, FL, USA"
+  country: "United States"
+  latitude: 25.756
+  longitude: -80.378
+  researchAreas: [Graduate education, Research training]
+  institutionalProfile: "https://wac.fiu.edu/programs-and-services/graduate-and-ta-support/"
