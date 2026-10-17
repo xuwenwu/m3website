@@ -1251,6 +1251,68 @@
   display: block;
 }
 
+.conference-journey {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  min-width: 0;
+  scroll-margin-top: 96px;
+}
+
+.conference-journey :is(h5, [data-heading-level="5"]) {
+  margin: 0;
+  font-size: 23px;
+}
+
+.conference-journey video {
+  display: block;
+  width: min(100%, 960px);
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #081c29;
+}
+
+.conference-journey-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+.conference-journey a {
+  color: var(--red);
+  text-underline-offset: 3px;
+}
+
+.conference-journey-download,
+.conference-journey-role,
+.conference-journey-notes p {
+  font-size: 14px;
+}
+
+.conference-journey-download span {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+}
+
+.conference-journey-timeline em {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 1px 7px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.conference-journey-role {
+  color: var(--muted);
+}
+
 .news-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }

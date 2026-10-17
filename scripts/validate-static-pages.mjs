@@ -70,6 +70,27 @@ for (const file of files) {
     }
   }
 
+  if (isHomepage) {
+    const conference = $('.conference-journey-preview')
+    const expected = `${base}${label.startsWith('zh-TW/') ? '/zh-TW' : ''}/people/#wenwu-xu-conference-journey`
+    if (conference.length !== 1 || conference.find('a').attr('href') !== expected || conference.find('video').length) failures.push(`${label}: compact conference-video link is missing or points outside this deployment/language`)
+  }
+  if (isPeople) {
+    const conference = $('#wenwu-xu-conference-journey')
+    const video = conference.find('video')
+    if (conference.length !== 1 || video.length !== 1 || video.attr('preload') !== 'none' || video.attr('autoplay') !== undefined || video.attr('playsinline') === undefined) failures.push(`${label}: conference video needs click-to-play inline controls`)
+    if (video.attr('width') !== '1920' || video.attr('height') !== '1080' || video.find('track').length !== 2) failures.push(`${label}: conference-video dimensions or bilingual subtitles are missing`)
+    if (conference.find('.conference-journey-timeline li').length !== 23 || conference.find('li.is-future').length !== 1) failures.push(`${label}: conference timeline or future-meeting label is missing`)
+    const media = [video.attr('poster'), video.find('source').attr('src'), ...video.find('track').toArray().map(node => $(node).attr('src'))]
+    for (const asset of media) {
+      if (!asset?.startsWith(`${base}/media/conference-journey/`)) failures.push(`${label}: conference media URL is outside this deployment`)
+      else {
+        try { if (!(await stat(join('dist', asset.slice(base.length + 1)))).size) failures.push(`${label}: empty conference asset ${asset}`) }
+        catch { failures.push(`${label}: missing conference asset ${asset}`) }
+      }
+    }
+  }
+
   if (text.length < (isHomepage ? 50000 : 80)) failures.push(`${label}: insufficient pre-rendered main content (${text.length})`)
   if ($('h1').length !== 1) failures.push(`${label}: expected one h1, found ${$('h1').length}`)
   if ($('link[rel="canonical"]').length !== 1) failures.push(`${label}: canonical count is ${$('link[rel="canonical"]').length}`)

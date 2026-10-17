@@ -48,6 +48,7 @@ import diegoCeaImage from './assets/team/diego-cea.webp'
 import andersTorgersonImage from './assets/team/anders-torgerson.webp'
 import wenwuImage from './assets/team/wenwu-xu.jpg'
 import LifeJourney from './LifeJourney'
+import ConferenceJourney from './ConferenceJourney'
 import shahrierImage from './assets/team/shahrier-hasan.jpg'
 import katherineImage from './assets/team/katherine-whitmore.jpeg'
 import sherwinImage from './assets/team/sherwin-navindaran.webp'
@@ -1596,6 +1597,7 @@ function App({ initialPath, staticMode = false }: AppProps) {
                             {person.tags.map((tag) => <span key={tag}>{tx(tag)}</span>)}
                           </div>
                           {person.slug === 'wenwu-xu' && <LifeJourney language={language} />}
+                          {person.slug === 'wenwu-xu' && <ConferenceJourney language={language} compact={!/\/people\/?$/.test(pathname)} />}
                         </div>
                       </article>
                     ))}
