@@ -47,6 +47,7 @@ import isaiahClemonsImage from './assets/team/isaiah-clemons.webp'
 import diegoCeaImage from './assets/team/diego-cea.webp'
 import andersTorgersonImage from './assets/team/anders-torgerson.webp'
 import wenwuImage from './assets/team/wenwu-xu.jpg'
+import LifeJourney from './LifeJourney'
 import shahrierImage from './assets/team/shahrier-hasan.jpg'
 import katherineImage from './assets/team/katherine-whitmore.jpeg'
 import sherwinImage from './assets/team/sherwin-navindaran.webp'
@@ -1594,6 +1595,7 @@ function App({ initialPath, staticMode = false }: AppProps) {
                           <div className="inline-tags">
                             {person.tags.map((tag) => <span key={tag}>{tx(tag)}</span>)}
                           </div>
+                          {person.slug === 'wenwu-xu' && <LifeJourney language={language} />}
                         </div>
                       </article>
                     ))}

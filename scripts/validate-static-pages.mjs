@@ -51,6 +51,24 @@ for (const file of files) {
   const text = $('main').text().replace(/\s+/g, ' ').trim()
   const isHomepage = label === 'index.html' || label === 'zh-TW/index.html'
   const isCollaborators = label === 'collaborators/index.html' || label === 'zh-TW/collaborators/index.html'
+  const isPeople = label === 'people/index.html' || label === 'zh-TW/people/index.html'
+
+  if (isHomepage || isPeople) {
+    const journey = $('#wenwu-xu-journey')
+    const video = journey.find('video')
+    if (journey.length !== 1 || video.length !== 1 || video.attr('preload') !== 'none' || video.attr('autoplay') !== undefined || video.attr('playsinline') === undefined) failures.push(`${label}: journey video or its click-to-play controls are missing`)
+    if (journey.find('details li').length !== 13 || video.find('track').length !== 2) failures.push(`${label}: journey text timeline or bilingual milestone subtitles are missing`)
+    const media = [video.attr('poster'), video.find('source').attr('src'), ...video.find('track').toArray().map(node => $(node).attr('src'))]
+    for (const asset of media) {
+      const expected = `${base}/media/life-journey/`
+      if (!asset?.startsWith(expected)) failures.push(`${label}: journey media URL is outside this deployment`)
+      else {
+        try {
+          if (!(await stat(join('dist', asset.slice(base.length + 1)))).size) failures.push(`${label}: empty journey media ${asset}`)
+        } catch { failures.push(`${label}: missing journey media ${asset}`) }
+      }
+    }
+  }
 
   if (text.length < (isHomepage ? 50000 : 80)) failures.push(`${label}: insufficient pre-rendered main content (${text.length})`)
   if ($('h1').length !== 1) failures.push(`${label}: expected one h1, found ${$('h1').length}`)

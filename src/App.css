@@ -1199,6 +1199,58 @@
   margin-top: 12px;
 }
 
+.life-journey {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  min-width: 0;
+}
+
+.life-journey :is(h5, [data-heading-level="5"]) {
+  margin: 0;
+  font-size: 23px;
+}
+
+.life-journey video {
+  display: block;
+  width: min(100%, 480px);
+  height: auto;
+  aspect-ratio: 1;
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #faf8ec;
+}
+
+.life-journey-timeline {
+  margin-top: 12px;
+}
+
+.life-journey-timeline summary {
+  width: fit-content;
+  padding: 8px 0;
+  color: var(--red);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.life-journey-timeline summary:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 4px;
+}
+
+.life-journey-timeline ol {
+  display: grid;
+  gap: 12px;
+  margin: 8px 0 0;
+  padding-left: 24px;
+}
+
+.life-journey-timeline li strong,
+.life-journey-timeline li span {
+  display: block;
+}
+
 .news-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }

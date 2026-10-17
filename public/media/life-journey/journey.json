@@ -1,0 +1,112 @@
+{
+  "title": "My journey to SDSU",
+  "duration": 85,
+  "source_sha256": "b2cc00ab44e56ecc1dc5d850c619719380f753f60c8c61915323a70b7677943d",
+  "chapters": [
+    {
+      "start": 0,
+      "end": 8,
+      "place": "Yiyang",
+      "period": "1982–1996",
+      "chapter": "Where the story begins",
+      "institution": "Growing up in Hunan, China"
+    },
+    {
+      "start": 8,
+      "end": 13,
+      "place": "Xiangtan",
+      "period": "1996–1999",
+      "chapter": "A new chapter in Hunan",
+      "institution": "School years in China"
+    },
+    {
+      "start": 13,
+      "end": 19,
+      "place": "Jishou",
+      "period": "1999–2003",
+      "chapter": "University years",
+      "institution": "Jishou University"
+    },
+    {
+      "start": 19,
+      "end": 25,
+      "place": "Guilin",
+      "period": "2003–2006",
+      "chapter": "Continuing my education",
+      "institution": "Guilin University of Technology"
+    },
+    {
+      "start": 25,
+      "end": 31,
+      "place": "Beijing",
+      "period": "2006–2009",
+      "chapter": "Doctoral studies",
+      "institution": "Beijing University of Technology"
+    },
+    {
+      "start": 31,
+      "end": 37,
+      "place": "Jena",
+      "period": "2009",
+      "chapter": "Visiting research in Germany",
+      "institution": "Friedrich Schiller University Jena"
+    },
+    {
+      "start": 37,
+      "end": 42,
+      "place": "Beijing",
+      "period": "PhD awarded · 2011",
+      "chapter": "Completing my PhD",
+      "institution": "Beijing University of Technology"
+    },
+    {
+      "start": 42,
+      "end": 48,
+      "place": "Jena",
+      "period": "2012",
+      "chapter": "Postdoctoral research",
+      "institution": "Friedrich Schiller University Jena"
+    },
+    {
+      "start": 48,
+      "end": 54,
+      "place": "Manchester",
+      "period": "2013–2015",
+      "chapter": "Research in the United Kingdom",
+      "institution": "The University of Manchester"
+    },
+    {
+      "start": 54,
+      "end": 59,
+      "place": "Berkeley",
+      "period": "2015",
+      "chapter": "A California visit",
+      "institution": "University of California, Berkeley"
+    },
+    {
+      "start": 59,
+      "end": 64,
+      "place": "Manchester",
+      "period": "2015",
+      "chapter": "Back to Manchester",
+      "institution": "The University of Manchester"
+    },
+    {
+      "start": 64,
+      "end": 70,
+      "place": "Merced",
+      "period": "2016–2017",
+      "chapter": "Postdoctoral research and teaching",
+      "institution": "University of California, Merced"
+    },
+    {
+      "start": 70,
+      "end": 79,
+      "place": "San Diego",
+      "period": "2017–present",
+      "chapter": "Faculty · Mechanical Engineering",
+      "institution": "San Diego State University"
+    }
+  ],
+  "editorial_note": "Recomposed from the supplied animation. Academic dates aligned with the existing website biography. Original soundtrack retained with end fades."
+}
